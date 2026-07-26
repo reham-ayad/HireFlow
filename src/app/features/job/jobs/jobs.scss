@@ -1,0 +1,590 @@
+/*==================================
+            HERO
+==================================*/
+
+.hero{
+
+    padding:150px 0 45px;
+    background:#F8F5EC;
+
+}
+
+.container{
+
+    width:min(1520px,90%);
+    margin:auto;
+
+}
+
+.hero-title{
+
+    font-size:64px;
+    font-weight:700;
+    color:#082C3D;
+    margin-bottom:35px;
+    line-height:1.15;
+
+}
+
+/*==================================
+        HERO BOTTOM
+==================================*/
+
+.hero-bottom{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+
+}
+
+/*==================================
+          SEARCH
+==================================*/
+
+.search-box{
+
+    width:820px;
+    height:72px;
+    background:#fff;
+    border:1px solid #E4DDD3;
+    border-radius:26px;
+    padding:0 28px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+.search-box i{
+
+    color:#6F7882;
+    font-size:22px;
+
+}
+
+.search-box input{
+
+    width:100%;
+    border:none;
+    outline:none;
+    background:none;
+
+    font-size:26px;
+    color:#082C3D;
+
+}
+
+.search-box input::placeholder{
+
+    color:#7A7A7A;
+    font-size:21px;
+
+}
+
+/*==================================
+          RESULTS
+==================================*/
+
+.results{
+
+    display:flex;
+    align-items:center;
+    gap:55px;
+
+}
+
+.count{
+
+    font-size:21px;
+    color:#22313F;
+
+}
+
+.count strong{
+
+    color:#083C4D;
+    font-size:24px;
+    font-weight:700;
+
+}
+
+/*==================================
+            SORT
+==================================*/
+
+.sort{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+.sort span{
+
+    color:#555;
+    font-size:21px;
+
+}
+
+.sort select{
+
+    border:none;
+    outline:none;
+    background:none;
+
+    font-size:21px;
+    font-weight:600;
+    color:#083C4D;
+
+    appearance:none;
+    cursor:pointer;
+
+}
+
+.sort i{
+
+    color:#666;
+
+}
+/*==================================
+          JOBS LAYOUT
+==================================*/
+
+.jobs-section{
+
+    background:#F8F5EC;
+    padding-bottom:80px;
+
+}
+
+.layout{
+
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:42px;
+    align-items:start;
+
+}
+
+/*==================================
+            FILTERS
+==================================*/
+
+.filters{
+
+    background:#fff;
+    border:1px solid #E7E0D6;
+    border-radius:26px;
+    padding:30px;
+
+}
+
+/* Header */
+
+.filter-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+
+}
+
+.filter-header h2{
+
+    font-size:18px;
+    letter-spacing:1px;
+    color:#0B2C3F;
+
+}
+
+.filter-header button{
+
+    border:none;
+    background:none;
+    color:#666;
+    font-weight:600;
+    cursor:pointer;
+
+}
+
+/* Group */
+
+.filter-group{
+
+    margin-bottom:38px;
+
+}
+
+.filter-group h3{
+
+    font-size:18px;
+    color:#0B2C3F;
+    margin-bottom:20px;
+
+}
+
+/* Checkbox */
+
+.checkbox{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:16px;
+    cursor:pointer;
+    font-size:18px;
+
+}
+
+.checkbox input{
+
+    display:none;
+
+}
+
+.checkbox span{
+
+    width:24px;
+    height:24px;
+    border:2px solid #D7D7D7;
+    border-radius:6px;
+
+}
+
+.checkbox input:checked + span{
+
+    background:#063847;
+    border-color:#063847;
+
+}
+
+/* Salary */
+
+input[type="range"]{
+
+    width:100%;
+    accent-color:#063847;
+
+}
+
+.salary-values{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+    color:#666;
+
+}
+
+/* Select */
+
+.filter-group select{
+
+    width:100%;
+    height:54px;
+    border-radius:14px;
+    border:1px solid #DDD;
+    padding:0 18px;
+    font-size:17px;
+
+}
+
+/* Remote */
+
+.remote-buttons{
+
+    display:flex;
+    gap:12px;
+
+}
+
+.remote-buttons button{
+
+    padding:10px 18px;
+    border-radius:40px;
+    border:1px solid #DDD;
+    background:#fff;
+    cursor:pointer;
+
+}
+
+.remote-buttons .active{
+
+    background:#063847;
+    color:#fff;
+    border-color:#063847;
+
+}
+
+/* Radio */
+
+.radio{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:16px;
+    cursor:pointer;
+    font-size:18px;
+
+}
+
+.radio input{
+
+    display:none;
+
+}
+
+.radio span{
+
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    border:2px solid #D7D7D7;
+
+}
+
+.radio input:checked + span{
+
+    border:7px solid #063847;
+
+}
+/*==================================
+            JOB CARD
+==================================*/
+
+.jobs-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+
+}
+
+.job-card{
+
+    position:relative;
+    background:#fff;
+    border:1px solid #E5DED3;
+    border-radius:28px;
+    padding:36px;
+    overflow:hidden;
+
+}
+
+.left-border{
+
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:6px;
+    height:100%;
+    background:#D9B76B;
+
+}
+
+.job-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+}
+
+.company-info{
+
+    display:flex;
+    gap:24px;
+    align-items:center;
+
+}
+
+.company-logo{
+
+    width:82px;
+    height:82px;
+    border-radius:18px;
+    background:#F7F8FC;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.company-logo i{
+
+    font-size:36px;
+    color:#0B3042;
+
+}
+
+.job-info h3{
+
+    font-size:32px;
+    color:#0B3042;
+    margin-bottom:10px;
+
+}
+
+.job-info p{
+
+    font-size:22px;
+    color:#5D6772;
+
+}
+
+.title-row{
+
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+}
+
+.featured{
+
+    background:#F6E9C8;
+    color:#8A6410;
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+
+}
+
+/* Tags */
+
+.job-tags{
+
+    display:flex;
+    gap:12px;
+
+}
+
+.job-tags span{
+
+    padding:12px 22px;
+    border-radius:999px;
+    background:#F5F5F3;
+    border:1px solid #E2E2E2;
+    color:#385063;
+    font-weight:600;
+
+}
+
+/* Description */
+
+.description{
+
+    margin:30px 0;
+    color:#5B6470;
+    line-height:1.8;
+    font-size:21px;
+
+}
+
+/* Divider */
+
+.divider{
+
+    height:1px;
+    background:#ECE8E2;
+    margin-bottom:28px;
+
+}
+
+/* Footer */
+
+.job-footer{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.job-meta{
+
+    display:flex;
+    gap:50px;
+
+}
+
+.job-meta div{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#3D4B58;
+    font-size:21px;
+
+}
+
+.job-meta i{
+
+    color:#6E7680;
+
+}
+
+/* Actions */
+
+.actions{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+.bookmark{
+
+    width:62px;
+    height:62px;
+
+    border-radius:50%;
+    border:1px solid #DDD;
+    background:#fff;
+
+    cursor:pointer;
+
+}
+
+.bookmark i{
+
+    font-size:22px;
+
+}
+
+.apply-btn{
+
+    width:220px;
+    height:62px;
+
+    border:none;
+    border-radius:999px;
+
+    background:#073B4C;
+    color:#fff;
+
+    font-size:22px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+    background:#0A5168;
+
+}

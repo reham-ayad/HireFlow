@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "title": "Angular Front-End Developer",
+    "companyId": 1,
+    "categoryId": 1,
+    "location": "Cairo, Egypt",
+    "salary": "$1200 - $1800",
+    "jobType": "Full Time",
+    "experience": "1-3 Years",
+    "remote": true,
+    "featured": true,
+    "postedAt": "2026-07-18",
+    "description": "Build modern Angular applications with reusable components and responsive layouts.",
+    "requirements": [
+      "Angular",
+      "TypeScript",
+      "RxJS",
+      "Git"
+    ],
+    "benefits": [
+      "Medical Insurance",
+      "Flexible Hours",
+      "Remote Work"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "React Developer",
+    "companyId": 2,
+    "categoryId": 1,
+    "location": "Alexandria, Egypt",
+    "salary": "$1000 - $1600",
+    "jobType": "Full Time",
+    "experience": "2+ Years",
+    "remote": false,
+    "featured": true,
+    "postedAt": "2026-07-16",
+    "description": "Develop scalable React web applications.",
+    "requirements": [
+      "React",
+      "JavaScript",
+      "REST APIs"
+    ],
+    "benefits": [
+      "Bonus",
+      "Health Insurance"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "UI/UX Designer",
+    "companyId": 2,
+    "categoryId": 3,
+    "location": "Remote",
+    "salary": "$900 - $1500",
+    "jobType": "Remote",
+    "experience": "1+ Years",
+    "remote": true,
+    "featured": false,
+    "postedAt": "2026-07-15",
+    "description": "Create modern user interfaces and improve user experience.",
+    "requirements": [
+      "Figma",
+      "Design Systems",
+      "Prototyping"
+    ],
+    "benefits": [
+      "Remote",
+      "Flexible Hours"
+    ]
+  }
+]

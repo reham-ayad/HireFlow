@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "NovaTech",
+    "industry": "Software",
+    "location": "Cairo, Egypt",
+    "employees": 250,
+    "website": "https://novatech.dev",
+    "logo": "assets/logos/novatech.png",
+    "description": "Building scalable SaaS products for global businesses.",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "name": "PixelForge",
+    "industry": "Technology",
+    "location": "Alexandria, Egypt",
+    "employees": 120,
+    "website": "https://pixelforge.dev",
+    "logo": "assets/logos/pixelforge.png",
+    "description": "Creative software solutions with modern technologies.",
+    "rating": 4.7
+  },
+  {
+    "id": 3,
+    "name": "CloudNest",
+    "industry": "Cloud Computing",
+    "location": "Remote",
+    "employees": 340,
+    "website": "https://cloudnest.dev",
+    "logo": "assets/logos/cloudnest.png",
+    "description": "Cloud infrastructure and DevOps consulting.",
+    "rating": 4.9
+  },
+  {
+    "id": 4,
+    "name": "BrightStack",
+    "industry": "FinTech",
+    "location": "Dubai, UAE",
+    "employees": 180,
+    "website": "https://brightstack.dev",
+    "logo": "assets/logos/brightstack.png",
+    "description": "Financial technology solutions for enterprises.",
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "name": "VisionWare",
+    "industry": "AI",
+    "location": "Riyadh, Saudi Arabia",
+    "employees": 90,
+    "website": "https://visionware.dev",
+    "logo": "assets/logos/visionware.png",
+    "description": "AI-powered business automation.",
+    "rating": 4.9
+  }
+]

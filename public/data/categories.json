@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Front-End Development",
+    "icon": "code",
+    "jobsCount": 12
+  },
+  {
+    "id": 2,
+    "name": "Back-End Development",
+    "icon": "database",
+    "jobsCount": 8
+  },
+  {
+    "id": 3,
+    "name": "UI/UX Design",
+    "icon": "palette",
+    "jobsCount": 6
+  },
+  {
+    "id": 4,
+    "name": "Mobile Development",
+    "icon": "smartphone",
+    "jobsCount": 7
+  },
+  {
+    "id": 5,
+    "name": "DevOps",
+    "icon": "cloud",
+    "jobsCount": 5
+  },
+  {
+    "id": 6,
+    "name": "Artificial Intelligence",
+    "icon": "brain",
+    "jobsCount": 9
+  },
+  {
+    "id": 7,
+    "name": "Data Science",
+    "icon": "bar-chart",
+    "jobsCount": 4
+  },
+  {
+    "id": 8,
+    "name": "Cyber Security",
+    "icon": "shield",
+    "jobsCount": 3
+  }
+]
