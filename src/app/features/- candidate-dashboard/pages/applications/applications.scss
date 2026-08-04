@@ -1,0 +1,145 @@
+.applications{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.page-header h2{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+}
+
+.page-header p{
+
+    margin-top:8px;
+
+    color:#777;
+
+}
+
+.table-container{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.05);
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th{
+
+    text-align:left;
+
+    padding:18px 0;
+
+    color:#777;
+
+}
+
+td{
+
+    padding:22px 0;
+
+    border-bottom:1px solid #F1F1F1;
+
+}
+
+.company{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-weight:600;
+
+}
+
+.company i{
+
+    font-size:24px;
+
+    color:var(--primary);
+
+}
+
+.status{
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.interview{
+
+    background:#E8F8EC;
+
+    color:#2E7D32;
+
+}
+
+.pending{
+
+    background:#FFF7DF;
+
+    color:#D89B00;
+
+}
+
+.rejected{
+
+    background:#FFEAEA;
+
+    color:#D32F2F;
+
+}
+
+button{
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}

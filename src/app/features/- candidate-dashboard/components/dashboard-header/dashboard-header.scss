@@ -1,0 +1,243 @@
+:host{
+
+    display:block;
+
+}
+
+.dashboard-header{
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+/*==========================
+        Search
+==========================*/
+
+.search-box{
+
+    width:420px;
+
+    height:56px;
+
+    background:white;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:0 20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+}
+
+.search-box i{
+
+    color:#888;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    font-size:15px;
+
+    background:transparent;
+
+}
+
+/*==========================
+      Right Side
+==========================*/
+
+.header-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.icon-btn{
+
+    width:54px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:white;
+
+    cursor:pointer;
+
+    position:relative;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.icon-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.icon-btn i{
+
+    font-size:20px;
+
+    color:#555;
+
+}
+
+.badge{
+
+    position:absolute;
+
+    top:8px;
+
+    right:8px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#ff4d4f;
+
+    color:white;
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/*==========================
+        User
+==========================*/
+
+.user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:white;
+
+    padding:10px 18px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+}
+
+.user img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.user h5{
+
+    margin:0;
+
+    font-size:15px;
+
+}
+
+.user span{
+
+    color:#888;
+
+    font-size:13px;
+
+}
+
+.user .fa-chevron-down{
+
+    margin-left:10px;
+
+    color:#888;
+
+}
+
+/*==========================
+      Responsive
+==========================*/
+
+@media(max-width:992px){
+
+.dashboard-header{
+
+flex-direction:column;
+
+align-items:stretch;
+
+gap:20px;
+
+height:auto;
+
+}
+
+.search-box{
+
+width:100%;
+
+}
+
+.header-actions{
+
+justify-content:space-between;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.user div{
+
+display:none;
+
+}
+
+}

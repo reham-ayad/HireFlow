@@ -1,0 +1,65 @@
+.saved-jobs{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.page-header h2{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+}
+
+.page-header p{
+
+    margin-top:8px;
+
+    color:#777;
+
+}
+
+.jobs-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+@media(max-width:1200px){
+
+.jobs-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.jobs-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

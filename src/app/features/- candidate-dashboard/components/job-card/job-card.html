@@ -1,0 +1,79 @@
+<div class="job-card">
+
+    <div class="top">
+
+        <div class="company">
+
+            <div class="logo">
+
+                <i [class]="icon"></i>
+
+            </div>
+
+            <div>
+
+                <h4>{{title}}</h4>
+
+                <span>{{company}}</span>
+
+            </div>
+
+        </div>
+
+        <button>
+
+            <i class="fa-regular fa-bookmark"></i>
+
+        </button>
+
+    </div>
+
+    <div class="details">
+
+        <span>
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            {{location}}
+
+        </span>
+
+        <span>
+
+            <i class="fa-regular fa-clock"></i>
+
+            {{type}}
+
+        </span>
+
+    </div>
+
+    <div class="skills">
+
+        <span *ngFor="let skill of skills">
+
+            {{skill}}
+
+        </span>
+
+    </div>
+
+    <div class="bottom">
+
+        <h3>
+
+            {{salary}}
+
+            <small>/month</small>
+
+        </h3>
+
+        <button>
+
+            Apply
+
+        </button>
+
+    </div>
+
+</div>

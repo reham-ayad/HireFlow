@@ -1,0 +1,88 @@
+<aside class="sidebar">
+
+    <!-- Logo -->
+
+    <div class="logo">
+
+        <a routerLink="/">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            <span>HireFlow</span>
+
+        </a>
+
+    </div>
+
+    <!-- Menu -->
+
+    <nav class="menu">
+
+        <a
+            routerLink="/dashboard"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Overview</span>
+
+        </a>
+
+        <a
+            routerLink="/dashboard/applications"
+            routerLinkActive="active">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+            <span>Applications</span>
+
+        </a>
+
+        <a
+            routerLink="/dashboard/saved-jobs"
+            routerLinkActive="active">
+
+            <i class="fa-solid fa-bookmark"></i>
+
+            <span>Saved Jobs</span>
+
+        </a>
+
+        <a
+            routerLink="/dashboard/profile"
+            routerLinkActive="active">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </a>
+
+        <a
+            routerLink="/dashboard/settings"
+            routerLinkActive="active">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <span>Settings</span>
+
+        </a>
+
+    </nav>
+
+    <!-- Bottom -->
+
+    <div class="bottom">
+
+        <button>
+
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>

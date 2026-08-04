@@ -1,0 +1,434 @@
+/*====================================
+        HERO
+====================================*/
+
+.companies-hero{
+
+    padding:170px 0 70px;
+
+    background:#F8F5EF;
+
+}
+
+.section-heading{
+
+    text-align:center;
+
+    max-width:760px;
+
+    margin:auto auto 50px;
+
+}
+
+.section-heading h1{
+
+    font-size:60px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    color:var(--text);
+
+    margin-bottom:18px;
+
+}
+
+.section-heading span{
+
+    color:var(--primary);
+
+}
+
+.section-heading p{
+
+    color:var(--text-light);
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.06);
+
+}
+
+.search-input{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:0 25px;
+
+}
+
+.search-input input{
+
+    width:100%;
+
+    height:75px;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:16px;
+
+}
+
+.search-input i{
+
+    color:#777;
+
+}
+
+.search-box select{
+
+    border:none;
+
+    outline:none;
+
+    background:white;
+
+    height:75px;
+
+    padding:0 20px;
+
+    cursor:pointer;
+
+    color:var(--text);
+
+}
+
+.divider{
+
+    width:1px;
+
+    height:35px;
+
+    background:#E5E7EB;
+
+}
+
+.search-box button{
+
+    width:160px;
+
+    height:75px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.search-box button:hover{
+
+    background:#0D677D;
+
+}
+
+@media(max-width:992px){
+
+.search-box{
+
+flex-direction:column;
+
+}
+
+.divider{
+
+display:none;
+
+}
+
+.search-box select,
+
+.search-box button,
+
+.search-input{
+
+width:100%;
+
+}
+
+}
+/*==================================
+        COMPANIES
+===================================*/
+
+.companies{
+
+    padding:80px 0 120px;
+
+    background:#F8F5EF;
+
+}
+
+.companies-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+}
+
+.company-card{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid #ECE8DF;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+}
+
+.company-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:4px;
+
+    height:0;
+
+    background:var(--accent);
+
+    transition:.4s;
+
+}
+
+.company-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+.company-card:hover::before{
+
+    height:100%;
+
+}
+
+.featured{
+
+    position:absolute;
+
+    right:24px;
+
+    top:24px;
+
+    background:#EEF3F4;
+
+    color:var(--primary);
+
+    padding:7px 16px;
+
+    border-radius:40px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.company-header{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.company-header img{
+
+    width:68px;
+
+    height:68px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    background:#F6F6F6;
+
+}
+
+.company-header h3{
+
+    margin:0;
+
+    font-size:28px;
+
+    color:var(--text);
+
+}
+
+.company-header p{
+
+    margin-top:6px;
+
+    color:#666;
+
+}
+
+.description{
+
+    color:#666;
+
+    line-height:1.9;
+
+    min-height:95px;
+
+    margin-bottom:35px;
+
+}
+
+.card-footer{
+
+    padding-top:20px;
+
+    border-top:1px solid #ECECEC;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.card-footer span{
+
+    color:#555;
+
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+
+}
+
+.card-footer a{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+
+    transition:.3s;
+
+}
+
+.card-footer a:hover{
+
+    gap:14px;
+
+}
+
+.view-more{
+
+    margin-top:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.view-more button{
+
+    border:1px solid #DDD;
+
+    background:white;
+
+    padding:18px 35px;
+
+    border-radius:18px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.view-more button:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+@media(max-width:1100px){
+
+.companies-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.companies-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

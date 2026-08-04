@@ -1,0 +1,175 @@
+.job-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+}
+
+.job-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.company{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:18px;
+
+    background:#EDF8FB;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.logo i{
+
+    font-size:24px;
+
+    color:var(--primary);
+
+}
+
+.company h4{
+
+    margin:0;
+
+}
+
+.company span{
+
+    color:#888;
+
+}
+
+.top button{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+.details{
+
+    display:flex;
+
+    gap:25px;
+
+    color:#666;
+
+    margin-bottom:20px;
+
+}
+
+.details span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.skills{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+.skills span{
+
+    background:#F4F7FB;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+}
+
+.bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.bottom h3{
+
+    color:var(--primary);
+
+}
+
+.bottom small{
+
+    color:#888;
+
+}
+
+.bottom button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+}

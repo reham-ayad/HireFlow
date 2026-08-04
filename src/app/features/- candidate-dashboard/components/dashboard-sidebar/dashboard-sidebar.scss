@@ -1,0 +1,194 @@
+:host{
+    display:block;
+}
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:280px;
+    height:100vh;
+
+    background:#fff;
+
+    border-right:1px solid #ECECEC;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:30px 22px;
+
+    z-index:1000;
+
+}
+
+/* =====================
+        LOGO
+===================== */
+
+.logo{
+
+    margin-bottom:50px;
+
+}
+
+.logo a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+}
+
+.logo i{
+
+    font-size:24px;
+
+}
+
+.logo span{
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+/* =====================
+        MENU
+===================== */
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    flex:1;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    height:56px;
+
+    padding:0 18px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:#5F6675;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+.menu a i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+.menu a:hover{
+
+    background:#F5F7FB;
+
+    color:var(--primary);
+
+}
+
+.menu a.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    box-shadow:0 15px 30px rgba(0,94,112,.18);
+
+}
+
+/* =====================
+        BOTTOM
+===================== */
+
+.bottom{
+
+    padding-top:25px;
+
+    border-top:1px solid #ECECEC;
+
+}
+
+.bottom button{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#F8F8F8;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.bottom button:hover{
+
+    background:#FFEAEA;
+
+    color:#D62828;
+
+}
+
+/* =====================
+      Responsive
+===================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+    transform:translateX(-100%);
+
+}
+
+}

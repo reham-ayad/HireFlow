@@ -1,0 +1,174 @@
+<!--====================================
+        COMPANIES HERO
+=====================================-->
+
+<section class="companies-hero">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h1>
+                Discover Elite
+                <span>Workplaces</span>
+            </h1>
+
+            <p>
+                Connect with the industry's most innovative companies.
+                From stealth startups to global leaders,
+                find where your craft thrives.
+            </p>
+
+        </div>
+
+        <div class="search-box">
+
+            <div class="search-input">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search by name or keyword..."
+                >
+
+            </div>
+
+            <div class="divider"></div>
+
+            <select>
+
+                <option>All Industries</option>
+
+                <option>Technology</option>
+
+                <option>Healthcare</option>
+
+                <option>Finance</option>
+
+                <option>Marketing</option>
+
+            </select>
+
+            <div class="divider"></div>
+
+            <select>
+
+                <option>Company Size</option>
+
+                <option>1-10</option>
+
+                <option>11-50</option>
+
+                <option>51-200</option>
+
+                <option>500+</option>
+
+            </select>
+
+            <button>
+
+                Search
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!--==================================
+        COMPANIES
+===================================-->
+
+<section class="companies">
+
+    <div class="container">
+
+        <div class="companies-grid">
+
+            @for(company of companies; track company.id){
+
+            <div class="company-card">
+
+                @if(company.featured){
+
+                <span class="featured">
+                    Featured
+                </span>
+
+                }
+
+                <div class="company-header">
+
+                    <img
+                        [src]="company.logo"
+                        [alt]="company.name">
+
+                    <div>
+
+                        <h3>{{company.name}}</h3>
+
+                        <p>
+
+                            {{company.industry}}
+
+                            •
+
+                            {{company.size}}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <p class="description">
+
+                    {{company.description}}
+
+                </p>
+
+                <div class="card-footer">
+
+                    <span>
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                        {{company.jobs}}
+
+                        Open Positions
+
+                    </span>
+
+                    <a href="#">
+
+                        View Profile
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+        <div class="view-more">
+
+            <button>
+
+                View More Companies
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>

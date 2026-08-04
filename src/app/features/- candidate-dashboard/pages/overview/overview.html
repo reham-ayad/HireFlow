@@ -1,0 +1,321 @@
+<section class="overview">
+
+    <!-- Welcome -->
+
+    <section class="welcome">
+
+        <div>
+
+            <h2>
+
+                Welcome back,
+                <span>Reham 👋</span>
+
+            </h2>
+
+            <p>
+
+                Here’s what's happening with your job search today.
+
+            </p>
+
+        </div>
+
+        <button>
+
+            <i class="fa-solid fa-plus"></i>
+
+            Complete Profile
+
+        </button>
+
+    </section>
+
+    <!-- Statistics -->
+
+   <div class="overview-grid">
+
+    <!-- Left Side -->
+
+    <div class="left-content">
+
+        <!-- Statistics -->
+
+        <section class="stats">
+
+            <app-stats-card
+                title="Applied Jobs"
+                value="24"
+                icon="fa-solid fa-briefcase">
+            </app-stats-card>
+
+            <app-stats-card
+                title="Interviewing"
+                value="08"
+                icon="fa-solid fa-user-group">
+            </app-stats-card>
+
+            <app-stats-card
+                title="Offers"
+                value="02"
+                icon="fa-solid fa-award">
+            </app-stats-card>
+
+        </section>
+
+        <!-- Recommended -->
+
+        <section class="recommended">
+
+            <div class="section-header">
+
+                
+
+            </div>
+
+            <div class="jobs-grid">
+
+                <section class="recommended">
+
+    <div class="section-header">
+
+        <h2>Recommended Jobs</h2>
+
+        <a routerLink="/jobs">
+
+            View All
+
+        </a>
+
+    </div>
+
+    <div class="jobs-grid">
+
+        <app-job-card
+            title="Senior Frontend Developer"
+            company="Google"
+            icon="fa-brands fa-google"
+            location="California"
+            type="Full Time"
+            salary="$5,200"
+            [skills]="['Angular','TypeScript','RxJS']">
+        </app-job-card>
+
+       
+
+        <app-job-card
+            title="Senior Backend Developer"
+            company="Microsoft"
+            icon="fa-brands fa-microsoft"
+            location="Hybrid"
+            type="Full Time"
+            salary="$6,000"
+            [skills]="['Node.js','MongoDB','Express']">
+        </app-job-card>
+
+    </div>
+
+</section>
+
+            </div>
+
+        </section>
+<section class="recent-applications">
+
+    <div class="section-header">
+
+        <h2>Recent Applications</h2>
+
+        <a routerLink="/dashboard/applications">
+
+            View All
+
+        </a>
+
+    </div>
+
+    <div class="applications-table">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Date</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+
+                        <div class="company-info">
+
+                            <i class="fa-brands fa-google"></i>
+
+                            Google
+
+                        </div>
+
+                    </td>
+
+                    <td>Frontend Developer</td>
+
+                    <td>Aug 03</td>
+
+                    <td>
+
+                        <span class="status interviewing">
+
+                            Interview
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        <div class="company-info">
+
+                            <i class="fa-brands fa-microsoft"></i>
+
+                            Microsoft
+
+                        </div>
+
+                    </td>
+
+                    <td>Angular Developer</td>
+
+                    <td>Aug 01</td>
+
+                    <td>
+
+                        <span class="status pending">
+
+                            Pending
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        <div class="company-info">
+
+                            <i class="fa-brands fa-amazon"></i>
+
+                            Amazon
+
+                        </div>
+
+                    </td>
+
+                    <td>UI Engineer</td>
+
+                    <td>Jul 30</td>
+
+                    <td>
+
+                        <span class="status rejected">
+
+                            Rejected
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+    </div>
+
+    <!-- Right Side -->
+
+    <aside class="right-sidebar">
+
+        <div class="calendar-card">
+
+            <h3>August 2026</h3>
+
+            <div class="calendar-grid">
+
+                <span>Mo</span>
+                <span>Tu</span>
+                <span>We</span>
+                <span>Th</span>
+                <span>Fr</span>
+                <span>Sa</span>
+                <span>Su</span>
+
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+
+                <span class="active">4</span>
+
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+                <span>11</span>
+                <span>12</span>
+                <span>13</span>
+                <span>14</span>
+
+            </div>
+
+        </div>
+
+        <div class="interview-card">
+
+            <h3>Upcoming Interview</h3>
+
+            <h4>Frontend Developer</h4>
+
+            <p>Google Inc.</p>
+
+            <span>
+
+                <i class="fa-regular fa-calendar"></i>
+
+                Tomorrow • 10:30 AM
+
+            </span>
+
+            <button>
+
+                Join Meeting
+
+            </button>
+
+        </div>
+
+    </aside>
+
+</div>

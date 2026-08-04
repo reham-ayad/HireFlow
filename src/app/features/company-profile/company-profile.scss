@@ -1,0 +1,913 @@
+/*==================================
+        HERO
+===================================*/
+
+.company-hero{
+
+    position: relative;
+
+    height: 430px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding-bottom: 50px;
+
+    overflow: hidden;
+
+    margin-top: 85px;
+
+    background:
+    linear-gradient(rgba(8,22,28,.45),rgba(8,22,28,.55)),
+    url('/assets/images/company-cover.jpg')
+    center/cover;
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    backdrop-filter:blur(2px);
+
+}
+
+.company-hero .container{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+}
+
+.hero-content{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.company-logo{
+
+    width:120px;
+
+    height:120px;
+
+    background:white;
+
+    border-radius:28px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+    animation:scaleLogo .8s ease;
+
+}
+
+.company-logo img{
+
+    width:70px;
+
+}
+
+.company-meta{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+.badge{
+
+    background:#FFD78A;
+
+    color:#222;
+
+    padding:8px 18px;
+
+    border-radius:40px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.location{
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.company-info h1{
+
+    color:white;
+
+    font-size:60px;
+
+    margin-bottom:10px;
+
+    animation:fadeUp .9s ease;
+
+}
+
+.company-info p{
+
+    color:#F2F2F2;
+
+    font-size:20px;
+
+    max-width:650px;
+
+    line-height:1.7;
+
+    animation:fadeUp 1.1s ease;
+
+}
+
+.hero-actions{
+
+    display:flex;
+
+    gap:18px;
+
+    animation:fadeUp 1.3s ease;
+
+}
+
+.share-btn{
+
+    padding:15px 28px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    backdrop-filter:blur(10px);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.share-btn:hover{
+
+    background:white;
+
+    color:var(--primary);
+
+}
+
+.follow-btn{
+
+    padding:15px 34px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#FFD78A;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.follow-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes scaleLogo{
+
+    from{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@media(max-width:992px){
+
+.company-hero{
+
+height:auto;
+
+padding:140px 0 60px;
+
+}
+
+.company-hero .container{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:35px;
+
+}
+
+.hero-content{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.company-info h1{
+
+font-size:42px;
+
+}
+
+}
+/*==================================
+        OVERVIEW
+==================================*/
+
+.company-overview{
+
+    padding:80px 0;
+
+    background:#F7F8FC;
+
+}
+
+.overview-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:35px;
+
+    align-items:start;
+
+}
+
+.about-card,
+
+.connect-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    border:1px solid #E8E8E8;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.04);
+
+}
+
+.about-card h2{
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+    color:var(--text);
+
+}
+
+.about-card p{
+
+    color:#6B7280;
+
+    line-height:1.9;
+
+    margin-bottom:22px;
+
+}
+
+.stats{
+
+    margin-top:40px;
+
+    padding-top:30px;
+
+    border-top:1px solid #ECECEC;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.stat h3{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+}
+
+.stat span{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+/*====================
+      CONNECT
+====================*/
+
+.connect-card h3{
+
+    margin-bottom:30px;
+
+    font-size:28px;
+
+}
+
+.connect-card ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0 0 35px;
+
+}
+
+.connect-card li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:22px;
+
+    color:#555;
+
+}
+
+.connect-card li i{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#EEF4F6;
+
+    color:var(--primary);
+
+}
+
+.connect-card button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.connect-card button:hover{
+
+    background:#0D677D;
+
+}
+
+@media(max-width:992px){
+
+.overview-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:576px){
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+}/*==================================
+      COMPANY HIGHLIGHTS
+===================================*/
+
+.company-highlights{
+
+    padding:80px 0;
+
+    background:#F7F8FC;
+
+}
+
+.highlights-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.highlight-card{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:24px;
+
+    border:1px solid #E8E8E8;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.highlight-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+}
+
+.highlight-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:4px;
+
+    height:100%;
+
+    background:var(--primary);
+
+    transform:scaleY(0);
+
+    transition:.4s;
+
+}
+
+.highlight-card:hover::before{
+
+    transform:scaleY(1);
+
+}
+
+.icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:20px;
+
+    background:#EEF4F6;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+}
+
+.highlight-card h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+    color:var(--text);
+
+}
+
+.highlight-card p{
+
+    color:#6B7280;
+
+    line-height:1.8;
+
+}
+
+/* الكارت الأساسي */
+
+.primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.primary h3,
+
+.primary p{
+
+    color:white;
+
+}
+
+.primary .icon{
+
+    background:rgba(255,255,255,.15);
+
+    color:#FFD78A;
+
+}
+
+.primary::before{
+
+    display:none;
+
+}
+
+@media(max-width:992px){
+
+.highlights-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/*==================================
+        OPEN POSITIONS
+===================================*/
+
+.company-jobs{
+
+    padding:90px 0;
+
+    background:#F7F8FC;
+
+}
+
+.jobs-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:30px;
+
+    align-items:start;
+
+}
+
+.jobs-card,
+.leaders-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    border:1px solid #EAEAEA;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.section-header h2{
+
+    font-size:34px;
+
+}
+
+.section-header span{
+
+    color:#777;
+
+}
+
+.job-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:26px 0;
+
+    border-bottom:1px solid #ECECEC;
+
+    transition:.3s;
+
+}
+
+.job-item:hover{
+
+    padding-left:15px;
+
+}
+
+.job-item h3{
+
+    margin-bottom:12px;
+
+}
+
+.job-meta{
+
+    display:flex;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+.job-item button{
+
+    padding:12px 26px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.job-item button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.view-all{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:30px;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+/*=====================
+      Leadership
+======================*/
+
+.leaders-card{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.leaders-card h2{
+
+    margin-bottom:30px;
+
+}
+
+.leader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+}
+
+.avatar{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    background:#FFD78A;
+
+    color:#0C3B4A;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+.leader h4{
+
+    margin-bottom:4px;
+
+}
+
+.leader span{
+
+    color:#D5E3E8;
+
+    font-size:14px;
+
+}
+
+.team-btn{
+
+    margin-top:20px;
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.team-btn:hover{
+
+    background:white;
+
+    color:var(--primary);
+
+}
+
+@media(max-width:992px){
+
+.jobs-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.job-item{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:20px;
+
+}
+
+.job-item button{
+
+width:100%;
+
+}
+
+}

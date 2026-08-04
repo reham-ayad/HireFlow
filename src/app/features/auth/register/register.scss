@@ -1,0 +1,563 @@
+.register-page{
+padding-top: 70px;
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+}
+
+/*=========================
+        LEFT
+=========================*/
+
+.left-side{
+
+    background:#063847;
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:80px;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(255,255,255,.08),
+    transparent 45%);
+
+}
+
+.left-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:620px;
+
+}
+
+.logo{
+
+    font-size:36px;
+
+    font-weight:800;
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    margin:35px 0 18px;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.1);
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.left-content h1{
+
+    font-size:58px;
+
+    line-height:1.15;
+
+    margin-bottom:25px;
+
+}
+
+.left-content p{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#C9D5DA;
+
+    margin-bottom:45px;
+
+}
+
+.left-content img{
+
+    width:100%;
+
+    border-radius:28px;
+
+    display:block;
+
+    margin-bottom:50px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+    transition:.6s;
+
+}
+
+.left-content img:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.feature h3{
+
+    color:#F7C66B;
+
+    margin-bottom:12px;
+
+}
+
+.feature h4{
+
+    margin-bottom:12px;
+
+    font-size:18px;
+
+}
+
+.feature p{
+
+    font-size:15px;
+
+    margin:0;
+
+    color:#C9D5DA;
+
+    line-height:1.7;
+
+}
+
+/*=========================
+        RIGHT
+=========================*/
+
+.right-side{
+
+    background:#F8F9FD;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:70px;
+
+}
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:1100px){
+
+.register-page{
+
+grid-template-columns:1fr;
+
+}
+
+.left-side{
+
+display:none;
+
+}
+
+.right-side{
+
+padding:40px 20px;
+
+}
+
+}
+.register-container{
+
+    width:100%;
+
+    max-width:540px;
+
+}
+
+.heading{
+
+    margin-bottom:35px;
+
+}
+
+.heading h2{
+
+    font-size:48px;
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+}
+
+.heading p{
+
+    color:#777;
+
+}
+
+.heading a{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.register-form{
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.06);
+
+}
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:22px;
+
+}
+
+.input-group label{
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+.input-group input{
+
+    height:58px;
+
+    border:1px solid #D9DDE4;
+
+    border-radius:14px;
+
+    padding:0 18px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.input-group input:focus{
+
+    border-color:var(--primary);
+
+}
+
+.password-field{
+
+    position:relative;
+
+}
+
+.password-field input{
+
+    width:100%;
+
+}
+
+.eye-btn{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    color:#777;
+
+}
+
+.role-label{
+
+    display:block;
+
+    margin:10px 0 15px;
+
+    font-weight:600;
+
+}
+
+.role-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+}
+
+.role-card{
+
+    border:2px solid #E4E7EC;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.role-card i{
+
+    font-size:28px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.role-card h4{
+
+    margin-bottom:8px;
+
+}
+
+.role-card span{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+.role-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+}
+
+.role-card.active{
+
+    border-color:var(--primary);
+
+    background:#F4FBFD;
+
+}
+
+.checkbox{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin:30px 0;
+
+}
+
+.checkbox label{
+
+    color:#666;
+
+    line-height:1.6;
+
+}
+
+.checkbox a{
+
+    color:var(--primary);
+
+}
+
+.register-btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.register-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    margin:35px 0;
+
+}
+
+.divider::before,
+
+.divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#E6E6E6;
+
+}
+
+.divider span{
+
+    padding:0 20px;
+
+    color:#888;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+}
+
+.social-buttons{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+
+}
+
+.social-buttons button{
+
+    height:54px;
+
+    border:1px solid #DDD;
+
+    border-radius:14px;
+
+    background:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.social-buttons button:hover{
+
+    background:#F8F8F8;
+
+}
+
+@media(max-width:600px){
+
+.register-form{
+
+padding:30px;
+
+}
+
+.heading h2{
+
+font-size:36px;
+
+}
+
+.role-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.social-buttons{
+
+grid-template-columns:1fr;
+
+}
+
+}
