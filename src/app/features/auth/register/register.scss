@@ -1,563 +1,727 @@
-.register-page{
-padding-top: 70px;
-    min-height:100vh;
+/* =========================
+        REGISTER PAGE
+========================= */
 
-    display:grid;
+.register-page {
+    min-height: calc(100vh - 70px);
 
-    grid-template-columns:1.1fr .9fr;
+    margin-top: 70px;
 
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    box-sizing: border-box;
 }
 
-/*=========================
-        LEFT
-=========================*/
 
-.left-side{
+/* =========================
+        LEFT SIDE
+========================= */
 
-    background:#063847;
+.left-side {
+    background: #063847;
 
-    position:relative;
+    position: relative;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    color:white;
+    color: white;
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    align-items: center;
 
-    justify-content:center;
+    justify-content: center;
 
-    padding:80px;
-
+    padding: 55px;
 }
 
-.overlay{
 
-    position:absolute;
+/* Overlay */
 
-    inset:0;
+.overlay {
+    position: absolute;
+
+    inset: 0;
 
     background:
-    radial-gradient(circle at top left,
-    rgba(255,255,255,.08),
-    transparent 45%);
-
+        radial-gradient(
+            circle at top left,
+            rgba(255, 255, 255, 0.08),
+            transparent 45%
+        );
 }
 
-.left-content{
 
-    position:relative;
+/* Left Content */
 
-    z-index:2;
+.left-content {
+    position: relative;
 
-    max-width:620px;
+    z-index: 2;
 
+    width: 100%;
+
+    max-width: 600px;
 }
 
-.logo{
 
-    font-size:36px;
+/* Logo */
 
-    font-weight:800;
+.logo {
+    display: inline-block;
 
-    color:white;
+    font-size: 34px;
 
-    text-decoration:none;
+    font-weight: 800;
 
+    color: white;
+
+    text-decoration: none;
 }
 
-.badge{
 
-    display:inline-block;
+/* Badge */
 
-    margin:35px 0 18px;
+.badge {
+    display: inline-block;
 
-    padding:10px 18px;
+    margin: 22px 0 15px;
 
-    border-radius:50px;
+    padding: 8px 16px;
 
-    background:rgba(255,255,255,.1);
+    border-radius: 50px;
 
-    font-size:13px;
+    background: rgba(255, 255, 255, 0.1);
 
-    letter-spacing:1px;
+    font-size: 12px;
 
-    backdrop-filter:blur(10px);
+    letter-spacing: 1px;
 
+    backdrop-filter: blur(10px);
 }
 
-.left-content h1{
 
-    font-size:58px;
+/* Main Heading */
 
-    line-height:1.15;
+.left-content h1 {
+    font-size: 48px;
 
-    margin-bottom:25px;
+    line-height: 1.12;
 
+    margin: 0 0 25px;
+
+    font-weight: 800;
 }
 
-.left-content p{
 
-    font-size:18px;
+/* Image */
 
-    line-height:1.8;
+.left-content img {
+    width: 100%;
 
-    color:#C9D5DA;
+    display: block;
 
-    margin-bottom:45px;
+    margin-bottom: 30px;
 
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.25);
+
+    transition: 0.5s;
 }
 
-.left-content img{
-
-    width:100%;
-
-    border-radius:28px;
-
-    display:block;
-
-    margin-bottom:50px;
-
-    box-shadow:0 25px 60px rgba(0,0,0,.25);
-
-    transition:.6s;
-
+.left-content img:hover {
+    transform: translateY(-6px);
 }
 
-.left-content img:hover{
 
-    transform:translateY(-10px);
+/* =========================
+        FEATURES
+========================= */
 
+.features {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
 }
 
-.features{
 
-    display:grid;
+.feature h3 {
+    color: #f7c66b;
 
-    grid-template-columns:repeat(3,1fr);
+    margin: 0 0 8px;
 
-    gap:30px;
-
+    font-size: 16px;
 }
 
-.feature h3{
 
-    color:#F7C66B;
+.feature h4 {
+    margin: 0 0 7px;
 
-    margin-bottom:12px;
-
+    font-size: 16px;
 }
 
-.feature h4{
 
-    margin-bottom:12px;
+.feature p {
+    margin: 0;
 
-    font-size:18px;
+    color: #c9d5da;
 
+    font-size: 13px;
+
+    line-height: 1.5;
 }
 
-.feature p{
 
-    font-size:15px;
+/* =========================
+        RIGHT SIDE
+========================= */
 
-    margin:0;
+.right-side {
+    background: #f8f9fd;
 
-    color:#C9D5DA;
+    display: flex;
 
-    line-height:1.7;
+    justify-content: center;
 
+    align-items: center;
+
+    padding: 30px 45px;
+
+    box-sizing: border-box;
 }
 
-/*=========================
-        RIGHT
-=========================*/
 
-.right-side{
+/* Register Container */
 
-    background:#F8F9FD;
+.register-container {
+    width: 100%;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:70px;
-
+    max-width: 520px;
 }
 
-/*=========================
-      RESPONSIVE
-=========================*/
 
-@media(max-width:1100px){
+/* =========================
+        HEADING
+========================= */
 
-.register-page{
-
-grid-template-columns:1fr;
-
+.heading {
+    margin-bottom: 20px;
 }
 
-.left-side{
 
-display:none;
+.heading h2 {
+    color: var(--text);
 
+    font-size: 40px;
+
+    line-height: 1.15;
+
+    margin: 0 0 8px;
 }
 
-.right-side{
 
-padding:40px 20px;
+.heading p {
+    margin: 0;
 
+    color: #777;
+
+    font-size: 14px;
 }
 
-}
-.register-container{
 
-    width:100%;
+.heading a {
+    color: var(--primary);
 
-    max-width:540px;
+    font-weight: 600;
 
-}
-
-.heading{
-
-    margin-bottom:35px;
-
+    text-decoration: none;
 }
 
-.heading h2{
-
-    font-size:48px;
-
-    color:var(--text);
-
-    margin-bottom:12px;
-
+.heading a:hover {
+    text-decoration: underline;
 }
 
-.heading p{
 
-    color:#777;
+/* =========================
+        FORM
+========================= */
 
+.register-form {
+    background: white;
+
+    padding: 28px 35px;
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.06);
+
+    box-sizing: border-box;
 }
 
-.heading a{
 
-    color:var(--primary);
+/* =========================
+        INPUTS
+========================= */
 
-    font-weight:600;
+.input-group {
+    display: flex;
 
+    flex-direction: column;
+
+    margin-bottom: 14px;
 }
 
-.register-form{
 
-    background:white;
+.input-group label {
+    margin-bottom: 7px;
 
-    padding:45px;
+    font-weight: 600;
 
-    border-radius:30px;
+    font-size: 14px;
 
-    box-shadow:0 18px 45px rgba(0,0,0,.06);
-
+    color: #222;
 }
 
-.input-group{
 
-    display:flex;
+.input-group input {
+    width: 100%;
 
-    flex-direction:column;
+    height: 50px;
 
-    margin-bottom:22px;
+    box-sizing: border-box;
 
+    border: 1px solid #d9dde4;
+
+    border-radius: 12px;
+
+    padding: 0 16px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
 }
 
-.input-group label{
 
-    margin-bottom:10px;
-
-    font-weight:600;
-
+.input-group input::placeholder {
+    color: #aaa;
 }
 
-.input-group input{
 
-    height:58px;
+.input-group input:focus {
+    border-color: var(--primary);
 
-    border:1px solid #D9DDE4;
-
-    border-radius:14px;
-
-    padding:0 18px;
-
-    font-size:15px;
-
-    transition:.3s;
-
+    box-shadow:
+        0 0 0 3px rgba(6, 56, 71, 0.06);
 }
 
-.input-group input:focus{
 
-    border-color:var(--primary);
+/* =========================
+        PASSWORD
+========================= */
 
+.password-field {
+    position: relative;
+
+    width: 100%;
 }
 
-.password-field{
 
-    position:relative;
-
+.password-field input {
+    padding-right: 48px;
 }
 
-.password-field input{
 
-    width:100%;
+.eye-btn {
+    position: absolute;
 
+    right: 13px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    color: #777;
+
+    font-size: 15px;
+
+    padding: 5px;
 }
 
-.eye-btn{
 
-    position:absolute;
-
-    right:15px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    border:none;
-
-    background:none;
-
-    cursor:pointer;
-
-    color:#777;
-
+.eye-btn:hover {
+    color: var(--primary);
 }
 
-.role-label{
 
-    display:block;
+/* =========================
+        ROLE
+========================= */
 
-    margin:10px 0 15px;
+.role-label {
+    display: block;
 
-    font-weight:600;
+    margin: 8px 0 10px;
 
+    font-weight: 600;
+
+    font-size: 14px;
+
+    color: #222;
 }
 
-.role-grid{
 
-    display:grid;
+.role-grid {
+    display: grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
-    gap:18px;
+    gap: 14px;
 
-    margin-bottom:25px;
-
+    margin-bottom: 16px;
 }
 
-.role-card{
 
-    border:2px solid #E4E7EC;
+.role-card {
+    border: 2px solid #e4e7ec;
 
-    border-radius:18px;
+    border-radius: 15px;
 
-    padding:25px;
+    padding: 16px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:.35s;
+    transition: 0.3s;
 
+    box-sizing: border-box;
 }
 
-.role-card i{
 
-    font-size:28px;
+.role-card i {
+    display: block;
 
-    color:var(--primary);
+    font-size: 22px;
 
-    margin-bottom:20px;
+    color: var(--primary);
 
+    margin-bottom: 10px;
 }
 
-.role-card h4{
 
-    margin-bottom:8px;
+.role-card h4 {
+    margin: 0 0 5px;
 
+    font-size: 15px;
 }
 
-.role-card span{
 
-    color:#777;
+.role-card span {
+    color: #777;
 
-    font-size:14px;
-
+    font-size: 12px;
 }
 
-.role-card:hover{
 
-    transform:translateY(-4px);
+.role-card:hover {
+    transform: translateY(-3px);
 
-    border-color:var(--primary);
-
+    border-color: var(--primary);
 }
 
-.role-card.active{
 
-    border-color:var(--primary);
+.role-card.active {
+    border-color: var(--primary);
 
-    background:#F4FBFD;
+    background: #f4fbfd;
 
+    box-shadow:
+        0 6px 15px rgba(6, 56, 71, 0.05);
 }
 
-.checkbox{
 
-    display:flex;
+/* =========================
+        CHECKBOX
+========================= */
 
-    align-items:flex-start;
+.checkbox {
+    display: flex;
 
-    gap:10px;
+    align-items: flex-start;
 
-    margin:30px 0;
+    gap: 8px;
 
+    margin: 18px 0;
 }
 
-.checkbox label{
 
-    color:#666;
+.checkbox input {
+    margin-top: 4px;
 
-    line-height:1.6;
+    accent-color: var(--primary);
 
+    cursor: pointer;
 }
 
-.checkbox a{
 
-    color:var(--primary);
+.checkbox label {
+    color: #666;
 
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    cursor: pointer;
 }
 
-.register-btn{
 
-    width:100%;
+.checkbox a {
+    color: var(--primary);
 
-    height:58px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:var(--primary);
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+    font-weight: 500;
 }
 
-.register-btn:hover{
 
-    transform:translateY(-3px);
+/* =========================
+        REGISTER BUTTON
+========================= */
 
+.register-btn {
+    width: 100%;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
-.divider{
 
-    display:flex;
+.register-btn i {
+    margin-left: 7px;
 
-    align-items:center;
-
-    margin:35px 0;
-
+    transition: 0.3s;
 }
+
+
+.register-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(6, 56, 71, 0.18);
+}
+
+
+.register-btn:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =========================
+        DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    margin: 20px 0;
+}
+
 
 .divider::before,
+.divider::after {
+    content: "";
 
-.divider::after{
+    flex: 1;
 
-    content:"";
+    height: 1px;
 
-    flex:1;
+    background: #e6e6e6;
+}
 
-    height:1px;
 
-    background:#E6E6E6;
+.divider span {
+    padding: 0 14px;
+
+    color: #888;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+        SOCIAL
+========================= */
+
+.social-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+.social-buttons button {
+    height: 46px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+
+.social-buttons button i {
+    margin-right: 7px;
+
+    font-size: 15px;
+}
+
+
+.social-buttons button:hover {
+    background: #f8f8f8;
+
+    border-color: #ccc;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+        TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+    .register-page {
+        grid-template-columns: 1fr;
+
+        min-height: calc(100vh - 70px);
+    }
+
+
+    .left-side {
+        display: none;
+    }
+
+
+    .right-side {
+        min-height: calc(100vh - 70px);
+
+        padding: 40px 20px;
+    }
 
 }
 
-.divider span{
 
-    padding:0 20px;
+/* =========================
+        SMALL LAPTOP
+========================= */
 
-    color:#888;
+@media (max-width: 700px) {
 
-    font-size:13px;
+    .right-side {
+        padding: 35px 18px;
+    }
 
-    letter-spacing:1px;
 
-}
+    .heading h2 {
+        font-size: 36px;
+    }
 
-.social-buttons{
 
-    display:grid;
+    .register-form {
+        padding: 25px 22px;
 
-    grid-template-columns:1fr 1fr;
-
-    gap:15px;
-
-}
-
-.social-buttons button{
-
-    height:54px;
-
-    border:1px solid #DDD;
-
-    border-radius:14px;
-
-    background:white;
-
-    cursor:pointer;
-
-    transition:.3s;
+        border-radius: 22px;
+    }
 
 }
 
-.social-buttons button:hover{
 
-    background:#F8F8F8;
+/* =========================
+        MOBILE
+========================= */
 
-}
+@media (max-width: 500px) {
 
-@media(max-width:600px){
+    .register-page {
+        margin-top: 60px;
 
-.register-form{
+        min-height: calc(100vh - 60px);
+    }
 
-padding:30px;
 
-}
+    .right-side {
+        min-height: calc(100vh - 60px);
 
-.heading h2{
+        padding: 25px 15px;
+    }
 
-font-size:36px;
 
-}
+    .heading {
+        margin-bottom: 18px;
+    }
 
-.role-grid{
 
-grid-template-columns:1fr;
+    .heading h2 {
+        font-size: 30px;
+    }
 
-}
 
-.social-buttons{
+    .register-form {
+        padding: 22px 17px;
 
-grid-template-columns:1fr;
+        border-radius: 20px;
+    }
 
-}
+
+    .role-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .social-buttons {
+        grid-template-columns: 1fr;
+    }
 
 }

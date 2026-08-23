@@ -1,8 +1,8 @@
 <section class="register-page">
 
-    <!--=========================
+    <!-- =========================
             LEFT SIDE
-    ==========================-->
+    ========================== -->
 
     <div class="left-side">
 
@@ -24,19 +24,14 @@
                 meets premier employers.
             </h1>
 
-            <!-- <p>
-                Join thousands of professionals and world-class companies.
-                Discover opportunities designed for the next generation of work.
-            </p> -->
-
             <img
-                src="images/So whenever you are, wherever you go— always bring….jpg"
-                alt="office">
+                src="images/@lifeinfullbloom.jpg"
+                alt="Office"
+            >
 
             <div class="features">
 
                 <div class="feature">
-
                     <h3>01</h3>
 
                     <h4>Curated Network</h4>
@@ -44,11 +39,9 @@
                     <p>
                         Access exclusive companies hiring exceptional talent.
                     </p>
-
                 </div>
 
                 <div class="feature">
-
                     <h3>02</h3>
 
                     <h4>Smart Matching</h4>
@@ -56,11 +49,9 @@
                     <p>
                         AI-powered recommendations tailored to your profile.
                     </p>
-
                 </div>
 
                 <div class="feature">
-
                     <h3>03</h3>
 
                     <h4>Career Growth</h4>
@@ -68,7 +59,6 @@
                     <p>
                         Find opportunities that accelerate your future.
                     </p>
-
                 </div>
 
             </div>
@@ -77,193 +67,286 @@
 
     </div>
 
-    <!--=========================
+
+    <!-- =========================
             RIGHT SIDE
-    ==========================-->
+    ========================== -->
 
     <div class="right-side">
 
-       <div class="register-container">
+        <div class="register-container">
 
-    <div class="heading">
+            <!-- Heading -->
 
-        <h2>Create your profile</h2>
+            <div class="heading">
 
-        <p>
+                <h2>
+                    Create your profile
+                </h2>
 
-            Already have an account?
+                <p>
+                    Already have an account?
 
-            <a routerLink="/login">
+                    <a routerLink="/login">
+                        Log in
+                    </a>
+                </p>
 
-                Log in
+            </div>
 
-            </a>
 
-        </p>
+            <!-- Form -->
 
-    </div>
+            <form
+                class="register-form"
+                (ngSubmit)="register()"
+            >
 
-    <form class="register-form">
+                <!-- Full Name -->
 
-        <!-- Name -->
+                <div class="input-group">
 
-        <div class="input-group">
+                    <label for="fullName">
+                        Full Name
+                    </label>
 
-            <label>Full Name</label>
+                    <input
+                        id="fullName"
+                        type="text"
+                        placeholder="John Doe"
+                        [(ngModel)]="registerData.fullName"
+                        name="fullName"
+                    >
 
-            <input
-                type="text"
-                placeholder="John Doe">
+                </div>
 
-        </div>
 
-        <!-- Email -->
+                <!-- Email -->
 
-        <div class="input-group">
+                <div class="input-group">
 
-            <label>Work Email</label>
+                    <label for="email">
+                        Work Email
+                    </label>
 
-            <input
-                type="email"
-                placeholder="john@email.com">
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="john@email.com"
+                        [(ngModel)]="registerData.email"
+                        name="email"
+                    >
 
-        </div>
+                </div>
 
-        <!-- Password -->
 
-        <div class="input-group">
+                <!-- Password -->
 
-            <label>Password</label>
+                <div class="input-group">
 
-            <div class="password-field">
+                    <label for="password">
+                        Password
+                    </label>
 
-                <input
-                    type="password"
-                    placeholder="••••••••">
+                    <div class="password-field">
+
+                        <input
+                            id="password"
+                            [type]="showPassword ? 'text' : 'password'"
+                            placeholder="••••••••"
+                            [(ngModel)]="registerData.password"
+                            name="password"
+                        >
+
+                        <button
+                            type="button"
+                            class="eye-btn"
+                            (click)="showPassword = !showPassword"
+                        >
+
+                            <i
+                                [class]="showPassword
+                                ? 'fa-regular fa-eye-slash'
+                                : 'fa-regular fa-eye'"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="password-field">
+
+                        <input
+                            id="confirmPassword"
+                            [type]="showConfirmPassword ? 'text' : 'password'"
+                            placeholder="••••••••"
+                            [(ngModel)]="registerData.confirmPassword"
+                            name="confirmPassword"
+                        >
+
+                        <button
+                            type="button"
+                            class="eye-btn"
+                            (click)="showConfirmPassword = !showConfirmPassword"
+                        >
+
+                            <i
+                                [class]="showConfirmPassword
+                                ? 'fa-regular fa-eye-slash'
+                                : 'fa-regular fa-eye'"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Role -->
+
+                <label class="role-label">
+                    I am a...
+                </label>
+
+
+                <div class="role-grid">
+
+                    <!-- Candidate -->
+
+                    <div
+                        class="role-card"
+                        [class.active]="selectedRole === 'candidate'"
+                        (click)="selectRole('candidate')"
+                    >
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <h4>
+                            Candidate
+                        </h4>
+
+                        <span>
+                            Find elite roles
+                        </span>
+
+                    </div>
+
+
+                    <!-- Employer -->
+
+                    <div
+                        class="role-card"
+                        [class.active]="selectedRole === 'employer'"
+                        (click)="selectRole('employer')"
+                    >
+
+                        <i class="fa-regular fa-building"></i>
+
+                        <h4>
+                            Employer
+                        </h4>
+
+                        <span>
+                            Hire top talent
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Terms -->
+
+                <div class="checkbox">
+
+                    <input
+                        id="terms"
+                        type="checkbox"
+                        [(ngModel)]="registerData.acceptTerms"
+                        name="acceptTerms"
+                    >
+
+                    <label for="terms">
+
+                        I agree to the
+
+                        <a href="#">
+                            Terms
+                        </a>
+
+                        and
+
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Register Button -->
 
                 <button
-                    type="button"
-                    class="eye-btn">
+                    type="submit"
+                    class="register-btn"
+                >
 
-                    <i class="fa-regular fa-eye"></i>
+                    Create Account
+
+                    <i class="fa-solid fa-arrow-right"></i>
 
                 </button>
 
-            </div>
+
+                <!-- Divider -->
+
+                <div class="divider">
+
+                    <span>
+                        OR CONTINUE WITH
+                    </span>
+
+                </div>
+
+
+                <!-- Social -->
+
+                <div class="social-buttons">
+
+                    <button type="button">
+
+                        <i class="fa-brands fa-google"></i>
+
+                        Google
+
+                    </button>
+
+                    <button type="button">
+
+                        <i class="fa-brands fa-microsoft"></i>
+
+                        Microsoft
+
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
-
-        <!-- Confirm Password -->
-
-        <div class="input-group">
-
-            <label>Confirm Password</label>
-
-            <input
-                type="password"
-                placeholder="••••••••">
-
-        </div>
-
-        <!-- Role -->
-
-        <label class="role-label">
-
-            I am a...
-
-        </label>
-
-        <div class="role-grid">
-
-            <div class="role-card active">
-
-                <i class="fa-regular fa-user"></i>
-
-                <h4>Candidate</h4>
-
-                <span>Find elite roles</span>
-
-            </div>
-
-            <div class="role-card">
-
-                <i class="fa-regular fa-building"></i>
-
-                <h4>Employer</h4>
-
-                <span>Hire top talent</span>
-
-            </div>
-
-        </div>
-
-        <!-- Checkbox -->
-
-        <div class="checkbox">
-
-            <input type="checkbox">
-
-            <label>
-
-                I agree to the
-
-                <a href="#">Terms</a>
-
-                and
-
-                <a href="#">Privacy Policy</a>
-
-            </label>
-
-        </div>
-
-        <!-- Button -->
-
-        <button class="register-btn">
-
-            Create Account
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </button>
-
-        <!-- Divider -->
-
-        <div class="divider">
-
-            <span>
-
-                OR CONTINUE WITH
-
-            </span>
-
-        </div>
-
-        <!-- Social -->
-
-        <div class="social-buttons">
-
-            <button type="button">
-
-                <i class="fa-brands fa-google"></i>
-
-                Google
-
-            </button>
-
-            <button type="button">
-
-                <i class="fa-brands fa-microsoft"></i>
-
-                Microsoft
-
-            </button>
-
-        </div>
-
-    </form>
-
-</div>
 
     </div>
 

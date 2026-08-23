@@ -7,5 +7,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
+
 })
-export class Navbar {}
+export class Navbar {
+
+
+  
+}

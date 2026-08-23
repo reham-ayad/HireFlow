@@ -14,17 +14,43 @@
       <div class="nav-center">
         <nav class="desktop-nav">
 
-          <a routerLink="/" class="active">Home</a>
+    <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+    >
+        Home
+    </a>
 
-          <a routerLink="/jobs">Jobs</a>
+    <a
+        routerLink="/jobs"
+        routerLinkActive="active"
+    >
+        Jobs
+    </a>
 
-          <a routerLink="/companies">Companies</a>
+    <a
+        routerLink="/companies"
+        routerLinkActive="active"
+    >
+        Companies
+    </a>
 
-          <a routerLink="/about">About</a>
+    <a
+        routerLink="/about"
+        routerLinkActive="active"
+    >
+        About
+    </a>
 
-          <a routerLink="/contact">Contact</a>
+    <a
+        routerLink="/contact"
+        routerLinkActive="active"
+    >
+        Contact
+    </a>
 
-        </nav>
+</nav>
       </div>
 
       <!-- Right -->

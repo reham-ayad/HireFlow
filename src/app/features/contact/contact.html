@@ -1,0 +1,193 @@
+<section class="contact-page">
+
+  <!-- Header -->
+  <div class="contact-header">
+    <span class="eyebrow">Support & Inquiries</span>
+
+    <h1>Let’s start a conversation.</h1>
+
+    <p>
+      Whether you're seeking top-tier talent or looking for your next executive role,
+      <br />
+      our team is here to provide white-glove guidance.
+    </p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="contact-container">
+
+    <!-- Contact Form -->
+    <div class="contact-form-card">
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+
+            <input
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              placeholder="Jane"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+
+            <input
+              id="lastName"
+              type="text"
+              formControlName="lastName"
+              placeholder="Doe"
+            />
+          </div>
+
+        </div>
+
+        <!-- Email -->
+        <div class="form-group full-width">
+          <label for="email">Email Address</label>
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="jane@company.com"
+          />
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group full-width">
+          <label for="subject">Subject</label>
+
+          <div class="select-wrapper">
+            <select id="subject" formControlName="subject">
+              <option value="Executive Recruitment Inquiry">
+                Executive Recruitment Inquiry
+              </option>
+
+              <option value="General Inquiry">
+                General Inquiry
+              </option>
+
+              <option value="Job Opportunity">
+                Job Opportunity
+              </option>
+
+              <option value="Partnership">
+                Partnership
+              </option>
+            </select>
+
+            <span class="arrow">⌄</span>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group full-width">
+          <label for="message">Message</label>
+
+          <textarea
+            id="message"
+            rows="5"
+            formControlName="message"
+            placeholder="How can we help you thrive?"
+          ></textarea>
+        </div>
+
+        <!-- Button -->
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="contactForm.invalid"
+        >
+          Send Message
+          <span>▷</span>
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="contact-side">
+
+      <!-- Headquarters -->
+      <div class="info-card headquarters">
+
+        <h2>Global Headquarters</h2>
+
+        <p class="address">
+          1200 Avenue of the Americas<br />
+          Suite 450<br />
+          New York, NY 10036
+        </p>
+
+        <a href="tel:+15552348900" class="phone">
+          <span class="phone-icon">♧</span>
+          +1 (555) 234-8900
+        </a>
+
+        <!-- Map -->
+        <div class="map-container">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-74.020%2C40.700%2C-73.980%2C40.770&layer=mapnik"
+            loading="lazy"
+            title="New York map">
+          </iframe>
+        </div>
+
+      </div>
+
+      <!-- Social -->
+      <div class="info-card social-card">
+
+        <h2>Connect With Us</h2>
+
+        <div class="social-grid">
+
+          <a href="#" class="social-link">
+            <span class="social-icon">@</span>
+            <span>LinkedIn</span>
+          </a>
+
+          <a href="#" class="social-link">
+            <span class="social-icon">⌯</span>
+            <span>Twitter</span>
+          </a>
+
+          <a href="#" class="social-link">
+            <span class="social-icon">✉</span>
+            <span>Newsletter</span>
+          </a>
+
+          <a href="#" class="social-link">
+            <span class="social-icon">▣</span>
+            <span>YouTube</span>
+          </a>
+
+        </div>
+
+        <div class="hours">
+
+          <div>
+            <span class="hours-title">Operating Hours</span>
+            <span class="days">Mon — Fri</span>
+          </div>
+
+          <span class="time">
+            9:00 AM — 6:00 PM EST
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

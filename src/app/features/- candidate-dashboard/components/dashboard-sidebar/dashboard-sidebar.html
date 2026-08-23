@@ -1,88 +1,84 @@
 <aside class="sidebar">
 
-    <!-- Logo -->
+  <!-- Logo -->
+  <div class="logo">
 
-    <div class="logo">
+    <a routerLink="/">
+      <i class="fa-solid fa-briefcase"></i>
+      <span>HireFlow</span>
+    </a>
 
-        <a routerLink="/">
+  </div>
 
-            <i class="fa-solid fa-briefcase"></i>
 
-            <span>HireFlow</span>
+  <!-- Menu -->
+  <nav class="menu">
 
-        </a>
+    <!-- Overview -->
+    <a
+      routerLink="/dashboard/overview"
+      routerLinkActive="active">
 
-    </div>
+      <i class="fa-solid fa-house"></i>
+      <span>Overview</span>
 
-    <!-- Menu -->
+    </a>
 
-    <nav class="menu">
 
-        <a
-            routerLink="/dashboard"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+    <!-- Applications -->
+    <a
+      routerLink="/dashboard/applications"
+      routerLinkActive="active">
 
-            <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-file-circle-check"></i>
+      <span>Applications</span>
 
-            <span>Overview</span>
+    </a>
 
-        </a>
 
-        <a
-            routerLink="/dashboard/applications"
-            routerLinkActive="active">
+    <!-- Saved Jobs -->
+    <a
+      routerLink="/dashboard/saved-jobs"
+      routerLinkActive="active">
 
-            <i class="fa-solid fa-file-circle-check"></i>
+      <i class="fa-solid fa-bookmark"></i>
+      <span>Saved Jobs</span>
 
-            <span>Applications</span>
+    </a>
 
-        </a>
 
-        <a
-            routerLink="/dashboard/saved-jobs"
-            routerLinkActive="active">
+    <!-- Profile -->
+    <a
+      routerLink="/dashboard/profile"
+      routerLinkActive="active">
 
-            <i class="fa-solid fa-bookmark"></i>
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
 
-            <span>Saved Jobs</span>
+    </a>
 
-        </a>
 
-        <a
-            routerLink="/dashboard/profile"
-            routerLinkActive="active">
+    <!-- Settings -->
+    <a
+      routerLink="/dashboard/settings"
+      routerLinkActive="active">
 
-            <i class="fa-solid fa-user"></i>
+      <i class="fa-solid fa-gear"></i>
+      <span>Settings</span>
 
-            <span>Profile</span>
+    </a>
 
-        </a>
+  </nav>
 
-        <a
-            routerLink="/dashboard/settings"
-            routerLinkActive="active">
 
-            <i class="fa-solid fa-gear"></i>
+  <!-- Bottom -->
+  <div class="bottom">
 
-            <span>Settings</span>
+    <button>
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      Logout
+    </button>
 
-        </a>
-
-    </nav>
-
-    <!-- Bottom -->
-
-    <div class="bottom">
-
-        <button>
-
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
-            Logout
-
-        </button>
-
-    </div>
+  </div>
 
 </aside>
