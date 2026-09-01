@@ -1,0 +1,251 @@
+<div class="profile-page">
+
+  <div class="profile-layout">
+
+    <!-- ================= LEFT SIDEBAR ================= -->
+
+    <aside class="profile-sidebar">
+
+      <!-- Profile Card -->
+      <section class="profile-card">
+
+        <div class="avatar-wrapper">
+          <img
+            src="assets/images/profile.jpg"
+            alt="Alexandra Sterling"
+            class="profile-image"
+          />
+
+          <button class="edit-avatar" title="Edit photo">
+            ✎
+          </button>
+        </div>
+
+        <h1>Alexandra Sterling</h1>
+
+        <p class="profile-title">
+          Senior Product Designer @ Techflow<br />
+          Global
+        </p>
+
+        <p class="location">
+          <span>⌖</span>
+          London, UK
+        </p>
+
+        <button class="edit-profile-btn" (click)="editProfile()">
+          Edit Profile
+        </button>
+
+        <div class="divider"></div>
+
+        <!-- Resume -->
+        <div class="resume-section">
+
+          <span class="section-label">
+            RESUME & DOCUMENTS
+          </span>
+
+          <div class="resume-file">
+
+            <div class="file-icon">
+              ▤
+            </div>
+
+            <div class="file-info">
+              <strong>
+                Sterling_Resume_2024.pdf
+              </strong>
+
+              <span>
+                Updated 2 days ago
+              </span>
+            </div>
+
+            <button
+              class="download-btn"
+              (click)="downloadResume()"
+              title="Download resume"
+            >
+              ↓
+            </button>
+
+          </div>
+
+          <button
+            class="upload-btn"
+            (click)="uploadResume()"
+          >
+            Upload New Resume
+          </button>
+
+          <input
+            #resumeInput
+            type="file"
+            hidden
+            accept=".pdf,.doc,.docx"
+            (change)="onResumeSelected($event)"
+          />
+
+        </div>
+
+      </section>
+
+
+      <!-- Expertise Card -->
+      <section class="expertise-card">
+
+        <h2>Expertise</h2>
+
+        <div class="skills">
+
+          @for (skill of expertise; track skill) {
+            <span class="skill">
+              {{ skill }}
+            </span>
+          }
+
+        </div>
+
+      </section>
+
+    </aside>
+
+
+    <!-- ================= RIGHT CONTENT ================= -->
+
+    <main class="profile-content">
+
+      <!-- Professional Summary -->
+      <section class="content-card summary-card">
+
+        <h2>
+          Professional Summary
+        </h2>
+
+        <p>
+          I am a multidisciplinary Product Designer with over 10 years of
+          experience crafting elite digital experiences for Fortune 500
+          companies and high-growth startups. My approach combines rigorous
+          user research with a meticulous eye for aesthetic craft. I believe
+          that the best interfaces are those that disappear, allowing the
+          user to focus entirely on their objectives through intuitive logic
+          and calm, sophisticated visual hierarchies.
+        </p>
+
+      </section>
+
+
+      <!-- Work Experience -->
+      <section class="content-card experience-card">
+
+        <div class="section-header">
+
+          <h2>
+            Work Experience
+          </h2>
+
+          <button
+            class="add-experience-btn"
+            (click)="addExperience()"
+          >
+            <span>+</span>
+            Add Experience
+          </button>
+
+        </div>
+
+
+        <div class="timeline">
+
+          @for (experience of experiences; track experience.company) {
+
+            <article class="experience-item">
+
+              <div class="timeline-marker"></div>
+
+              <div class="experience-body">
+
+                <div class="experience-heading">
+
+                  <div>
+
+                    <h3>
+                      {{ experience.position }}
+                    </h3>
+
+                    <strong>
+                      {{ experience.company }}
+                      •
+                      {{ experience.type }}
+                    </strong>
+
+                  </div>
+
+                  <span class="date-badge">
+                    {{ experience.date }}
+                  </span>
+
+                </div>
+
+                <p>
+                  {{ experience.description }}
+                </p>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- Education -->
+      <section class="content-card education-card">
+
+        <h2>
+          Education
+        </h2>
+
+        <div class="education-grid">
+
+          @for (education of educationList; track education.degree) {
+
+            <article class="education-item">
+
+              <div class="education-icon">
+                ♧
+              </div>
+
+              <div class="education-info">
+
+                <strong>
+                  {{ education.degree }}
+                </strong>
+
+                <span>
+                  {{ education.institution }}
+                </span>
+
+                <small>
+                  {{ education.date }}
+                </small>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</div>

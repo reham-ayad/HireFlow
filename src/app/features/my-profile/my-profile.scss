@@ -1,0 +1,807 @@
+.profile-page {
+  min-height: 100vh;
+
+  background: #f5f7ff;
+
+  color: #092632;
+
+  padding: 36px 20px 60px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.profile-layout {
+  width: min(1080px, 100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 340px minmax(0, 1fr);
+
+  gap: 34px;
+
+  align-items: start;
+}
+
+
+/* =========================================
+   LEFT SIDEBAR
+========================================= */
+
+.profile-sidebar {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.profile-card,
+.expertise-card,
+.content-card {
+  background: #faf9f5;
+
+  border: 1px solid #e3ded5;
+
+  border-radius: 18px;
+
+  box-sizing: border-box;
+}
+
+
+.profile-card {
+  padding: 38px 36px 35px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.avatar-wrapper {
+  width: 110px;
+  height: 110px;
+
+  margin: 0 auto 20px;
+
+  position: relative;
+}
+
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 3px solid white;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.12),
+    0 5px 14px rgba(0, 0, 0, 0.08);
+}
+
+
+.edit-avatar {
+  position: absolute;
+
+  right: -2px;
+  bottom: -3px;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  border: 3px solid #faf9f5;
+
+  background: #004654;
+
+  color: white;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================
+   PROFILE TEXT
+========================================= */
+
+.profile-card h1 {
+  margin: 0;
+
+  font-size: 22px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.4px;
+
+  color: #092b36;
+}
+
+
+.profile-title {
+  margin: 8px 0 22px;
+
+  color: #273b42;
+
+  font-size: 14px;
+
+  line-height: 1.55;
+}
+
+
+.location {
+  margin: 0 0 32px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: #1a2e35;
+
+  font-size: 13px;
+}
+
+
+.location span {
+  font-size: 18px;
+
+  color: #071d25;
+}
+
+
+/* =========================================
+   EDIT PROFILE
+========================================= */
+
+.edit-profile-btn {
+  width: 100%;
+
+  height: 40px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #004653;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.edit-profile-btn:hover {
+  background: #003640;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+  height: 1px;
+
+  background: #cfcac2;
+
+  margin: 34px 0 36px;
+}
+
+
+/* =========================================
+   RESUME
+========================================= */
+
+.resume-section {
+  text-align: left;
+}
+
+
+.section-label {
+  display: block;
+
+  margin-bottom: 20px;
+
+  color: #686d6e;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+}
+
+
+.resume-file {
+  min-height: 62px;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #bbc7d3;
+
+  border-radius: 11px;
+
+  background: #eef4ff;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.file-icon {
+  width: 25px;
+
+  font-size: 20px;
+
+  color: #0b2832;
+}
+
+
+.file-info {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.file-info strong {
+  font-size: 11px;
+
+  font-weight: 500;
+
+  color: #182a31;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.file-info span {
+  font-size: 9px;
+
+  color: #697278;
+}
+
+
+.download-btn {
+  border: none;
+
+  background: transparent;
+
+  color: #122b34;
+
+  font-size: 21px;
+
+  cursor: pointer;
+}
+
+
+.upload-btn {
+  width: 100%;
+
+  height: 41px;
+
+  margin-top: 20px;
+
+  border: 1px solid #1b3d47;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #172e36;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.upload-btn:hover {
+  background: #f0efea;
+}
+
+
+/* =========================================
+   EXPERTISE
+========================================= */
+
+.expertise-card {
+  padding: 35px 36px;
+}
+
+
+.expertise-card h2 {
+  margin: 0 0 24px;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  color: #092b36;
+}
+
+
+.skills {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.skill {
+  padding: 5px 11px;
+
+  border-radius: 20px;
+
+  background: #e0e3e3;
+
+  color: #0d3039;
+
+  font-size: 10px;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================
+   RIGHT CONTENT
+========================================= */
+
+.profile-content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 34px;
+}
+
+
+.content-card {
+  padding: 36px;
+}
+
+
+.content-card h2 {
+  margin: 0 0 23px;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  color: #092b36;
+}
+
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.summary-card p {
+  margin: 0;
+
+  max-width: 720px;
+
+  color: #25353b;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.section-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 27px;
+}
+
+
+.section-header h2 {
+  margin: 0;
+}
+
+
+.add-experience-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #102e37;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+
+.add-experience-btn span {
+  font-size: 19px;
+
+  font-weight: 300;
+}
+
+
+/* =========================================
+   EXPERIENCE TIMELINE
+========================================= */
+
+.timeline {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.experience-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 25px minmax(0, 1fr);
+
+  column-gap: 10px;
+
+  min-height: 150px;
+}
+
+
+.experience-item:last-child {
+  min-height: 0;
+}
+
+
+.timeline-marker {
+  width: 13px;
+  height: 13px;
+
+  margin-top: 4px;
+
+  border-radius: 50%;
+
+  background: #bdc7ca;
+
+  border: 1px solid #bdc7ca;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.experience-item:first-child .timeline-marker {
+  background: #004653;
+
+  border-color: #004653;
+}
+
+
+/* Vertical line */
+
+.experience-item:not(:last-child)::before {
+  content: "";
+
+  position: absolute;
+
+  left: 6px;
+
+  top: 17px;
+
+  bottom: 0;
+
+  width: 1px;
+
+  background: #b9c3c6;
+}
+
+
+/* =========================================
+   EXPERIENCE CONTENT
+========================================= */
+
+.experience-body {
+  padding-bottom: 30px;
+}
+
+
+.experience-heading {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.experience-heading h3 {
+  margin: 0 0 5px;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  color: #122c35;
+}
+
+
+.experience-heading strong {
+  display: block;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  color: #004653;
+}
+
+
+.date-badge {
+  flex-shrink: 0;
+
+  padding: 5px 11px;
+
+  border-radius: 20px;
+
+  background: #e7efff;
+
+  color: #142c35;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+
+.experience-body p {
+  margin: 10px 0 0;
+
+  color: #27373c;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  max-width: 630px;
+}
+
+
+/* =========================================
+   EDUCATION
+========================================= */
+
+.education-card {
+  padding-bottom: 38px;
+}
+
+
+.education-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 40px;
+}
+
+
+.education-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.education-icon {
+  width: 42px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #dfeaff;
+
+  color: #092d38;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 21px;
+}
+
+
+.education-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.education-info strong {
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #122b34;
+}
+
+
+.education-info span {
+  font-size: 12px;
+
+  color: #283a40;
+}
+
+
+.education-info small {
+  font-size: 10px;
+
+  color: #687175;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+
+  .profile-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+
+    gap: 22px;
+  }
+
+  .profile-card,
+  .expertise-card,
+  .content-card {
+    padding: 28px 24px;
+  }
+
+}
+
+
+@media (max-width: 750px) {
+
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-sidebar {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: start;
+  }
+
+  .profile-card {
+    grid-column: span 2;
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .profile-page {
+    padding: 20px 12px 40px;
+  }
+
+  .profile-sidebar {
+    display: flex;
+  }
+
+  .profile-card,
+  .expertise-card,
+  .content-card {
+    padding: 24px 20px;
+
+    border-radius: 14px;
+  }
+
+  .section-header {
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .add-experience-btn {
+    white-space: nowrap;
+  }
+
+  .experience-heading {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .date-badge {
+    align-self: flex-start;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .summary-card p {
+    font-size: 12px;
+  }
+
+}

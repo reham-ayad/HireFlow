@@ -12,7 +12,9 @@
 
     <div class="hero-bottom">
 
-      <!-- Search -->
+      <!-- =========================
+            SEARCH
+      ========================= -->
 
       <div class="search-box">
 
@@ -21,32 +23,56 @@
         <input
           type="text"
           placeholder="Search by job title, company, or keywords..."
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="searchJobs()"
         >
 
       </div>
 
-      <!-- Results -->
+
+      <!-- =========================
+            RESULTS + SORT
+      ========================= -->
 
       <div class="results">
 
         <span class="count">
 
-          <strong>{{ jobs.length }}</strong>
+          <strong>
+            {{ filteredJobs.length }}
+          </strong>
 
           results found
 
         </span>
 
+
         <div class="sort">
 
-          <span>Sort by:</span>
+          <span>
+            Sort by:
+          </span>
 
-          <select>
+          <select
+            [(ngModel)]="sortBy"
+            (change)="sortJobs()"
+          >
 
-            <option>Newest First</option>
-            <option>Oldest First</option>
-            <option>Salary High</option>
-            <option>Salary Low</option>
+            <option value="newest">
+              Newest First
+            </option>
+
+            <option value="oldest">
+              Oldest First
+            </option>
+
+            <option value="salaryHigh">
+              Salary High
+            </option>
+
+            <option value="salaryLow">
+              Salary Low
+            </option>
 
           </select>
 
@@ -61,6 +87,8 @@
   </div>
 
 </section>
+
+
 <!-- =========================
         JOBS CONTENT
 ========================= -->
@@ -71,6 +99,7 @@
 
     <div class="layout">
 
+
       <!-- =========================
             FILTERS
       ========================= -->
@@ -79,21 +108,38 @@
 
         <div class="filter-header">
 
-          <h2>FILTERS</h2>
+          <h2>
+            FILTERS
+          </h2>
 
-          <button>Clear all</button>
+          <button
+            type="button"
+            (click)="clearFilters()"
+          >
+            Clear all
+          </button>
 
         </div>
 
-        <!-- Job Type -->
+
+        <!-- =========================
+              JOB TYPE
+        ========================= -->
 
         <div class="filter-group">
 
-          <h3>Job Type</h3>
+          <h3>
+            Job Type
+          </h3>
+
 
           <label class="checkbox">
 
-            <input type="checkbox" checked>
+            <input
+              type="checkbox"
+              [checked]="selectedTypes.includes('Full-time')"
+              (change)="toggleJobType('Full-time')"
+            >
 
             <span></span>
 
@@ -101,9 +147,14 @@
 
           </label>
 
+
           <label class="checkbox">
 
-            <input type="checkbox">
+            <input
+              type="checkbox"
+              [checked]="selectedTypes.includes('Contract')"
+              (change)="toggleJobType('Contract')"
+            >
 
             <span></span>
 
@@ -111,9 +162,14 @@
 
           </label>
 
+
           <label class="checkbox">
 
-            <input type="checkbox">
+            <input
+              type="checkbox"
+              [checked]="selectedTypes.includes('Freelance')"
+              (change)="toggleJobType('Freelance')"
+            >
 
             <span></span>
 
@@ -123,72 +179,140 @@
 
         </div>
 
-        <!-- Salary -->
+
+        <!-- =========================
+              SALARY
+        ========================= -->
 
         <div class="filter-group">
 
-          <h3>Salary Range ($k)</h3>
+          <h3>
+            Salary Range ($k)
+          </h3>
 
           <input
             type="range"
             min="50"
             max="300"
-            value="180">
+            [(ngModel)]="maxSalary"
+            (input)="filterJobs()"
+          >
+
 
           <div class="salary-values">
 
-            <span>$50k</span>
+            <span>
+              $50k
+            </span>
 
-            <span>$300k+</span>
+            <span>
+              ${{ maxSalary }}k+
+            </span>
 
           </div>
 
         </div>
 
-        <!-- Experience -->
+
+        <!-- =========================
+              EXPERIENCE
+        ========================= -->
 
         <div class="filter-group">
 
-          <h3>Experience Level</h3>
+          <h3>
+            Experience Level
+          </h3>
 
-          <select>
+          <select
+            [(ngModel)]="selectedExperience"
+            (change)="filterJobs()"
+          >
 
-            <option>All levels</option>
-            <option>Junior</option>
-            <option>Mid Level</option>
-            <option>Senior</option>
+            <option value="">
+              All levels
+            </option>
+
+            <option value="junior">
+              Junior
+            </option>
+
+            <option value="mid">
+              Mid Level
+            </option>
+
+            <option value="senior">
+              Senior
+            </option>
 
           </select>
 
         </div>
 
-        <!-- Remote -->
+
+        <!-- =========================
+              REMOTE
+        ========================= -->
 
         <div class="filter-group">
 
-          <h3>Remote</h3>
+          <h3>
+            Remote
+          </h3>
 
           <div class="remote-buttons">
 
-            <button class="active">All</button>
+            <button
+              type="button"
+              [class.active]="selectedWorkMode === 'All'"
+              (click)="setWorkMode('All')"
+            >
+              All
+            </button>
 
-            <button>Remote</button>
 
-            <button>Hybrid</button>
+            <button
+              type="button"
+              [class.active]="selectedWorkMode === 'Remote'"
+              (click)="setWorkMode('Remote')"
+            >
+              Remote
+            </button>
+
+
+            <button
+              type="button"
+              [class.active]="selectedWorkMode === 'Hybrid'"
+              (click)="setWorkMode('Hybrid')"
+            >
+              Hybrid
+            </button>
 
           </div>
 
         </div>
 
-        <!-- Date -->
+
+        <!-- =========================
+              DATE POSTED
+        ========================= -->
 
         <div class="filter-group">
 
-          <h3>Date Posted</h3>
+          <h3>
+            Date Posted
+          </h3>
+
 
           <label class="radio">
 
-            <input type="radio" name="date">
+            <input
+              type="radio"
+              name="date"
+              value="1"
+              [(ngModel)]="selectedDate"
+              (change)="filterJobs()"
+            >
 
             <span></span>
 
@@ -196,9 +320,16 @@
 
           </label>
 
+
           <label class="radio">
 
-            <input checked type="radio" name="date">
+            <input
+              type="radio"
+              name="date"
+              value="7"
+              [(ngModel)]="selectedDate"
+              (change)="filterJobs()"
+            >
 
             <span></span>
 
@@ -206,9 +337,16 @@
 
           </label>
 
+
           <label class="radio">
 
-            <input type="radio" name="date">
+            <input
+              type="radio"
+              name="date"
+              value="30"
+              [(ngModel)]="selectedDate"
+              (change)="filterJobs()"
+            >
 
             <span></span>
 
@@ -220,167 +358,334 @@
 
       </aside>
 
-      <!-- هنا هنحط الـ Job Cards -->
+
+      <!-- =========================
+            JOBS LIST
+      ========================= -->
 
       <div class="jobs-list">
-        @for (job of jobs; track job.id) {
 
-<article class="job-card">
 
-  <div class="left-border"></div>
+        <!-- =========================
+              LOADING
+        ========================= -->
 
-  <!-- Top -->
+        @if (loading) {
 
-  <div class="job-top">
+          <div class="loading">
 
-    <div class="company-info">
+            <p>
+              Loading jobs...
+            </p>
 
-      <div class="company-logo">
+          </div>
 
-        <i [class]="job.icon"></i>
+        }
+
+
+        <!-- =========================
+              ERROR
+        ========================= -->
+
+        @if (!loading && errorMessage) {
+
+          <div class="error-message">
+
+            <p>
+              {{ errorMessage }}
+            </p>
+
+            <button
+              type="button"
+              (click)="loadJobs()"
+            >
+              Try Again
+            </button>
+
+          </div>
+
+        }
+
+
+        <!-- =========================
+              NO RESULTS
+        ========================= -->
+
+        @if (
+          !loading &&
+          !errorMessage &&
+          filteredJobs.length === 0
+        ) {
+
+          <div class="no-results">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <h3>
+              No jobs found
+            </h3>
+
+            <p>
+              Try changing your search or filters.
+            </p>
+
+            <button
+              type="button"
+              (click)="clearFilters()"
+            >
+              Clear Filters
+            </button>
+
+          </div>
+
+        }
+
+
+        <!-- =========================
+              JOB CARDS
+        ========================= -->
+
+        @for (
+          job of filteredJobs;
+          track job.id
+        ) {
+
+          <article class="job-card">
+
+            <div class="left-border"></div>
+
+
+            <!-- =========================
+                  TOP
+            ========================= -->
+
+            <div class="job-top">
+
+
+              <!-- COMPANY -->
+
+              <div class="company-info">
+
+                <div class="company-logo">
+
+                  <i
+                    [class]="job.icon"
+                  ></i>
+
+                </div>
+
+
+                <div class="job-info">
+
+                  <div class="title-row">
+
+                    <h3>
+                      {{ job.title }}
+                    </h3>
+
+
+                    @if (job.featured) {
+
+                      <span class="featured">
+                        FEATURED
+                      </span>
+
+                    }
+
+                  </div>
+
+
+                  <p>
+
+                    {{ job.company }}
+
+                    <span>
+                      •
+                    </span>
+
+                    {{ job.location }}
+
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <!-- =========================
+                    TAGS
+              ========================= -->
+
+              <div class="job-tags">
+
+                <span>
+                  {{ job.workMode }}
+                </span>
+
+                <span>
+                  {{ job.type }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================
+                  DESCRIPTION
+            ========================= -->
+
+            <p class="description">
+
+              {{ job.description }}
+
+            </p>
+
+
+            <!-- =========================
+                  DIVIDER
+            ========================= -->
+
+            <div class="divider"></div>
+
+
+            <!-- =========================
+                  FOOTER
+            ========================= -->
+
+            <div class="job-footer">
+
+
+              <!-- META -->
+
+              <div class="job-meta">
+
+                <div>
+
+                  <i
+                    class="fa-regular fa-money-bill-1"
+                  ></i>
+
+                  {{ job.salary }}
+
+                </div>
+
+
+                <div>
+
+                  <i
+                    class="fa-regular fa-clock"
+                  ></i>
+
+                  {{ job.postedAt }}
+
+                </div>
+
+              </div>
+
+
+              <!-- ACTIONS -->
+
+              <div class="actions">
+
+
+                <!-- BOOKMARK -->
+
+                <button
+                  type="button"
+                  class="bookmark"
+                  aria-label="Save job"
+                >
+
+                  <i
+                    class="fa-regular fa-bookmark"
+                  ></i>
+
+                </button>
+
+
+                <!-- APPLY -->
+
+                <button
+                  type="button"
+                  class="apply-btn"
+                  (click)="applyNow(job)"
+                >
+
+                  Apply Now
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+
+        <!-- =========================
+              PAGINATION
+        ========================= -->
+
+        @if (
+          !loading &&
+          filteredJobs.length > 0
+        ) {
+
+          <div class="pagination">
+
+
+            <!-- PREVIOUS -->
+
+            <button
+              type="button"
+              (click)="previousPage()"
+              [disabled]="currentPage === 1"
+            >
+
+              <i
+                class="fa-solid fa-chevron-left"
+              ></i>
+
+            </button>
+
+
+            <!-- CURRENT PAGE -->
+
+            <button
+              type="button"
+              class="active"
+            >
+
+              {{ currentPage }}
+
+            </button>
+
+
+            <!-- NEXT -->
+
+            <button
+              type="button"
+              (click)="nextPage()"
+              [disabled]="currentPage === totalPages"
+            >
+
+              <i
+                class="fa-solid fa-chevron-right"
+              ></i>
+
+            </button>
+
+          </div>
+
+        }
 
       </div>
-
-      <div class="job-info">
-
-        <div class="title-row">
-
-          <h3>{{ job.title }}</h3>
-
-          @if(job.featured){
-
-          <span class="featured">
-
-            FEATURED
-
-          </span>
-
-          }
-
-        </div>
-
-        <p>
-
-          {{ job.company }}
-
-          <span>•</span>
-
-          {{ job.location }}
-
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="job-tags">
-
-      <span>
-
-        {{ job.workMode }}
-
-      </span>
-
-      <span>
-
-        {{ job.type }}
-
-      </span>
 
     </div>
 
   </div>
-
-  <!-- Description -->
-
-  <p class="description">
-
-    {{ job.description }}
-
-  </p>
-
-  <!-- Divider -->
-
-  <div class="divider"></div>
-
-  <!-- Footer -->
-
-  <div class="job-footer">
-
-    <div class="job-meta">
-
-      <div>
-
-        <i class="fa-regular fa-money-bill-1"></i>
-
-        {{ job.salary }}
-
-      </div>
-
-      <div>
-
-        <i class="fa-regular fa-clock"></i>
-
-        {{ job.postedAt }}
-
-      </div>
-
-    </div>
-
-    <div class="actions">
-
-      <button class="bookmark">
-
-        <i class="fa-regular fa-bookmark"></i>
-
-      </button>
-
-      <button class="apply-btn">
-
-        Apply Now
-
-      </button>
-
-    </div>
-
-  </div>
-
-</article>
-
-}
-
-<!-- Pagination -->
-
-<div class="pagination">
-
-  <button>
-
-    <i class="fa-solid fa-chevron-left"></i>
-
-  </button>
-
-  <button class="active">1</button>
-
-  <button>2</button>
-
-  <button>3</button>
-
-  <span>...</span>
-
-  <button>12</button>
-
-  <button>
-
-    <i class="fa-solid fa-chevron-right"></i>
-
-  </button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </section>

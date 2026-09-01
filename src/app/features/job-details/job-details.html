@@ -1,1 +1,313 @@
-<p>job-details works!</p>
+<div class="job-page">
+
+  <!-- ================= HEADER ================= -->
+  <header class="job-header">
+
+    <div class="job-header-left">
+
+      <div class="company-logo">
+        <span>LS</span>
+      </div>
+
+      <div class="job-heading">
+
+        <span class="company-name">
+          LUMINA SYSTEMS
+        </span>
+
+        <h1>
+          Senior Product Designer
+        </h1>
+
+        <div class="job-meta">
+
+          <span>
+            <i>⌖</i>
+            San Francisco, CA (Remote Friendly)
+          </span>
+
+          <span>
+            <i>▣</i>
+            $160k – $220k • 0.1% Equity
+          </span>
+
+          <span>
+            <i>□</i>
+            Full-time
+          </span>
+
+          <span>
+            <i>◷</i>
+            Posted 2 days ago
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="header-actions">
+
+      <button
+        class="apply-header-btn"
+        (click)="applyNow()"
+      >
+        Apply for this position
+        <span>→</span>
+      </button>
+
+      <button
+        class="bookmark-btn"
+        [class.saved]="isSaved"
+        (click)="toggleSave()"
+        aria-label="Save job"
+      >
+        ♡
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="job-container">
+
+    <!-- ================= LEFT ================= -->
+
+    <section class="job-main">
+
+      <!-- About Role -->
+      <article class="content-card role-card">
+
+        <h2>About the Role</h2>
+
+        <p>
+          We are looking for a Senior Product Designer to lead the evolution
+          of our core platform. At Lumina Systems, design isn't just about
+          how things look—it's about how they work and how they solve complex
+          human problems in the financial technology space.
+        </p>
+
+        <p>
+          You’ll join a tight-knit team of engineers and product managers,
+          taking full ownership of the user experience from initial research
+          and wireframing to high-fidelity prototyping and final visual polish.
+        </p>
+
+
+        <h2>What you'll do</h2>
+
+        <ul class="job-list">
+
+          @for (item of responsibilities; track item) {
+            <li>
+              <span class="check-icon">✓</span>
+              <span>{{ item }}</span>
+            </li>
+          }
+
+        </ul>
+
+
+        <h2>Qualifications</h2>
+
+        <ul class="job-list qualifications">
+
+          @for (item of qualifications; track item) {
+            <li>
+              <span class="qualification-icon">✧</span>
+              <span>{{ item }}</span>
+            </li>
+          }
+
+        </ul>
+
+      </article>
+
+
+      <!-- About Company -->
+      <article class="content-card company-card">
+
+        <h2>About Lumina Systems</h2>
+
+        <div class="company-content">
+
+          <div class="company-info">
+
+            <p>
+              Lumina is an AI-powered financial operating system for the next
+              generation of global businesses. Founded in 2018, we've grown
+              to support over 10,000 customers worldwide.
+            </p>
+
+            <div class="company-details">
+
+              <div class="detail-row">
+                <span>Founded</span>
+                <strong>2018</strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Size</span>
+                <strong>150–200 employees</strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Location</span>
+                <strong>San Francisco, CA</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="company-image">
+
+            <img
+              src="assets/images/company-office.jpg"
+              alt="Lumina Systems office"
+            />
+
+            <button class="play-button">
+              ▶
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="job-sidebar">
+
+
+      <!-- Apply Card -->
+
+      <div class="sidebar-card apply-card">
+
+        <span class="ready-text">
+          READY TO LEAD?
+        </span>
+
+        <button
+          class="sidebar-apply"
+          (click)="applyNow()"
+        >
+          Apply Now
+        </button>
+
+        <button
+          class="save-button"
+          [class.saved]="isSaved"
+          (click)="toggleSave()"
+        >
+          <span>♡</span>
+
+          {{ isSaved ? 'Saved' : 'Save for later' }}
+
+        </button>
+
+        <p class="response-time">
+          Typically responds within 24 hours
+        </p>
+
+      </div>
+
+
+      <!-- Similar Jobs -->
+
+      <div class="sidebar-card similar-card">
+
+        <div class="card-heading">
+
+          <h3>Similar Jobs</h3>
+
+          <button>
+            View all
+          </button>
+
+        </div>
+
+
+        <div class="similar-jobs">
+
+          @for (job of similarJobs; track job.title) {
+
+            <div
+              class="similar-job"
+              (click)="selectJob(job)"
+            >
+
+              <div class="job-icon">
+                {{ job.icon }}
+              </div>
+
+              <div class="similar-job-info">
+
+                <strong>
+                  {{ job.title }}
+                </strong>
+
+                <span>
+                  {{ job.company }} • {{ job.location }}
+                </span>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+
+      <!-- Alerts -->
+
+      <div class="sidebar-card alerts-card">
+
+        <h3>
+          Get alerts
+        </h3>
+
+        <p>
+          We'll notify you about new Design roles at
+          Lumina Systems.
+        </p>
+
+        <form
+          [formGroup]="alertForm"
+          (ngSubmit)="subscribe()"
+        >
+
+          <input
+            type="email"
+            placeholder="Email address"
+            formControlName="email"
+          />
+
+          <button
+            type="submit"
+            [disabled]="alertForm.invalid"
+          >
+            Subscribe
+          </button>
+
+        </form>
+
+      </div>
+
+    </aside>
+
+  </main>
+
+</div>

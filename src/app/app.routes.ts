@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { routes as dashboardRoutes } from './features/- candidate-dashboard/pages/sidebar.routes';
+import { authGuard } from './core/guards/auth.guard';
 
 // export const routes: Routes = dashboardRoutes;
 
@@ -19,6 +20,18 @@ export const routes: Routes = [
           import('./features/home/home')
             .then(m => m.Home)
       },
+      
+
+
+
+
+
+
+
+
+
+
+
 
       {
         path: 'jobs',
@@ -26,7 +39,13 @@ export const routes: Routes = [
           import('./features/job/jobs/jobs')
             .then(m => m.Jobs)
       },
-
+{
+  path: 'jobs/:id/apply',
+  canActivate: [authGuard],
+  loadComponent: () =>
+    import('./features/job/apply-job/apply-job')
+      .then(m => m.ApplyJob)
+},
       {
         path: 'companies',
         loadComponent: () =>
