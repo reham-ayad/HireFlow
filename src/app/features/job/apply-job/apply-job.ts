@@ -22,15 +22,12 @@ import {
   Router
 } from '@angular/router';
 
-import { JobService } from '../../../services/job/job.service';
+import { Job, JobService } from '../../../services/job/job.service';
 
 import {
   ApplicationService
 } from '../../../services/application.service';
 
-import {
-  AdzunaJob
-} from '../../../models/job.model';
 
 
 @Component({
@@ -71,8 +68,7 @@ export class ApplyJob implements OnInit {
   // Variables
   // =========================
 
-  job!: AdzunaJob;
-
+job!: Job;
   applicationForm!: FormGroup;
 
   loading = true;
@@ -189,13 +185,12 @@ selectedCvName = '';
 
         try {
 
-          const job: AdzunaJob =
-            JSON.parse(storedJob);
+       const job: Job = JSON.parse(storedJob);
 
           // Make sure job matches URL
 
           if (
-            String(job.id) ===
+            String(job._id) ===
             String(jobId)
           ) {
 
@@ -207,7 +202,7 @@ selectedCvName = '';
 
             if (
               this.applicationService
-                .hasApplied(String(job.id))
+                .hasApplied(String(job._id))
             ) {
 
               this.submitted = true;
@@ -264,7 +259,7 @@ selectedCvName = '';
 
             if (
               this.applicationService
-                .hasApplied(String(job.id))
+                .hasApplied(String(job._id))
             ) {
 
               this.submitted = true;
@@ -449,16 +444,16 @@ selectedCvName = '';
 
       id: crypto.randomUUID(),
 
-      jobId: this.job.id,
+      jobId: this.job._id,
 
       jobTitle:
         this.job.title,
 
       company:
-        this.job.company.display_name,
+        this.job.company,
 
       location:
-        this.job.location.display_name,
+        this.job.location,
 
       fullName:
         this.applicationForm
@@ -553,7 +548,7 @@ selectedCvName = '';
 
     this.router.navigate([
       '/jobs',
-      this.job.id
+      this.job._id
     ]);
 
   }

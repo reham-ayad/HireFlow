@@ -87,17 +87,17 @@
 
         <div class="companies-grid">
 
-            @for(company of companies; track company.id){
+            @for(company of companies; track company._id){
 
             <div class="company-card">
 
-                @if(company.featured){
+                <!-- @if(company.featured){
 
                 <span class="featured">
                     Featured
                 </span>
 
-                }
+                } -->
 
                 <div class="company-header">
 
@@ -115,7 +115,7 @@
 
                             •
 
-                            {{company.size}}
+                            {{company.employees}}
 
                         </p>
 
@@ -135,7 +135,7 @@
 
                         <i class="fa-solid fa-briefcase"></i>
 
-                        {{company.jobs}}
+                        {{company.openPositions}}
 
                         Open Positions
 

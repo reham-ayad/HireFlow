@@ -1,18 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router ,RouterOutlet } from '@angular/router';
-import { JobService } from '../../../services/job/job.service';
-import {
-  AdzunaJob
-} from '../../../models/job.model';
+import { Router } from '@angular/router';
 
+import {
+  JobService,
+  Job
+} from '../../../services/job/job.service';
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
   imports: [
-    RouterOutlet,
     CommonModule,
     FormsModule
   ],
@@ -20,7 +19,8 @@ import {
   styleUrl: './jobs.scss'
 })
 export class Jobs implements OnInit {
-private router = inject(Router);
+
+  private router = inject(Router);
   private jobService = inject(JobService);
 
   // =========================
@@ -89,62 +89,71 @@ private router = inject(Router);
 
     this.jobService.getJobs().subscribe({
 
-      next: (response: any) => {
-
-        const jobs = response?.results ?? [];
+      next: (response) => {
 
         console.log('API RESPONSE:', response);
 
-        this.jobs = jobs.map((job: any) => ({
+        const jobs = response.jobs ?? [];
 
-          id: job.id,
+        this.jobs = jobs.map((job: Job) => ({
+
+          id: job._id,
 
           title: job.title,
 
-          company: job.company?.display_name ?? 'Unknown Company',
+          company: job.company,
 
-          location: job.location?.display_name ?? 'Unknown Location',
+          location: job.location,
 
-          description: job.description ?? 'No description available',
+          description:
+            job.description ?? 'No description available',
 
-          salary: this.formatSalary(
-            job.salary_min,
-            job.salary_max
-          ),
+          salary:
+            job.salary ?? 'Salary not specified',
 
-          salaryMin: job.salary_min ?? 0,
+          salaryMin:
+            this.extractSalaryMin(job.salary),
 
-          salaryMax: job.salary_max ?? 0,
+          salaryMax:
+            this.extractSalaryMax(job.salary),
 
-          postedAt: this.formatDate(job.created),
+          postedAt:
+            this.formatDate(job.createdAt),
 
-          created: job.created,
+          created:
+            job.createdAt,
 
-          type: 'Full-time',
+          type:
+            job.jobType ?? 'Full-time',
 
-          workMode: 'On-site',
+          workMode:
+            'On-site',
 
-          level: 'All levels',
+          level:
+            'All levels',
 
-          icon: 'fa-solid fa-building',
+          icon:
+            'fa-solid fa-building',
 
-          featured: false,
-
-          redirectUrl: job.redirect_url
+          featured:
+            false
 
         }));
 
-        // أول فلترة
+        console.log('MAPPED JOBS:', this.jobs);
+
         this.filterJobs();
 
-        // مهم جدًا
         this.loading = false;
 
       },
 
       error: (error) => {
 
-        console.error('FAILED TO LOAD JOBS:', error);
+        console.error(
+          'FAILED TO LOAD JOBS:',
+          error
+        );
 
         this.errorMessage =
           'Failed to load jobs. Please try again.';
@@ -180,17 +189,24 @@ private router = inject(Router);
     // Search
     if (this.searchTerm.trim()) {
 
-      const term = this.searchTerm
-        .toLowerCase()
-        .trim();
+      const term =
+        this.searchTerm
+          .toLowerCase()
+          .trim();
 
       result = result.filter(job =>
 
-        job.title?.toLowerCase().includes(term) ||
+        job.title
+          ?.toLowerCase()
+          .includes(term) ||
 
-        job.company?.toLowerCase().includes(term) ||
+        job.company
+          ?.toLowerCase()
+          .includes(term) ||
 
-        job.description?.toLowerCase().includes(term)
+        job.description
+          ?.toLowerCase()
+          .includes(term)
 
       );
 
@@ -220,19 +236,26 @@ private router = inject(Router);
     });
 
     // Experience
-    if (this.selectedExperience !== 'All levels') {
+    if (
+      this.selectedExperience !==
+      'All levels'
+    ) {
 
       result = result.filter(job =>
-        job.level === this.selectedExperience
+        job.level ===
+        this.selectedExperience
       );
 
     }
 
     // Work Mode
-    if (this.selectedWorkMode !== 'All') {
+    if (
+      this.selectedWorkMode !== 'All'
+    ) {
 
       result = result.filter(job =>
-        job.workMode === this.selectedWorkMode
+        job.workMode ===
+        this.selectedWorkMode
       );
 
     }
@@ -252,7 +275,9 @@ private router = inject(Router);
     if (this.selectedTypes.includes(type)) {
 
       this.selectedTypes =
-        this.selectedTypes.filter(t => t !== type);
+        this.selectedTypes.filter(
+          t => t !== type
+        );
 
     } else {
 
@@ -336,11 +361,13 @@ private router = inject(Router);
 
     this.maxSalary = 300;
 
-    this.selectedExperience = 'All levels';
+    this.selectedExperience =
+      'All levels';
 
     this.selectedWorkMode = 'All';
 
-    this.selectedDate = 'Last 7 days';
+    this.selectedDate =
+      'Last 7 days';
 
     this.sortBy = 'newest';
 
@@ -354,41 +381,27 @@ private router = inject(Router);
   // APPLY
   // =========================
 
-  // applyNow(job: any): void {
+  applyNow(job: any): void {
 
-  //   if (job.redirectUrl) {
+    const jobId = job?.id;
 
-  //     window.open(
-  //       job.redirectUrl,
-  //       '_blank'
-  //     );
+    if (!jobId) {
 
-  //   }
+      console.error(
+        'No job id found for apply action'
+      );
 
-  // }
+      return;
 
-  applyNow(job: AdzunaJob): void {
+    }
 
-  const jobId = job?.id;
+    void this.router.navigate([
+      '/jobs',
+      jobId,
+      'apply'
+    ]);
 
-  if (!jobId) {
-    console.error('No job id found for apply action');
-    return;
   }
-
-  // Save the selected job temporarily
-  sessionStorage.setItem(
-    'selectedJob',
-    JSON.stringify(job)
-  );
-
-  void this.router.navigate([
-    '/jobs',
-    jobId,
-    'apply'
-  ]);
-
-}
 
   // =========================
   // PAGINATION
@@ -406,7 +419,10 @@ private router = inject(Router);
 
   nextPage(): void {
 
-    if (this.currentPage < this.totalPages) {
+    if (
+      this.currentPage <
+      this.totalPages
+    ) {
 
       this.currentPage++;
 
@@ -418,30 +434,52 @@ private router = inject(Router);
   // SALARY
   // =========================
 
-  private formatSalary(
-    min?: number,
-    max?: number
-  ): string {
+  private extractSalaryMin(
+    salary?: string
+  ): number {
 
-    if (!min && !max) {
+    if (!salary) {
+      return 0;
+    }
 
-      return 'Salary not specified';
+    const numbers =
+      salary.match(/\d+(?:,\d+)?/g);
+
+    if (!numbers?.length) {
+      return 0;
+    }
+
+    return Number(
+      numbers[0].replace(/,/g, '')
+    );
+
+  }
+
+  private extractSalaryMax(
+    salary?: string
+  ): number {
+
+    if (!salary) {
+      return 0;
+    }
+
+    const numbers =
+      salary.match(/\d+(?:,\d+)?/g);
+
+    if (
+      !numbers ||
+      numbers.length < 2
+    ) {
+
+      return this.extractSalaryMin(
+        salary
+      );
 
     }
 
-    if (min && max) {
-
-      return `$${Math.round(min / 1000)}k - $${Math.round(max / 1000)}k`;
-
-    }
-
-    if (min) {
-
-      return `From $${Math.round(min / 1000)}k`;
-
-    }
-
-    return `Up to $${Math.round(max! / 1000)}k`;
+    return Number(
+      numbers[1].replace(/,/g, '')
+    );
 
   }
 
@@ -449,30 +487,32 @@ private router = inject(Router);
   // DATE
   // =========================
 
-  private formatDate(date: string): string {
+  private formatDate(
+    date: string
+  ): string {
 
-    const postedDate = new Date(date);
+    const postedDate =
+      new Date(date);
 
-    const now = new Date();
+    const now =
+      new Date();
 
     const diff =
       now.getTime() -
       postedDate.getTime();
 
-    const days = Math.floor(
-      diff / (1000 * 60 * 60 * 24)
-    );
+    const days =
+      Math.floor(
+        diff /
+        (1000 * 60 * 60 * 24)
+      );
 
     if (days <= 0) {
-
       return 'Today';
-
     }
 
     if (days === 1) {
-
       return '1 day ago';
-
     }
 
     return `${days} days ago`;
