@@ -181,65 +181,79 @@
                 </p>
 
             </div>
+<form (ngSubmit)="login()">
 
-            <form>
+    <div class="form-group">
 
-                <div class="form-group">
+        <label>Email Address</label>
 
-                    <label>Email Address</label>
+        <input
+            type="email"
+            name="email"
+            [(ngModel)]="loginData.email"
+            placeholder="example@email.com"
+            required>
 
-                    <input
-                        type="email"
-                        placeholder="example@email.com">
+    </div>
 
-                </div>
 
-                <div class="form-group">
+    <div class="form-group">
 
-                    <label>Password</label>
+        <label>Password</label>
 
-                    <div class="password-box">
+        <div class="password-box">
 
-                        <input
-                            type="password"
-                            placeholder="Enter password">
+            <input
+                [type]="showPassword ? 'text' : 'password'"
+                name="password"
+                [(ngModel)]="loginData.password"
+                placeholder="Enter password"
+                required>
 
-                        <button
-                            type="button">
+            <button
+                type="button"
+                (click)="showPassword = !showPassword">
 
-                            <i class="fa-regular fa-eye"></i>
+                <i
+                    [class]="showPassword
+                    ? 'fa-regular fa-eye-slash'
+                    : 'fa-regular fa-eye'">
+                </i>
 
-                        </button>
+            </button>
 
-                    </div>
+        </div>
 
-                </div>
+    </div>
 
-                <div class="login-options">
 
-                    <label>
+    <div class="login-options">
 
-                        <input type="checkbox">
+        <label>
 
-                        Remember me
+            <input
+                type="checkbox">
 
-                    </label>
+            Remember me
 
-                    <a routerLink="/forgot-password">
+        </label>
 
-                        Forgot Password?
+        <a routerLink="/forgot-password">
+            Forgot Password?
+        </a>
 
-                    </a>
+    </div>
 
-                </div>
 
-                <button class="login-btn">
+    <button
+        type="submit"
+        class="login-btn">
 
-                    Login
+        Login
 
-                </button>
+    </button>
 
-            </form>
+</form>
 
             <div class="divider">
 

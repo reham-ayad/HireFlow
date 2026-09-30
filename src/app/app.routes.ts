@@ -26,13 +26,6 @@ export const routes: Routes = [
 
 
 
-
-
-
-
-
-
-
       {
         path: 'jobs',
         loadComponent: () =>
@@ -74,7 +67,13 @@ export const routes: Routes = [
             .then(m => m.Login)
       },
 
-
+// {
+//     path: 'dashboard',
+//     canActivate: [authGuard],
+//     loadComponent: () =>
+//       import('../../src/app/features/- candidate-dashboard/pages/overview/overview')
+//         .then(m => m.Overview)
+//   },
       
       {
         path: 'register',

@@ -54,18 +54,32 @@
       </div>
 
       <!-- Right -->
-      <div class="nav-right">
+    <div class="nav-right">
 
-        <a routerLink="/login" class="login-btn">
-          Log In
-        </a>
+  @if (!isLoggedIn) {
 
-        <button class="post-btn">
-          Post a Job
-        </button>
+    <a routerLink="/login" class="login-btn">
+      Log In
+    </a>
 
-      </div>
+  } @else {
 
+    <a
+      routerLink="/dashboard"
+      class="profile-btn"
+      aria-label="Profile"
+      title="My Dashboard"
+    >
+      <i class="fa-regular fa-user"></i>
+    </a>
+
+  }
+
+  <button class="post-btn">
+    Post a Job
+  </button>
+
+</div>
     </div>
 
   </div>

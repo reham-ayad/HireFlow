@@ -1,286 +1,153 @@
-import {
-  Component,
-  OnInit,
-  inject,
-  PLATFORM_ID
-} from '@angular/core';
-
-import {
-  CommonModule,
-  isPlatformBrowser
-} from '@angular/common';
-
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
-
-import {
-  ActivatedRoute,
-  Router
-} from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Job, JobService } from '../../../services/job/job.service';
-
-import {
-  ApplicationService
-} from '../../../services/application.service';
-
-
+import { ApplicationService } from '../../../services/application.service';
 
 @Component({
   selector: 'app-apply-job',
-
   standalone: true,
-
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
-
+  imports: [CommonModule],
   templateUrl: './apply-job.html',
-
   styleUrl: './apply-job.scss'
 })
 export class ApplyJob implements OnInit {
 
-  // =========================
-  // Inject
-  // =========================
-
-  private fb = inject(FormBuilder);
-
   private route = inject(ActivatedRoute);
-
   private router = inject(Router);
-
   private jobService = inject(JobService);
+  private applicationService = inject(ApplicationService);
 
-  private applicationService =
-    inject(ApplicationService);
+  job: Job | null = null;
 
-  private platformId = inject(PLATFORM_ID);
-
-
-  // =========================
-  // Variables
-  // =========================
-
-job!: Job;
-  applicationForm!: FormGroup;
+  user: any = null;
 
   loading = true;
-
   error = '';
-
   submitted = false;
-
-  // CV
-  selectedCvFile: File | null = null;
-selectedCvName = '';
-  cvError = '';
-
-
-  // =========================
-  // Init
-  // =========================
+  submitting = false;
 
   ngOnInit(): void {
 
-    this.createForm();
+    this.getUser();
 
     this.loadJob();
 
   }
 
-
   // =========================
-  // Create Form
-  // =========================
-
-  createForm(): void {
-
-    this.applicationForm = this.fb.group({
-
-      fullName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3)
-        ]
-      ],
-
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email
-        ]
-      ],
-
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /^01[0125][0-9]{8}$/
-          )
-        ]
-      ],
-
-      experience: [
-        '',
-        Validators.required
-      ],
-
-      coverLetter: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(20)
-        ]
-      ],
-
-      cvFile: [
-        null,
-        Validators.required
-      ]
-
-    });
-
-  }
-
-
-  // =========================
-  // Load Job
+  // GET CURRENT USER
   // =========================
 
-  loadJob(): void {
+  getUser(): void {
 
-    const jobId =
-      this.route.snapshot.paramMap.get('id');
+    const userData = localStorage.getItem('user');
 
-    if (!jobId) {
+    if (!userData) {
 
-      this.error = 'Job not found';
+      console.log('No user found');
 
-      this.loading = false;
+      this.router.navigate(['/login']);
 
       return;
     }
 
+    this.user = JSON.parse(userData);
 
-    // =========================
-    // Try sessionStorage first
-    // =========================
+    console.log('Current user:', this.user);
 
-    if (isPlatformBrowser(this.platformId)) {
+  }
 
-      const storedJob =
-        sessionStorage.getItem('selectedJob');
+  // =========================
+  // LOAD JOB
+  // =========================
 
-      if (storedJob) {
+loadJob(): void {
+  const jobId = this.route.snapshot.paramMap.get('id');
 
-        try {
+  console.log(' Job ID:', jobId);
 
-       const job: Job = JSON.parse(storedJob);
+  if (!jobId) {
+    this.error = 'Job not found.';
+    this.loading = false;
+    return;
+  }
 
-          // Make sure job matches URL
+  this.jobService.getJobById(jobId).subscribe({
+    next: (job) => {
+      console.log(' API RESPONSE:', job);
 
-          if (
-            String(job._id) ===
-            String(jobId)
-          ) {
+      this.loading = false;
 
-            this.job = job;
-
-            this.loading = false;
-
-            // Check if already applied
-
-            if (
-              this.applicationService
-                .hasApplied(String(job._id))
-            ) {
-
-              this.submitted = true;
-
-            }
-
-            return;
-          }
-
-        } catch (error) {
-
-          console.error(
-            'Error reading selected job:',
-            error
-          );
-
-        }
-
+      if (!job) {
+        this.error = 'Job not found.';
+        return;
       }
 
+      this.job = job;
+
+      console.log(' Job loaded successfully');
+      console.log(' title:', job.title);
+      // console.log(' id:', job._id);
+    },
+
+    error: (error) => {
+      console.error(' API ERROR:', error);
+
+      this.loading = false;
+      this.error = 'Something went wrong while loading the job.';
+    }
+  });
+}
+  // =========================
+  // APPLY
+  // =========================
+
+  submitApplication(): void {
+
+    if (!this.job) {
+      return;
     }
 
+    this.submitting = true;
 
-    // =========================
-    // Fallback: API
-    // =========================
+    const jobId = String(this.job._id);
 
-    this.jobService
-      .getJobById(jobId)
+    console.log(
+      ' Applying for job:',
+      jobId
+    );
+
+    this.applicationService
+      .addApplication(jobId)
       .subscribe({
 
-        next: (job) => {
+        next: (response) => {
 
-          this.loading = false;
+          console.log(
+            'Application submitted:',
+            response
+          );
 
-          if (!job) {
+          this.submitting = false;
 
-            this.error =
-              'Job not found';
-
-            return;
-          }
-
-          this.job = job;
-
-
-          // Check applied only in browser
-
-          if (
-            isPlatformBrowser(
-              this.platformId
-            )
-          ) {
-
-            if (
-              this.applicationService
-                .hasApplied(String(job._id))
-            ) {
-
-              this.submitted = true;
-
-            }
-
-          }
+          this.submitted = true;
 
         },
 
         error: (error) => {
 
           console.error(
-            'Error loading job:',
+            'Application error:',
             error
           );
 
-          this.error =
-            'Something went wrong while loading the job.';
+          this.submitting = false;
 
-          this.loading = false;
+          this.error =
+            error?.error?.message ||
+            'Something went wrong while submitting your application.';
 
         }
 
@@ -288,268 +155,13 @@ selectedCvName = '';
 
   }
 
-
   // =========================
-  // CV Upload
-  // =========================
-
- onCvSelected(event: Event): void {
-
-  const input = event.target as HTMLInputElement;
-
-  this.cvError = '';
-
-  if (!input.files || input.files.length === 0) {
-    this.selectedCvFile = null;
-    this.selectedCvName = '';
-
-    this.applicationForm
-      .get('cvFile')
-      ?.setValue(null);
-
-    return;
-  }
-
-  const file = input.files[0];
-
-  const allowedTypes = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  ];
-
-  if (!allowedTypes.includes(file.type)) {
-
-    this.cvError =
-      'Please upload a PDF, DOC, or DOCX file.';
-
-    this.selectedCvFile = null;
-    this.selectedCvName = '';
-
-    this.applicationForm
-      .get('cvFile')
-      ?.setValue(null);
-
-    input.value = '';
-
-    return;
-  }
-
-  const maxSize = 5 * 1024 * 1024;
-
-  if (file.size > maxSize) {
-
-    this.cvError =
-      'CV file size must be less than 5 MB.';
-
-    this.selectedCvFile = null;
-    this.selectedCvName = '';
-
-    this.applicationForm
-      .get('cvFile')
-      ?.setValue(null);
-
-    input.value = '';
-
-    return;
-  }
-
-  // Valid file
-  this.selectedCvFile = file;
-  this.selectedCvName = file.name;
-
-  this.applicationForm
-    .get('cvFile')
-    ?.setValue(file);
-
-  this.applicationForm
-    .get('cvFile')
-    ?.markAsTouched();
-}
-
-  // =========================
-  // Remove CV
-  // =========================
-
-  removeCv(): void {
-
-    this.selectedCvFile = null;
-
-    this.cvError = '';
-
-    this.applicationForm
-      .get('cvFile')
-      ?.setValue(null);
-
-  }
-
-
-  // =========================
-  // Form Controls
-  // =========================
-
-  get f() {
-
-    return this.applicationForm.controls;
-
-  }
-
-
-  // =========================
-  // Submit
-  // =========================
-
-  submitApplication(): void {
-
-    // Check form
-
-    if (
-      this.applicationForm.invalid
-    ) {
-
-      this.applicationForm
-        .markAllAsTouched();
-
-      return;
-
-    }
-
-
-    // Check CV
-
-    if (!this.selectedCvFile) {
-
-      this.cvError =
-        'Please upload your CV before submitting.';
-
-      return;
-
-    }
-
-
-    // Check job
-
-    if (!this.job) {
-
-      return;
-
-    }
-
-
-    // =========================
-    // Create Application
-    // =========================
-
-    const application = {
-
-      id: crypto.randomUUID(),
-
-      jobId: this.job._id,
-
-      jobTitle:
-        this.job.title,
-
-      company:
-        this.job.company,
-
-      location:
-        this.job.location,
-
-      fullName:
-        this.applicationForm
-          .value.fullName,
-
-      email:
-        this.applicationForm
-          .value.email,
-
-      phone:
-        this.applicationForm
-          .value.phone,
-
-      experience:
-        this.applicationForm
-          .value.experience,
-
-      coverLetter:
-        this.applicationForm
-          .value.coverLetter,
-
-      cvFileName:
-        this.selectedCvFile.name,
-
-      cvFileType:
-        this.selectedCvFile.type,
-
-      cvFileSize:
-        this.selectedCvFile.size,
-
-      appliedAt:
-        new Date().toISOString()
-
-    };
-
-
-    // =========================
-    // Save Application
-    // =========================
-
-    if (
-      isPlatformBrowser(
-        this.platformId
-      )
-    ) {
-
-      this.applicationService
-        .addApplication(application);
-
-    }
-
-
-    // =========================
-    // Success
-    // =========================
-
-    this.submitted = true;
-
-  }
-
-
-  // =========================
-  // Navigation
+  // BACK TO JOBS
   // =========================
 
   goToJobs(): void {
 
-    this.router.navigate([
-      '/jobs'
-    ]);
-
-  }
-
-
-  goToApplications(): void {
-
-    this.router.navigate([
-      '/dashboard/applications'
-    ]);
-
-  }
-
-
-  goBackToJob(): void {
-
-    if (!this.job) {
-
-      return;
-
-    }
-
-
-    this.router.navigate([
-      '/jobs',
-      this.job._id
-    ]);
+    this.router.navigate(['/jobs']);
 
   }
 

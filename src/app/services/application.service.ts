@@ -1,5 +1,6 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Application } from '../models/application.model';
 
@@ -8,32 +9,21 @@ import { Application } from '../models/application.model';
 })
 export class ApplicationService {
 
-  private readonly storageKey = 'jobApplications';
+  private http = inject(HttpClient);
 
-  private readonly isBrowser: boolean;
-
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object
-  ) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
+  private readonly apiUrl =
+    'https://hireflow-backend-one.vercel.app/api/applications';
 
 
   // =========================
-  // Get Applications
+  // Get My Applications
   // =========================
 
-  getApplications(): Application[] {
+  getApplications(): Observable<Application[]> {
 
-    if (!this.isBrowser) {
-      return [];
-    }
-
-    const data = localStorage.getItem(this.storageKey);
-
-    return data
-      ? JSON.parse(data)
-      : [];
+    return this.http.get<Application[]>(
+      this.apiUrl
+    );
 
   }
 
@@ -43,20 +33,14 @@ export class ApplicationService {
   // =========================
 
   addApplication(
-    application: Application
-  ): void {
+    jobId: string
+  ): Observable<Application> {
 
-    if (!this.isBrowser) {
-      return;
-    }
-
-    const applications = this.getApplications();
-
-    applications.push(application);
-
-    localStorage.setItem(
-      this.storageKey,
-      JSON.stringify(applications)
+    return this.http.post<Application>(
+      this.apiUrl,
+      {
+        jobId
+      }
     );
 
   }
@@ -66,13 +50,12 @@ export class ApplicationService {
   // Check Applied
   // =========================
 
-  hasApplied(jobId: string): boolean {
+  hasApplied(
+    jobId: string
+  ): Observable<boolean> {
 
-    const applications = this.getApplications();
-
-    return applications.some(
-      application =>
-        application.jobId === jobId
+    return this.http.get<boolean>(
+      `${this.apiUrl}/check/${jobId}`
     );
 
   }
@@ -84,11 +67,10 @@ export class ApplicationService {
 
   getApplicationByJobId(
     jobId: string
-  ): Application | undefined {
+  ): Observable<Application | null> {
 
-    return this.getApplications().find(
-      application =>
-        application.jobId === jobId
+    return this.http.get<Application | null>(
+      `${this.apiUrl}/job/${jobId}`
     );
 
   }

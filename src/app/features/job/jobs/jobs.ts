@@ -1,12 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { forkJoin, of } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
 import {
   JobService,
   Job
 } from '../../../services/job/job.service';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-jobs',
@@ -21,7 +23,9 @@ import {
 export class Jobs implements OnInit {
 
   private router = inject(Router);
-  private jobService = inject(JobService);
+  public jobService = inject(JobService);
+  public companyService = inject(CompanyService);
+    private cdr = inject(ChangeDetectorRef);
 
   // =========================
   // DATA
@@ -29,7 +33,7 @@ export class Jobs implements OnInit {
 
   jobs: any[] = [];
   filteredJobs: any[] = [];
-
+  companys: any[] = [];
   // =========================
   // UI STATE
   // =========================
@@ -81,90 +85,63 @@ export class Jobs implements OnInit {
   // =========================
   // LOAD JOBS
   // =========================
-
   loadJobs(): void {
+  this.loading = true;
+  this.errorMessage = '';
 
-    this.loading = true;
-    this.errorMessage = '';
+  this.jobService.getJobs().pipe(
+    switchMap((response) => {
+      const jobs = response.jobs ?? [];
 
-    this.jobService.getJobs().subscribe({
-
-      next: (response) => {
-
-        console.log('API RESPONSE:', response);
-
-        const jobs = response.jobs ?? [];
-
-        this.jobs = jobs.map((job: Job) => ({
-
-          id: job._id,
-
-          title: job.title,
-
-          company: job.company,
-
-          location: job.location,
-
-          description:
-            job.description ?? 'No description available',
-
-          salary:
-            job.salary ?? 'Salary not specified',
-
-          salaryMin:
-            this.extractSalaryMin(job.salary),
-
-          salaryMax:
-            this.extractSalaryMax(job.salary),
-
-          postedAt:
-            this.formatDate(job.createdAt),
-
-          created:
-            job.createdAt,
-
-          type:
-            job.jobType ?? 'Full-time',
-
-          workMode:
-            'On-site',
-
-          level:
-            'All levels',
-
-          icon:
-            'fa-solid fa-building',
-
-          featured:
-            false
-
-        }));
-
-        console.log('MAPPED JOBS:', this.jobs);
-
-        this.filterJobs();
-
-        this.loading = false;
-
-      },
-
-      error: (error) => {
-
-        console.error(
-          'FAILED TO LOAD JOBS:',
-          error
-        );
-
-        this.errorMessage =
-          'Failed to load jobs. Please try again.';
-
-        this.loading = false;
-
+      // لو مفيش وظايف، رجّع array فاضي على طول
+      if (!jobs.length) {
+        return of({ jobs, companies: [] as any[] });
       }
 
-    });
+      // اعمل request لكل شركة بالتوازي، مع fallback لو فيه شركة فشلت
+      const companyRequests = jobs.map((job: Job) =>
+        this.companyService.getCompanyById(job.company).pipe(
+          catchError(() => of({ name: 'Unknown Company' }))
+        )
+      );
 
-  }
+      return forkJoin(companyRequests).pipe(
+        switchMap((companies) => of({ jobs, companies }))
+      );
+    })
+  ).subscribe({
+    next: ({ jobs, companies }) => {
+
+      this.jobs = jobs.map((job: Job, index: number) => ({
+        id: job._id,
+        title: job.title,
+        companyname: companies[index]?.name ?? 'Unknown Company',
+        location: job.location,
+        description: job.description ?? 'No description available',
+        salary: job.salary ?? 'Salary not specified',
+        salaryMin: this.extractSalaryMin(job.salary),
+        salaryMax: this.extractSalaryMax(job.salary),
+        postedAt: this.formatDate(job.createdAt),
+        created: job.createdAt,
+        type: job.jobType ?? 'Full-time',
+        workMode: 'On-site',
+        level: 'All levels',
+        icon: 'fa-solid fa-building',
+        featured: false
+      }));
+
+      this.filterJobs();
+      this.loading = false;
+      this.cdr.markForCheck();
+    },
+    error: (error) => {
+      console.error('FAILED TO LOAD JOBS:', error);
+      this.errorMessage = 'Failed to load jobs. Please try again.';
+      this.loading = false;
+      this.cdr.markForCheck();
+    }
+  });
+}
 
   // =========================
   // SEARCH
@@ -200,7 +177,7 @@ export class Jobs implements OnInit {
           ?.toLowerCase()
           .includes(term) ||
 
-        job.company
+        job.companyname
           ?.toLowerCase()
           .includes(term) ||
 

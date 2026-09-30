@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 export interface Job {
   _id: string;
@@ -35,10 +35,13 @@ export class JobService {
   }
 
   // Get Job By ID
-  getJobById(id: string): Observable<Job> {
-    return this.http.get<Job>(`${this.apiUrl}/${id}`);
-  }
-
+getJobById(id: string): Observable<Job> {
+  return this.http.get<{ job: Job }>(
+    `${this.apiUrl}/${id}`
+  ).pipe(
+    map(response => response.job)
+  );
+}
   // Create Job
   createJob(job: Partial<Job>): Observable<Job> {
     return this.http.post<Job>(this.apiUrl, job);

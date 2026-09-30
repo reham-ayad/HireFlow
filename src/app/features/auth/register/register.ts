@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component ,inject} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-register',
   imports: [FormsModule],
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './register.scss',
 })
 export class Register {
-
+  private authService = inject(AuthService);
   // Password visibility
   showPassword = false;
   showConfirmPassword = false;
@@ -33,13 +33,37 @@ export class Register {
 
 
   // Register
-  register(): void {
+register(): void {
 
-    console.log('Register Data:', {
-      ...this.registerData,
-      role: this.selectedRole
-    });
-
+  if (this.registerData.password !== this.registerData.confirmPassword) {
+    console.log('Passwords do not match');
+    return;
   }
+
+  if (!this.registerData.acceptTerms) {
+    console.log('Please accept the terms');
+    return;
+  }
+
+  const data = {
+    name: this.registerData.fullName,
+    email: this.registerData.email,
+    password: this.registerData.password,
+    confirmPassword: this.registerData.confirmPassword,
+    role: this.selectedRole
+  };
+
+  this.authService.register(data).subscribe({
+    next: (response) => {
+      console.log('Register successful:', response);
+    },
+
+    error: (error) => {
+      console.log('Register failed:', error);
+    }
+  });
+}
+
+  
 
 }
