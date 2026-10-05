@@ -54,7 +54,7 @@ export class Login {
         } else {
 
           // Normal login
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
 
         }
 

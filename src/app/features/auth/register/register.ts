@@ -1,6 +1,8 @@
 import { Component ,inject} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from 'express';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-register',
   imports: [FormsModule],
@@ -9,6 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class Register {
   private authService = inject(AuthService);
+  private router = inject(Router);
   // Password visibility
   showPassword = false;
   showConfirmPassword = false;
@@ -55,7 +58,9 @@ register(): void {
 
   this.authService.register(data).subscribe({
     next: (response) => {
+
       console.log('Register successful:', response);
+      this.router.navigate(['/']);
     },
 
     error: (error) => {

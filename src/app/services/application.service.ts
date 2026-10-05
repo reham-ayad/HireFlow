@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { Application } from '../models/application.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,59 +11,37 @@ export class ApplicationService {
 
   private http = inject(HttpClient);
 
-  private readonly apiUrl =
-    'https://hireflow-backend-one.vercel.app/api/applications';
-
-
-  // =========================
-  // Get My Applications
-  // =========================
+  private readonly apiUrl = environment.apiUrl + '/applications';
 
   getApplications(): Observable<Application[]> {
-
-    return this.http.get<Application[]>(
-      this.apiUrl
-    );
-
+    return this.http.get<Application[]>(this.apiUrl);
   }
 
-
-  // =========================
-  // Add Application
-  // =========================
-
   addApplication(
-    jobId: string
+    jobId: string,
+    data: {
+      fullName: string;
+      email: string;
+      phone: string;
+      location: string;
+      jobTitle: string;
+      skills: string[];
+      resume: string;
+      coverLetter: string;
+    }
   ): Observable<Application> {
 
     return this.http.post<Application>(
-      this.apiUrl,
-      {
-        jobId
-      }
+      `${this.apiUrl}/${jobId}`,
+      data
     );
-
   }
 
-
-  // =========================
-  // Check Applied
-  // =========================
-
-  hasApplied(
-    jobId: string
-  ): Observable<boolean> {
-
+  hasApplied(jobId: string): Observable<boolean> {
     return this.http.get<boolean>(
       `${this.apiUrl}/check/${jobId}`
     );
-
   }
-
-
-  // =========================
-  // Get Application By Job
-  // =========================
 
   getApplicationByJobId(
     jobId: string
@@ -72,7 +50,5 @@ export class ApplicationService {
     return this.http.get<Application | null>(
       `${this.apiUrl}/job/${jobId}`
     );
-
   }
-
 }

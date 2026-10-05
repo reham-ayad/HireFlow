@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Company {
   _id: string;
@@ -28,7 +29,7 @@ export class CompanyService {
   private http = inject(HttpClient);
 
   private readonly apiUrl =
-    'https://hireflow-backend-one.vercel.app/api/companies';
+    'environment.apiUrl + companies';
 
   getCompanies(): Observable<CompaniesResponse> {
     return this.http.get<CompaniesResponse>(this.apiUrl);

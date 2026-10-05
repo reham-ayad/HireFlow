@@ -85,37 +85,18 @@ export class Jobs implements OnInit {
   // =========================
   // LOAD JOBS
   // =========================
-  loadJobs(): void {
+ loadJobs(): void {
   this.loading = true;
   this.errorMessage = '';
 
-  this.jobService.getJobs().pipe(
-    switchMap((response) => {
+  this.jobService.getJobs().subscribe({
+    next: (response) => {
       const jobs = response.jobs ?? [];
 
-      // لو مفيش وظايف، رجّع array فاضي على طول
-      if (!jobs.length) {
-        return of({ jobs, companies: [] as any[] });
-      }
-
-      // اعمل request لكل شركة بالتوازي، مع fallback لو فيه شركة فشلت
-      const companyRequests = jobs.map((job: Job) =>
-        this.companyService.getCompanyById(job.company).pipe(
-          catchError(() => of({ name: 'Unknown Company' }))
-        )
-      );
-
-      return forkJoin(companyRequests).pipe(
-        switchMap((companies) => of({ jobs, companies }))
-      );
-    })
-  ).subscribe({
-    next: ({ jobs, companies }) => {
-
-      this.jobs = jobs.map((job: Job, index: number) => ({
+      this.jobs = jobs.map((job: Job) => ({
         id: job._id,
         title: job.title,
-        companyname: companies[index]?.name ?? 'Unknown Company',
+        companyname: job.company.name,
         location: job.location,
         description: job.description ?? 'No description available',
         salary: job.salary ?? 'Salary not specified',
@@ -134,6 +115,7 @@ export class Jobs implements OnInit {
       this.loading = false;
       this.cdr.markForCheck();
     },
+
     error: (error) => {
       console.error('FAILED TO LOAD JOBS:', error);
       this.errorMessage = 'Failed to load jobs. Please try again.';
@@ -142,7 +124,6 @@ export class Jobs implements OnInit {
     }
   });
 }
-
   // =========================
   // SEARCH
   // =========================

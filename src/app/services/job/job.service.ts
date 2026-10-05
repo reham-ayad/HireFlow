@@ -1,11 +1,16 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Job {
   _id: string;
   title: string;
-  company: string;
+  company: {
+  _id: string;
+  name: string;
+  logo?: string;
+};
   description: string;
   location: string;
   jobType: string;
@@ -27,23 +32,64 @@ export class JobService {
   private http = inject(HttpClient);
 
   private readonly apiUrl =
-    'https://hireflow-backend-one.vercel.app/api/jobs';
+    environment.apiUrl + '/jobs';
+
 
   // Get All Jobs
   getJobs(): Observable<JobsResponse> {
     return this.http.get<JobsResponse>(this.apiUrl);
   }
 
+
   // Get Job By ID
-getJobById(id: string): Observable<Job> {
-  return this.http.get<{ job: Job }>(
-    `${this.apiUrl}/${id}`
-  ).pipe(
-    map(response => response.job)
-  );
-}
+  getJobById(id: string): Observable<Job> {
+    return this.http.get<{ job: Job }>(
+      `${this.apiUrl}/${id}`
+    ).pipe(
+      map(response => response.job)
+    );
+  }
+
+
   // Create Job
   createJob(job: Partial<Job>): Observable<Job> {
-    return this.http.post<Job>(this.apiUrl, job);
+    return this.http.post<Job>(
+      this.apiUrl,
+      job
+    );
   }
+
+
+  // Get Job Applications
+  getJobApplications(jobId: string): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}/applications/job/${jobId}`
+    );
+  }
+
+
+  // Delete Job
+  deleteJob(jobId: string): Observable<any> {
+    return this.http.delete<any>(
+      `${this.apiUrl}/${jobId}`
+    );
+  }
+
+
+  // Save Job
+  saveJob(jobId: string): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/saved-jobs/${jobId}`,
+      {}
+    );
+  }
+
+
+  // Delete Saved Job
+  deleteSavedJob(jobId: string): Observable<any> {
+    return this.http.delete<any>(
+      `${environment.apiUrl}/saved-jobs/${jobId}`
+    );
+  }
+
 }
