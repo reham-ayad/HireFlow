@@ -2,26 +2,6 @@
 
 <div class="apply-page">
 
-  <!-- Loading -->
-  <div class="loading-container" *ngIf="loading">
-
-    <div class="spinner"></div>
-
-    <p>Loading job details...</p>
-
-  </div>
-
-
-  <!-- Error -->
-  <div class="error-message" *ngIf="!loading && error">
-
-    <i class="fa-solid fa-circle-exclamation"></i>
-
-    <span>{{ error }}</span>
-
-  </div>
-
-
   <!-- Main Content -->
   <div
     class="apply-container"
@@ -123,90 +103,120 @@
 
 
         <!-- User Information -->
+<!-- ========================= -->
+<!-- Applicant Information -->
+<!-- ========================= -->
 
-        <div class="user-info">
+<div class="user-info">
 
-          <div class="info-row">
+  <!-- Full Name -->
+  <div class="form-group">
 
-            <span class="label">
-              Full Name
-            </span>
+    <label for="fullName">
+      Full Name
+    </label>
 
-            <span class="value">
-              {{ user?.name || 'Not provided' }}
-            </span>
+    <input
+      id="fullName"
+      name="fullName"
+      type="text"
+      [(ngModel)]="application.fullName"
+      placeholder="Enter your full name"
+    />
 
-          </div>
-
-
-          <div class="info-row">
-
-            <span class="label">
-              Email
-            </span>
-
-            <span class="value">
-              {{ user?.email || 'Not provided' }}
-            </span>
-
-          </div>
+  </div>
 
 
-          <div class="info-row">
+  <!-- Email -->
+  <div class="form-group">
 
-            <span class="label">
-              Phone
-            </span>
+    <label for="email">
+      Email
+    </label>
 
-            <span class="value">
-              {{ user?.phone || 'Phone not provided' }}
-            </span>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      [(ngModel)]="application.email"
+      placeholder="Enter your email"
+    />
 
-          </div>
-
-
-          <div class="info-row">
-
-            <span class="label">
-              Location
-            </span>
-
-            <span class="value">
-              {{ user?.location || 'Location not provided' }}
-            </span>
-
-          </div>
+  </div>
 
 
-          <div class="info-row">
+  <!-- Phone -->
+  <div class="form-group">
 
-            <span class="label">
-              Job Title
-            </span>
+    <label for="phone">
+      Phone
+    </label>
 
-            <span class="value">
-              {{ user?.jobTitle || 'Not provided' }}
-            </span>
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      [(ngModel)]="application.phone"
+      placeholder="Enter your phone number"
+    />
 
-          </div>
+  </div>
 
 
-          <div class="info-row">
+  <!-- Location -->
+  <div class="form-group">
 
-            <span class="label">
-              Resume
-            </span>
+    <label for="location">
+      Location
+    </label>
 
-            <span class="value">
+    <input
+      id="location"
+      name="location"
+      type="text"
+      [(ngModel)]="application.location"
+      placeholder="Enter your location"
+    />
 
-              {{ user?.resume || 'No resume uploaded' }}
+  </div>
 
-            </span>
 
-          </div>
+  <!-- Job Title -->
+  <div class="form-group">
 
-        </div>
+    <label for="jobTitle">
+      Job Title
+    </label>
 
+    <input
+      id="jobTitle"
+      name="jobTitle"
+      type="text"
+      [(ngModel)]="application.jobTitle"
+      placeholder="e.g. Frontend Developer"
+    />
+
+  </div>
+
+
+  <!-- Resume -->
+  <div class="form-group">
+
+    <label for="resume">
+      Resume
+    </label>
+
+    <input
+      id="resume"
+      name="resume"
+      type="text"
+      [(ngModel)]="application.resume"
+      placeholder="Enter your resume URL"
+    />
+
+  </div>
+
+</div>
 
         <!-- ========================= -->
         <!-- Cover Letter -->

@@ -595,3 +595,69 @@
     transform: rotate(360deg);
   }
 }
+
+.user-info {
+
+  padding: 18px;
+
+  background: #f8fafc;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+
+  .form-group {
+
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #334e68;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      height: 44px;
+
+      box-sizing: border-box;
+
+      padding: 0 13px;
+
+      background: #ffffff;
+
+      border: 1px solid #d9e2ec;
+      border-radius: 9px;
+
+      color: #334e68;
+
+      font-family: inherit;
+      font-size: 13px;
+
+      outline: none;
+
+      transition: 0.2s ease;
+
+
+      &::placeholder {
+        color: #9fb3c8;
+      }
+
+
+      &:focus {
+
+        border-color: #243b53;
+
+        box-shadow:
+          0 0 0 3px
+          rgba(36, 59, 83, 0.08);
+      }
+    }
+  }
+}

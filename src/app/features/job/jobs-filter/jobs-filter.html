@@ -1,112 +1,103 @@
 <aside class="jobs-filter">
 
-    <div class="filter-card">
+  <div class="filter-card">
 
-        <h3>Filters</h3>
+    <h3>Filters</h3>
 
-        <!-- Job Type -->
+    <!-- Job Type -->
+    <div class="filter-group">
 
-        <div class="filter-group">
+      <h4>Job Type</h4>
 
-            <h4>Job Type</h4>
+      <label>
+        <input type="checkbox">
+        Full Time
+      </label>
 
-            <label>
-                <input type="checkbox">
-                Full Time
-            </label>
+      <label>
+        <input type="checkbox">
+        Part Time
+      </label>
 
-            <label>
-                <input type="checkbox">
-                Part Time
-            </label>
+      <label>
+        <input type="checkbox">
+        Remote
+      </label>
 
-            <label>
-                <input type="checkbox">
-                Remote
-            </label>
-
-            <label>
-                <input type="checkbox">
-                Internship
-            </label>
-
-        </div>
-
-        <!-- Experience -->
-
-        <div class="filter-group">
-
-            <h4>Experience</h4>
-
-            <label>
-                <input type="radio" name="exp">
-                Junior
-            </label>
-
-            <label>
-                <input type="radio" name="exp">
-                Mid Level
-            </label>
-
-            <label>
-                <input type="radio" name="exp">
-                Senior
-            </label>
-
-        </div>
-
-        <!-- Salary -->
-
-        <div class="filter-group">
-
-            <h4>Salary Range</h4>
-
-            <input type="range">
-
-            <div class="salary">
-
-                <span>$500</span>
-
-                <span>$5000+</span>
-
-            </div>
-
-        </div>
-
-        <!-- Location -->
-
-        <div class="filter-group">
-
-            <h4>Location</h4>
-
-            <select>
-
-                <option>All Locations</option>
-
-                <option>Remote</option>
-
-                <option>Cairo</option>
-
-                <option>Dubai</option>
-
-            </select>
-
-        </div>
-
-        <!-- Buttons -->
-
-        <button class="apply-btn">
-
-            Apply Filters
-
-        </button>
-
-        <button class="clear-btn">
-
-            Reset
-
-        </button>
+      <label>
+        <input type="checkbox">
+        Internship
+      </label>
 
     </div>
+
+    <!-- Experience -->
+    <div class="filter-group">
+
+      <h4>Experience</h4>
+
+      <label>
+        <input type="radio" name="exp">
+        Junior
+      </label>
+
+      <label>
+        <input type="radio" name="exp">
+        Mid Level
+      </label>
+
+      <label>
+        <input type="radio" name="exp">
+        Senior
+      </label>
+
+    </div>
+
+    <!-- Salary -->
+    <div class="filter-group">
+
+      <h4>Salary Range</h4>
+
+      <input
+        type="range"
+        min="10000"
+        max="32000"
+        step="1000"
+        value="10000"
+      >
+
+      <div class="salary">
+        <span>10,000 EGP</span>
+        <span>32,000 EGP</span>
+      </div>
+
+    </div>
+
+    <!-- Location -->
+    <div class="filter-group">
+
+      <h4>Location</h4>
+
+      <select>
+        <option>All Locations</option>
+        <option>Remote</option>
+        <option>Cairo</option>
+        <option>Alexandria</option>
+        <option>Giza</option>
+        <option>Dubai</option>
+      </select>
+
+    </div>
+
+    <!-- Buttons -->
+    <button class="apply-btn">
+      Apply Filters
+    </button>
+
+    <button class="clear-btn">
+      Reset
+    </button>
+
+  </div>
 
 </aside>

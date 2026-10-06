@@ -97,7 +97,7 @@ export class Jobs implements OnInit {
         id: job._id,
         title: job.title,
         companyname: job.company.name,
-        location: job.location,
+        location: job.location ?? 'remote',
         description: job.description ?? 'No description available',
         salary: job.salary ?? 'Salary not specified',
         salaryMin: this.extractSalaryMin(job.salary),

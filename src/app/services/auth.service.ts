@@ -116,6 +116,7 @@ login(data: LoginData): Observable<AuthResponse> {
           duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'top'
+
         }
       );
     })

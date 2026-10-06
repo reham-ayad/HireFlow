@@ -104,259 +104,223 @@
             FILTERS
       ========================= -->
 
-      <aside class="filters">
+    <aside class="filters">
 
-        <div class="filter-header">
+  <div class="filter-header">
 
-          <h2>
-            FILTERS
-          </h2>
+    <h2>
+      FILTERS
+    </h2>
 
-          <button
-            type="button"
-            (click)="clearFilters()"
-          >
-            Clear all
-          </button>
+    <button class="clear-btn"
+      type="button"
+      (click)="clearFilters()"
+    >
+      Clear all
+    </button>
 
-        </div>
+  </div>
 
 
-        <!-- =========================
-              JOB TYPE
-        ========================= -->
+  <!-- =========================
+        JOB TYPE
+  ========================= -->
 
-        <div class="filter-group">
+  <div class="filter-group">
 
-          <h3>
-            Job Type
-          </h3>
+    <h3>
+      Job Type
+    </h3>
 
+    <label class="checkbox">
 
-          <label class="checkbox">
+      <input
+        type="checkbox"
+        [checked]="selectedTypes.includes('Full-time')"
+        (change)="toggleJobType('Full-time')"
+      >
 
-            <input
-              type="checkbox"
-              [checked]="selectedTypes.includes('Full-time')"
-              (change)="toggleJobType('Full-time')"
-            >
+      <span></span>
 
-            <span></span>
+      Full-time
 
-            Full-time
+    </label>
 
-          </label>
 
+    <label class="checkbox">
 
-          <label class="checkbox">
+      <input
+        type="checkbox"
+        [checked]="selectedTypes.includes('Contract')"
+        (change)="toggleJobType('Contract')"
+      >
 
-            <input
-              type="checkbox"
-              [checked]="selectedTypes.includes('Contract')"
-              (change)="toggleJobType('Contract')"
-            >
+      <span></span>
 
-            <span></span>
+      Contract
 
-            Contract
+    </label>
 
-          </label>
 
+    <label class="checkbox">
 
-          <label class="checkbox">
+      <input
+        type="checkbox"
+        [checked]="selectedTypes.includes('Freelance')"
+        (change)="toggleJobType('Freelance')"
+      >
 
-            <input
-              type="checkbox"
-              [checked]="selectedTypes.includes('Freelance')"
-              (change)="toggleJobType('Freelance')"
-            >
+      <span></span>
 
-            <span></span>
+      Freelance
 
-            Freelance
+    </label>
 
-          </label>
+  </div>
 
-        </div>
 
+  <!-- =========================
+        SALARY
+  ========================= -->
 
-        <!-- =========================
-              SALARY
-        ========================= -->
+  <div class="filter-group">
 
-        <div class="filter-group">
+    <h3>
+      Salary Range
+    </h3>
 
-          <h3>
-            Salary Range ($k)
-          </h3>
+    <input
+      type="range"
+      min="10000"
+      max="32000"
+      step="1000"
+      [(ngModel)]="maxSalary"
+      (input)="filterJobs()"
+    >
 
-          <input
-            type="range"
-            min="50"
-            max="300"
-            [(ngModel)]="maxSalary"
-            (input)="filterJobs()"
-          >
+    <div class="salary-values">
 
+      <span>
+        10,000 EGP
+      </span>
 
-          <div class="salary-values">
+      <span>
+        {{ maxSalary | number }} EGP
+      </span>
 
-            <span>
-              $50k
-            </span>
+    </div>
 
-            <span>
-              ${{ maxSalary }}k+
-            </span>
+  </div>
 
-          </div>
 
-        </div>
+  <!-- =========================
+        WORK MODE
+  ========================= -->
 
+  <div class="filter-group">
 
-        <!-- =========================
-              EXPERIENCE
-        ========================= -->
+    <h3>
+      Work Mode
+    </h3>
 
-        <div class="filter-group">
+    <div class="remote-buttons">
 
-          <h3>
-            Experience Level
-          </h3>
+      <button
+        type="button"
+        [class.active]="selectedWorkMode === 'All'"
+        (click)="setWorkMode('All')"
+      >
+        All
+      </button>
 
-          <select
-            [(ngModel)]="selectedExperience"
-            (change)="filterJobs()"
-          >
 
-            <option value="">
-              All levels
-            </option>
+      <button
+        type="button"
+        [class.active]="selectedWorkMode === 'Remote'"
+        (click)="setWorkMode('Remote')"
+      >
+        Remote
+      </button>
 
-            <option value="junior">
-              Junior
-            </option>
 
-            <option value="mid">
-              Mid Level
-            </option>
+      <button
+        type="button"
+        [class.active]="selectedWorkMode === 'On-site'"
+        (click)="setWorkMode('On-site')"
+      >
+        On-site
+      </button>
 
-            <option value="senior">
-              Senior
-            </option>
 
-          </select>
+    </div>
 
-        </div>
+  </div>
 
 
-        <!-- =========================
-              REMOTE
-        ========================= -->
+  <!-- =========================
+        DATE POSTED
+  ========================= -->
 
-        <div class="filter-group">
+  <div class="filter-group">
 
-          <h3>
-            Remote
-          </h3>
+    <h3>
+      Date Posted
+    </h3>
 
-          <div class="remote-buttons">
 
-            <button
-              type="button"
-              [class.active]="selectedWorkMode === 'All'"
-              (click)="setWorkMode('All')"
-            >
-              All
-            </button>
+    <label class="radio">
 
+      <input
+        type="radio"
+        name="date"
+        value="1"
+        [(ngModel)]="selectedDate"
+        (change)="filterJobs()"
+      >
 
-            <button
-              type="button"
-              [class.active]="selectedWorkMode === 'Remote'"
-              (click)="setWorkMode('Remote')"
-            >
-              Remote
-            </button>
+      <span></span>
 
+      Last 24 hours
 
-            <button
-              type="button"
-              [class.active]="selectedWorkMode === 'Hybrid'"
-              (click)="setWorkMode('Hybrid')"
-            >
-              Hybrid
-            </button>
+    </label>
 
-          </div>
 
-        </div>
+    <label class="radio">
 
+      <input
+        type="radio"
+        name="date"
+        value="7"
+        [(ngModel)]="selectedDate"
+        (change)="filterJobs()"
+      >
 
-        <!-- =========================
-              DATE POSTED
-        ========================= -->
+      <span></span>
 
-        <div class="filter-group">
+      Last 7 days
 
-          <h3>
-            Date Posted
-          </h3>
+    </label>
 
 
-          <label class="radio">
+    <label class="radio">
 
-            <input
-              type="radio"
-              name="date"
-              value="1"
-              [(ngModel)]="selectedDate"
-              (change)="filterJobs()"
-            >
+      <input
+        type="radio"
+        name="date"
+        value="30"
+        [(ngModel)]="selectedDate"
+        (change)="filterJobs()"
+      >
 
-            <span></span>
+      <span></span>
 
-            Last 24 hours
+      Last 30 days
 
-          </label>
+    </label>
 
+  </div>
 
-          <label class="radio">
-
-            <input
-              type="radio"
-              name="date"
-              value="7"
-              [(ngModel)]="selectedDate"
-              (change)="filterJobs()"
-            >
-
-            <span></span>
-
-            Last 7 days
-
-          </label>
-
-
-          <label class="radio">
-
-            <input
-              type="radio"
-              name="date"
-              value="30"
-              [(ngModel)]="selectedDate"
-              (change)="filterJobs()"
-            >
-
-            <span></span>
-
-            Last 30 days
-
-          </label>
-
-        </div>
-
-      </aside>
+</aside>
 
 
       <!-- =========================
@@ -429,7 +393,7 @@
               Try changing your search or filters.
             </p>
 
-            <button
+            <button class="clear-btn2"
               type="button"
               (click)="clearFilters()"
             >
@@ -519,7 +483,7 @@
               <div class="job-tags">
 
                 <span>
-                  {{ job.workMode }}
+                  {{ job.location }}
                 </span>
 
                 <span>
@@ -629,59 +593,7 @@
               PAGINATION
         ========================= -->
 
-        @if (
-          !loading &&
-          filteredJobs.length > 0
-        ) {
-
-          <div class="pagination">
-
-
-            <!-- PREVIOUS -->
-
-            <button
-              type="button"
-              (click)="previousPage()"
-              [disabled]="currentPage === 1"
-            >
-
-              <i
-                class="fa-solid fa-chevron-left"
-              ></i>
-
-            </button>
-
-
-            <!-- CURRENT PAGE -->
-
-            <button
-              type="button"
-              class="active"
-            >
-
-              {{ currentPage }}
-
-            </button>
-
-
-            <!-- NEXT -->
-
-            <button
-              type="button"
-              (click)="nextPage()"
-              [disabled]="currentPage === totalPages"
-            >
-
-              <i
-                class="fa-solid fa-chevron-right"
-              ></i>
-
-            </button>
-
-          </div>
-
-        }
-
+       
       </div>
 
     </div>

@@ -180,7 +180,6 @@
     border:1px solid #E7E0D6;
     border-radius:26px;
     padding:30px;
-
 }
 
 /* Header */
@@ -586,5 +585,55 @@ input[type="range"]{
 .apply-btn:hover{
 
     background:#0A5168;
+
+}
+
+.clear-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    border:1px solid var(--primary);
+
+    background:#0D677D;
+
+    color:var(--primary);
+
+    cursor:pointer;
+
+}
+
+.apply-btn:hover{
+
+    background:#0D677D;
+
+}
+
+.clear-btn:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.clear-btn2{
+     width:220px;
+    height:62px;
+   border:none;
+    border-radius:999px;
+
+    background:#073B4C;
+    color:#fff;
+
+    font-size:22px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.3s;
+
 
 }
