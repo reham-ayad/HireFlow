@@ -9,6 +9,7 @@ import {
   Job
 } from '../../../services/job/job.service';
 import { CompanyService } from '../../../services/company.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-jobs',
@@ -26,6 +27,7 @@ export class Jobs implements OnInit {
   public jobService = inject(JobService);
   public companyService = inject(CompanyService);
     private cdr = inject(ChangeDetectorRef);
+  private snackBar = inject(MatSnackBar);
 
   // =========================
   // DATA
@@ -474,6 +476,61 @@ export class Jobs implements OnInit {
     }
 
     return `${days} days ago`;
+
+  }
+
+
+  savejob(job: any): void {
+ const jobId = job?.id;
+
+    if (!jobId) {
+
+      console.error(
+        'No job id found for save action'
+      );
+
+      return;
+
+    }
+
+    this.jobService
+      .saveJob(jobId)
+      .subscribe({
+
+        next: () => {
+
+          this.snackBar.open(
+        'Job saved successfully!', 
+        'Close',
+        {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+
+        }
+      );
+        },
+
+        error: (error) => {
+                 this.snackBar.open(
+        'Failed to save job!', 
+        'Close',
+        {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+
+        }
+      );
+
+          console.error(
+            'Failed to save job:',
+            error
+          );
+
+        }
+
+      });
 
   }
 
