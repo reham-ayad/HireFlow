@@ -1,137 +1,48 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit, PLATFORM_ID,ChangeDetectorRef } from '@angular/core';
+import {
+  CommonModule,
+  isPlatformBrowser
+} from '@angular/common';
+
 
 import { ApplicationService } from '../../../../services/application.service';
-import { JobService } from '../../../../services/job/job.service';
-
 import { Application } from '../../../../models/application.model';
 
 @Component({
   selector: 'app-applications',
   imports: [CommonModule],
   templateUrl: './applications.html',
-  styleUrl: './applications.scss',
+  styleUrl: './applications.scss'
 })
 export class Applications implements OnInit {
 
   private applicationService = inject(ApplicationService);
-  private jobService = inject(JobService);
+  private cdr = inject(ChangeDetectorRef);
+    private platformId = inject(PLATFORM_ID);
 
   applications: Application[] = [];
 
-  jobs: {
-    [jobId: string]: any
-  } = {};
-
   loading = true;
 
-
-  // =========================
-  // Load Applications
-  // =========================
-
   ngOnInit(): void {
-
-    this.applicationService
-      .getApplications()
-      .subscribe({
-
-        next: (applications) => {
-
-          this.applications = applications;
-
-          this.loadJobs();
-
-        },
-
-        error: (error) => {
-
-          console.log(
-            'Failed to load applications:',
-            error
-          );
-
-          this.loading = false;
-
-        }
-
-      });
-
-  }
-
-
-  // =========================
-  // Load Jobs
-  // =========================
-
-  loadJobs(): void {
-
-    if (this.applications.length === 0) {
-
-      this.loading = false;
-
+    
+      if (!isPlatformBrowser(this.platformId)) {
       return;
-
     }
 
-    let loadedJobs = 0;
+    this.applicationService.getApplications().subscribe({
+      next: (response) => {
+        console.log('APPLICATIONS LOADED:', response);
 
-    this.applications.forEach((application) => {
+        this.applications = response.applications;
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
 
-      this.jobService
-        .getJobById(application.jobId)
-        .subscribe({
-
-          next: (job) => {
-
-            this.jobs[application.jobId] = job;
-
-            loadedJobs++;
-
-            if (
-              loadedJobs === this.applications.length
-            ) {
-
-              this.loading = false;
-
-            }
-
-          },
-
-          error: (error) => {
-
-            console.log(
-              `Failed to load job ${application.jobId}:`,
-              error
-            );
-
-            loadedJobs++;
-
-            if (
-              loadedJobs === this.applications.length
-            ) {
-
-              this.loading = false;
-
-            }
-
-          }
-
-        });
-
+      error: (error) => {
+        console.error('APPLICATIONS ERROR:', error);
+        this.loading = false;
+      }
     });
-
   }
-
-
-  // =========================
-  // Get Job
-  // =========================
-
-  getJob(jobId: string): any {
-
-    return this.jobs[jobId];
-
-  }
-
 }

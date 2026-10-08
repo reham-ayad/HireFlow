@@ -1,9 +1,5 @@
 import {
-  Component,
-  OnInit,
-  inject,
-  ChangeDetectorRef
-} from '@angular/core';
+  Component,OnInit,inject,ChangeDetectorRef} from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -405,6 +401,7 @@ private snackBar = inject(MatSnackBar);
       .subscribe({
 
         next: (response) => {
+
   this.snackBar.open(
         'Application submitted successfully!',
         'Close',

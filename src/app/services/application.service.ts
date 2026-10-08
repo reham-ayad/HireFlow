@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { Application } from '../models/application.model';
 import { environment } from '../../environments/environment';
 
+interface ApplicationsResponse {
+  applications: Application[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +17,11 @@ export class ApplicationService {
 
   private readonly apiUrl = environment.apiUrl + '/applications';
 
-  getApplications(): Observable<Application[]> {
-    return this.http.get<Application[]>(this.apiUrl);
-  }
+  getApplications(): Observable<ApplicationsResponse> {
+  return this.http.get<ApplicationsResponse>(
+    `${this.apiUrl}/my-applications`
+  );
+}
 
   addApplication(
     jobId: string,

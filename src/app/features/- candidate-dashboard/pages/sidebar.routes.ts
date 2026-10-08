@@ -8,16 +8,16 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'overview',
+        redirectTo: 'profile',
         pathMatch: 'full'
       },
 
-      {
-        path: 'overview',
-        loadComponent: () =>
-          import('./overview/overview')
-            .then(m => m.Overview)
-      },
+      // {
+      //   path: 'overview',
+      //   loadComponent: () =>
+      //     import('./overview/overview')
+      //       .then(m => m.Overview)
+      // },
 
       {
         path: 'applications',
@@ -45,6 +45,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./settings/settings')
             .then(m => m.Settings)
+      },
+      {
+        path:'edit-profile',
+        loadComponent:()=>
+          import('./edit-profile/edit-profile')
+        .then(m=>m.EditProfile)
       }
     ]
   },

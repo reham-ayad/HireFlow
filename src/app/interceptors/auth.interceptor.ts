@@ -1,6 +1,5 @@
-
 import { HttpInterceptorFn } from '@angular/common/http';
-import { PLATFORM_ID, inject } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
@@ -9,9 +8,13 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   let token: string | null = null;
 
+  // localStorage is available only in the browser
   if (isPlatformBrowser(platformId)) {
     token = localStorage.getItem('token');
   }
+
+  // console.log('INTERCEPTOR:', req.url);
+  // console.log('TOKEN:', token);
 
   if (token) {
     req = req.clone({
@@ -19,6 +22,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         Authorization: `Bearer ${token}`
       }
     });
+
+    console.log(
+      'AUTH HEADER:',
+      req.headers.get('Authorization')
+    );
   }
 
   return next(req);

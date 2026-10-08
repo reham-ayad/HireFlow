@@ -4,10 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { forkJoin, of } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
-import {
-  JobService,
-  Job
-} from '../../../services/job/job.service';
+import {JobService, Job} from '../../../services/job/job.service';
 import { CompanyService } from '../../../services/company.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

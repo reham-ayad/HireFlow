@@ -1,65 +1,455 @@
-.saved-jobs{
+.saved-jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-    display:flex;
 
-    flex-direction:column;
+// ==============================
+// Page Header
+// ==============================
 
-    gap:30px;
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header h2 {
+  font-size: 34px;
+  color: var(--primary);
+  margin: 0;
+}
+
+.page-header p {
+  margin-top: 8px;
+  color: #777;
+}
+
+
+// ==============================
+// Jobs Grid
+// ==============================
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+
+// ==============================
+// Saved Job Card
+// ==============================
+
+.saved-job-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 25px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.saved-job-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+// ==============================
+// Top
+// ==============================
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+// ==============================
+// Logo
+// ==============================
+
+.logo {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 18px;
+
+  background: #edf8fb;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.logo i {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+
+// ==============================
+// Company Info
+// ==============================
+
+.company-info h4 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.company-info span {
+  color: #888;
+  font-size: 14px;
+}
+
+
+// ==============================
+// Saved Icon
+// ==============================
+
+.saved-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+
+  background: #f4f7fb;
+}
+
+.saved-icon i {
+  color: var(--primary);
+  font-size: 17px;
+}
+
+
+// ==============================
+// Details
+// ==============================
+
+.details {
+  display: flex;
+  gap: 25px;
+
+  color: #666;
+
+  margin-bottom: 20px;
+}
+
+.details span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+}
+
+.details i {
+  color: var(--primary);
+}
+
+
+// ==============================
+// Skills
+// ==============================
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 25px;
+}
+
+.skills span {
+  background: #f4f7fb;
+
+  padding: 8px 16px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+  color: #555;
+}
+
+
+// ==============================
+// Bottom
+// ==============================
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.bottom h3 {
+  margin: 0;
+
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.bottom small {
+  color: #888;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+// ==============================
+// Actions
+// ==============================
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+// ==============================
+// Apply Button
+// ==============================
+
+.apply-btn {
+  padding: 12px 22px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: var(--primary);
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.apply-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.15);
+}
+
+.apply-btn:active {
+  transform: translateY(0);
+}
+
+
+// ==============================
+// Delete Button
+// ==============================
+
+.delete-btn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #fff;
+  color: #dc2626;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.delete-btn i {
+  font-size: 15px;
+
+  transition: transform 0.25s ease;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #fff;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.2);
+}
+
+.delete-btn:hover i {
+  transform: scale(1.1);
+}
+
+.delete-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+// ==============================
+// Loading
+// ==============================
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 250px;
+
+  color: #777;
+}
+
+
+// ==============================
+// Error
+// ==============================
+
+.error-message {
+  padding: 20px;
+
+  border-radius: 15px;
+
+  background: #fef2f2;
+  color: #dc2626;
+
+  text-align: center;
+}
+
+
+// ==============================
+// Empty State
+// ==============================
+
+.empty-state {
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 40px;
+
+  background: #fff;
+  border-radius: 24px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state > i {
+  font-size: 50px;
+  color: var(--primary);
+
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  margin: 0 0 10px;
+
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.empty-state p {
+  max-width: 500px;
+
+  margin: 0;
+
+  color: #777;
+  line-height: 1.6;
+}
+
+
+// ==============================
+// Responsive
+// ==============================
+
+@media (max-width: 1200px) {
+
+  .jobs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
 }
 
-.page-header{
 
-    display:flex;
+@media (max-width: 768px) {
 
-    justify-content:space-between;
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
 
-    align-items:center;
-
-}
-
-.page-header h2{
-
-    font-size:34px;
-
-    color:var(--primary);
+  .page-header h2 {
+    font-size: 28px;
+  }
 
 }
 
-.page-header p{
 
-    margin-top:8px;
+@media (max-width: 500px) {
 
-    color:#777;
+  .saved-job-card {
+    padding: 20px;
+  }
 
-}
+  .details {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.jobs-grid{
+  .bottom {
+    align-items: flex-end;
+  }
 
-    display:grid;
+  .actions {
+    flex-shrink: 0;
+  }
 
-    grid-template-columns:repeat(3,1fr);
-
-    gap:25px;
-
-}
-
-@media(max-width:1200px){
-
-.jobs-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-@media(max-width:768px){
-
-.jobs-grid{
-
-grid-template-columns:1fr;
-
-}
+  .apply-btn {
+    padding: 10px 16px;
+  }
 
 }

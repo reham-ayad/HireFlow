@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { routes as dashboardRoutes } from './features/- candidate-dashboard/pages/sidebar.routes';
 import { authGuard } from './core/guards/auth.guard';
-
 // export const routes: Routes = dashboardRoutes;
 
 export const routes: Routes = [
@@ -111,7 +110,7 @@ export const routes: Routes = [
 
   // Dashboard
   {
-    path: 'dashboard',
+    path: '',
     children: dashboardRoutes
   }
 

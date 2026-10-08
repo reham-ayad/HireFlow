@@ -29,7 +29,7 @@ export class CompanyService {
   private http = inject(HttpClient);
 
   private readonly apiUrl =
-    'environment.apiUrl + companies';
+    environment.apiUrl+'/companies';
 
   getCompanies(): Observable<CompaniesResponse> {
     return this.http.get<CompaniesResponse>(this.apiUrl);

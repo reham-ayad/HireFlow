@@ -1,3 +1,4 @@
+
 <!--====================================
         COMPANIES HERO
 =====================================-->
@@ -21,7 +22,14 @@
 
         </div>
 
+
+        <!--====================================
+                SEARCH & FILTERS
+        =====================================-->
+
         <div class="search-box">
+
+            <!-- Search Input -->
 
             <div class="search-input">
 
@@ -30,43 +38,82 @@
                 <input
                     type="text"
                     placeholder="Search by name or keyword..."
+                    [(ngModel)]="searchTerm"
                 >
 
             </div>
 
-            <div class="divider"></div>
-
-            <select>
-
-                <option>All Industries</option>
-
-                <option>Technology</option>
-
-                <option>Healthcare</option>
-
-                <option>Finance</option>
-
-                <option>Marketing</option>
-
-            </select>
 
             <div class="divider"></div>
 
-            <select>
 
-                <option>Company Size</option>
+            <!-- Industry Filter -->
 
-                <option>1-10</option>
+            <select [(ngModel)]="selectedIndustry">
 
-                <option>11-50</option>
+                <option value="">
+                    All Industries
+                </option>
 
-                <option>51-200</option>
+                <option value="Software Development">
+                    Software Development
+                </option>
 
-                <option>500+</option>
+                <option value="Technology">
+                    Technology
+                </option>
+
+                <option value="Healthcare">
+                    Healthcare
+                </option>
+
+                <option value="Finance">
+                    Finance
+                </option>
+
+                <option value="Marketing">
+                    Marketing
+                </option>
 
             </select>
 
-            <button>
+
+            <div class="divider"></div>
+
+
+            <!-- Company Size Filter -->
+
+            <select [(ngModel)]="selectedSize">
+
+                <option value="">
+                    Company Size
+                </option>
+
+                <option value="1-10">
+                    1-10
+                </option>
+
+                <option value="11-50">
+                    11-50
+                </option>
+
+                <option value="51-200">
+                    51-200
+                </option>
+
+                <option value="500+">
+                    500+
+                </option>
+
+            </select>
+
+
+            <!-- Search Button -->
+
+            <button
+                type="button"
+                (click)="searchCompanies()"
+            >
 
                 Search
 
@@ -77,6 +124,9 @@
     </div>
 
 </section>
+
+
+
 <!--==================================
         COMPANIES
 ===================================-->
@@ -85,90 +135,163 @@
 
     <div class="container">
 
-        <div class="companies-grid">
 
-            @for(company of companies; track company._id){
+        <!-- Loading -->
 
-            <div class="company-card">
+        @if (loading) {
 
-                <!-- @if(company.featured){
+            <div class="loading">
 
-                <span class="featured">
-                    Featured
-                </span>
+                <p>
+                    Loading companies...
+                </p>
 
-                } -->
+            </div>
 
-                <div class="company-header">
+        }
 
-                    <img
-                        [src]="company.logo"
-                        [alt]="company.name">
 
-                    <div>
+        <!-- Error -->
 
-                        <h3>{{company.name}}</h3>
+        @else if (errorMessage) {
+
+            <div class="error-message">
+
+                <p>
+                    {{ errorMessage }}
+                </p>
+
+            </div>
+
+        }
+
+
+        <!-- Companies -->
+
+        @else {
+
+            <div class="companies-grid">
+
+                @for (company of filteredCompanies; track company._id) {
+
+                    <div class="company-card">
+
+
+                        <!-- Company Header -->
+
+                        <div class="company-header">
+
+                            <img
+                                [src]="'assets/images/' + company.logo"
+                                [alt]="company.name"
+                            >
+
+                            <div>
+
+                                <h3>
+                                    {{ company.name }}
+                                </h3>
+
+                                <p>
+
+                                    {{ company.industry }}
+
+                                    •
+
+                                    {{ company.employees }}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Description -->
+
+                        <p class="description">
+
+                            {{ company.description }}
+
+                        </p>
+
+
+                        <!-- Card Footer -->
+
+                        <div class="card-footer">
+
+                            <span>
+
+                                <i class="fa-solid fa-briefcase"></i>
+
+                                {{ company.openPositions }}
+
+                                Open Positions
+
+                            </span>
+
+
+                            <a href="#">
+
+                                View Profile
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                }
+
+
+                <!-- No Results -->
+
+                @if (filteredCompanies.length === 0) {
+
+                    <div class="no-results">
+
+                        <i class="fa-solid fa-building"></i>
+
+                        <h3>
+                            No companies found
+                        </h3>
 
                         <p>
-
-                            {{company.industry}}
-
-                            •
-
-                            {{company.employees}}
-
+                            Try changing your search or filters.
                         </p>
 
                     </div>
 
-                </div>
-
-                <p class="description">
-
-                    {{company.description}}
-
-                </p>
-
-                <div class="card-footer">
-
-                    <span>
-
-                        <i class="fa-solid fa-briefcase"></i>
-
-                        {{company.openPositions}}
-
-                        Open Positions
-
-                    </span>
-
-                    <a href="#">
-
-                        View Profile
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </a>
-
-                </div>
+                }
 
             </div>
 
+
+            <!-- View More -->
+
+            @if (filteredCompanies.length > 0) {
+
+                <div class="view-more">
+
+                    <button type="button">
+
+                        View More Companies
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </button>
+
+                </div>
+
             }
 
-        </div>
-
-        <div class="view-more">
-
-            <button>
-
-                View More Companies
-
-                <i class="fa-solid fa-chevron-down"></i>
-
-            </button>
-
-        </div>
+        }
 
     </div>
 
 </section>
+
+
+

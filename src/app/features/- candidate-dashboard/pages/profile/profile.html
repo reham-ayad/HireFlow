@@ -1,163 +1,165 @@
 <section class="profile-page">
 
-    <div class="profile-cover">
+<!-- Profile Header -->
+<div class="profile-cover">
 
-        <div class="profile-info">
+    <div class="profile-info">
 
-            <div class="avatar">
-
-                RA
-
-            </div>
-
-            <div>
-
-                <h2>Reham Ayad</h2>
-
-                <p>Frontend Angular Developer</p>
-
-                <div class="location">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    Egypt
-
-                </div>
-
-            </div>
-
+        <div class="avatar">
+            {{ user.name ? user.name.charAt(0).toUpperCase() : 'U' }}
         </div>
 
-        <button>
+        <div>
+            <h2>{{ user.name }}</h2>
 
-            <i class="fa-solid fa-pen"></i>
+            <p>
+                {{ user.jobTitle  }}
+            </p>
 
-            Edit Profile
-
-        </button>
+            <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                {{ user.location || 'No location added' }}
+            </div>
+        </div>
 
     </div>
 
-    <div class="profile-grid">
+  <button type="button" (click)="goToEditProfile()">
+  <i class="fa-solid fa-pen"></i>
+  Edit Profile
+</button>
 
-        <!-- Left -->
+</div>
 
-        <div class="left">
 
-            <section class="card">
+<div class="profile-grid">
 
-                <h3>About</h3>
+    <!-- Left -->
+    <div class="left">
 
-                <p>
+        <!-- About -->
+        <section class="card">
 
-                    Passionate Frontend Developer specialized in Angular,
-                    building responsive and modern web applications with
-                    clean UI and excellent user experience.
+            <h3>About</h3>
 
-                </p>
+            <p>
+                {{ user.bio || 'No bio added yet.' }}
+            </p>
 
-            </section>
+        </section>
 
-            <section class="card">
 
-                <h3>Experience</h3>
+        <!-- Contact -->
+        <section class="card">
 
-                <div class="timeline">
+            <h3>Contact Information</h3>
 
-                    <div class="item">
+            <div class="contact-info">
 
-                        <h4>Frontend Developer</h4>
-
-                        <span>Freelance • 2025 - Present</span>
-
-                    </div>
-
-                    <div class="item">
-
-                        <h4>Angular Projects</h4>
-
-                        <span>Personal Portfolio Projects</span>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section class="card">
-
-                <h3>Education</h3>
-
-                <div class="item">
-
-                    <h4>Faculty of Computers & AI</h4>
-
-                    <span>Computer Science</span>
-
-                </div>
-
-            </section>
-
-        </div>
-
-        <!-- Right -->
-
-        <div class="right">
-
-            <section class="card">
-
-                <h3>Skills</h3>
-
-                <div class="skills">
-
-                    <span>Angular</span>
-
-                    <span>TypeScript</span>
-
-                    <span>HTML</span>
-
-                    <span>SCSS</span>
-
-                    <span>Bootstrap</span>
-
-                    <span>Git</span>
-
-                    <span>REST API</span>
-
-                    <span>RxJS</span>
-
-                </div>
-
-            </section>
-
-            <section class="card">
-
-                <h3>Resume</h3>
-
-                <div class="resume">
-
-                    <i class="fa-solid fa-file-pdf"></i>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
 
                     <div>
-
-                        <h4>Resume.pdf</h4>
-
-                        <span>Updated 2 days ago</span>
-
+                        <span>Email</span>
+                        <p>{{ user.email }}</p>
                     </div>
-
                 </div>
 
-                <button class="upload">
 
-                    Upload New Resume
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
 
-                </button>
+                    <div>
+                        <span>Phone</span>
+                        <p>
+                            {{ user.phone || 'No phone number added' }}
+                        </p>
+                    </div>
+                </div>
 
-            </section>
 
-        </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-user-tag"></i>
+
+                    <div>
+                        <span>Role</span>
+                        <p>{{ user.role || 'Candidate' }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
 
     </div>
+
+
+    <!-- Right -->
+    <div class="right">
+
+        <!-- Skills -->
+        <section class="card">
+
+            <h3>Skills</h3>
+
+            <div class="skills">
+
+                @if (user.skills?.length) {
+
+                    @for (skill of user.skills; track skill) {
+
+                        <span>{{ skill }}</span>
+
+                    }
+
+                } @else {
+
+                    <span class="no-data">
+                        No skills added yet.
+                    </span>
+
+                }
+
+            </div>
+
+        </section>
+
+
+        <!-- Account -->
+        <section class="card">
+
+            <h3>Account Information</h3>
+
+            <div class="account-info">
+
+                <div>
+                    <span>Full Name</span>
+                    <p>{{ user.name }}</p>
+                </div>
+
+                <div>
+                    <span>Email</span>
+                    <p>{{ user.email }}</p>
+                </div>
+
+                <div>
+                    <span>Account Type</span>
+                    <p>{{ user.role || 'Candidate' }}</p>
+                </div>
+
+                <div>
+                    <span>Member Since</span>
+                    <p>
+                        {{ user.createdAt | date:'dd MMM yyyy' }}
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
 
 </section>

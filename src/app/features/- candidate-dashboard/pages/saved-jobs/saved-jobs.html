@@ -1,49 +1,185 @@
 <section class="saved-jobs">
 
-    <div class="page-header">
+  <div class="page-header">
+    <div>
+      <h2>Saved Jobs</h2>
+      <p>Your bookmarked opportunities are waiting for you.</p>
+    </div>
+  </div>
 
-        <div>
 
-            <h2>Saved Jobs</h2>
+  <!-- Loading -->
+  @if (loading) {
 
-            <p>Your bookmarked opportunities are waiting for you.</p>
+    <div class="loading">
+      <p>Loading saved jobs...</p>
+    </div>
 
-        </div>
+  }
+
+
+  <!-- Error -->
+  @else if (errorMessage) {
+
+    <div class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+  }
+
+
+  <!-- Empty -->
+  @else if (savedJobs.length === 0) {
+
+    <div class="empty-state">
+
+      <i class="fa-regular fa-bookmark"></i>
+
+      <h3>No Saved Jobs</h3>
+
+      <p>
+        You haven't saved any jobs yet.
+        Start exploring opportunities and bookmark the ones you like.
+      </p>
 
     </div>
+
+  }
+
+
+  <!-- Saved Jobs -->
+  @else {
 
     <div class="jobs-grid">
 
-        <app-job-card
-            title="Senior Angular Developer"
-            company="Google"
-            icon="fa-brands fa-google"
-            location="California"
-            type="Full Time"
-            salary="$5,500"
-            [skills]="['Angular','TypeScript','RxJS']">
-        </app-job-card>
+      @for (savedJob of savedJobs; track savedJob._id) {
 
-        <app-job-card
-            title="UI/UX Designer"
-            company="Dribbble"
-            icon="fa-brands fa-dribbble"
-            location="Remote"
-            type="Remote"
-            salary="$4,200"
-            [skills]="['Figma','Design System','Prototype']">
-        </app-job-card>
+        <div class="saved-job-card">
 
-        <app-job-card
-            title="Frontend Engineer"
-            company="Microsoft"
-            icon="fa-brands fa-microsoft"
-            location="Hybrid"
-            type="Full Time"
-            salary="$6,000"
-            [skills]="['Angular','SCSS','REST API']">
-        </app-job-card>
+          <!-- Top -->
+          <div class="top">
+
+            <div class="company">
+
+              <div class="logo">
+
+                @if (savedJob.job.company.logo) {
+
+                  <img
+                    [src]="savedJob.job.company.logo"
+                    [alt]="savedJob.job.company.name"
+                  />
+
+                } @else {
+
+                  <i class="fa-solid fa-building"></i>
+
+                }
+
+              </div>
+
+              <div class="company-info">
+
+                <h4>
+                  {{ savedJob.job.title }}
+                </h4>
+
+                <span>
+                  {{ savedJob.job.company.name }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- Saved Icon -->
+            <div class="saved-icon">
+
+              <i class="fa-solid fa-bookmark"></i>
+
+            </div>
+
+          </div>
+
+
+          <!-- Details -->
+          <div class="details">
+
+            <span>
+              <i class="fa-solid fa-location-dot"></i>
+              {{ savedJob.job.location }}
+            </span>
+
+            <span>
+              <i class="fa-regular fa-clock"></i>
+              {{ savedJob.job.jobType }}
+            </span>
+
+          </div>
+
+
+          <!-- Skills -->
+          <div class="skills">
+
+            @for (
+              skill of savedJob.job.requirements || [];
+              track skill
+            ) {
+
+              <span>
+                {{ skill }}
+              </span>
+
+            }
+
+          </div>
+
+
+          <!-- Bottom -->
+          <div class="bottom">
+
+            <h3>
+              {{ savedJob.job.salary || 'Not specified' }}
+
+              @if (savedJob.job.salary) {
+                <small>/month</small>
+              }
+
+            </h3>
+
+
+            <div class="actions">
+
+              <button
+                type="button"
+                class="apply-btn"
+                (click)="applyNow(savedJob.job._id)"
+              >
+                Apply
+              </button>
+
+              <button
+                type="button"
+                class="delete-btn"
+                (click)="deleteSavedJob(savedJob.job._id)"
+                title="Remove from saved jobs"
+              >
+
+                <i class="fa-regular fa-trash-can"></i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
 
     </div>
+
+  }
 
 </section>
