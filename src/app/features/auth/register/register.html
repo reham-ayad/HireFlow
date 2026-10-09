@@ -1,353 +1,401 @@
+
 <section class="register-page">
 
-    <!-- =========================
-            LEFT SIDE
-    ========================== -->
+  <!-- LEFT SIDE -->
+  <div class="left-side">
 
-    <div class="left-side">
+    <div class="overlay"></div>
 
-        <div class="overlay"></div>
+    <div class="left-content">
 
-        <div class="left-content">
+      <!-- Logo -->
+      <a routerLink="/" class="logo">
+        Hire<span style="color: #f7c66b;">Flow</span>
+      </a>
 
-            <a routerLink="/" class="logo">
-                HireFlow
-            </a>
+      <!-- Badge -->
+      <span class="badge">
+        <i class="fa-solid fa-sparkles"></i>
+        Elite Recruitment Platform
+      </span>
 
-            <span class="badge">
-                Elite Recruitment Platform
+      <!-- Heading -->
+      <h1>
+        Where elite talent
+        <br>
+        meets premier employers.
+      </h1>
+
+      <!-- Decorative Illustration instead of image -->
+      <div class="visual-panel">
+
+        <div class="visual-circle circle-one"></div>
+        <div class="visual-circle circle-two"></div>
+
+        <div class="visual-content">
+
+          <div class="visual-icon">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+
+          <span class="visual-tag">
+            YOUR NEXT CHAPTER
+          </span>
+
+          <h2>
+            Build your future.
+            <br>
+            Find your people.
+          </h2>
+
+          <p>
+            Great careers start with the right connection.
+          </p>
+
+          <div class="visual-bottom">
+            <div class="avatar-stack">
+              <span><i class="fa-solid fa-user"></i></span>
+              <span><i class="fa-solid fa-user-tie"></i></span>
+              <span><i class="fa-solid fa-building"></i></span>
+            </div>
+
+            <div class="visual-bottom-text">
+              <strong>Talent meets opportunity</strong>
+              <small>One connection can change everything.</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="floating-card floating-card-top">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Career opportunities</span>
+        </div>
+
+        <div class="floating-card floating-card-bottom">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Grow with HireFlow</span>
+        </div>
+
+      </div>
+
+      <!-- Features -->
+      <div class="features">
+
+        <div class="feature">
+
+          <h3>01</h3>
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <h4>Curated Network</h4>
+
+          <p>
+            Access exclusive companies hiring exceptional talent.
+          </p>
+
+        </div>
+
+        <div class="feature">
+
+          <h3>02</h3>
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+
+          <h4>Smart Matching</h4>
+
+          <p>
+            Discover opportunities tailored to your profile.
+          </p>
+
+        </div>
+
+        <div class="feature">
+
+          <h3>03</h3>
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+
+          <h4>Career Growth</h4>
+
+          <p>
+            Find opportunities that accelerate your future.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- RIGHT SIDE -->
+  <div class="right-side">
+
+    <div class="register-container">
+
+      <!-- Heading -->
+      <div class="heading">
+
+        <span class="form-subtitle">
+          START YOUR JOURNEY
+        </span>
+
+        <h2>Create your profile</h2>
+
+        <p>
+          Already have an account?
+          <a routerLink="/login">Log in</a>
+        </p>
+
+      </div>
+
+
+      <!-- Registration Form -->
+      <form
+        class="register-form"
+        (ngSubmit)="register()"
+      >
+
+        <!-- Full Name -->
+        <div class="input-group">
+
+          <label for="fullName">Full Name</label>
+
+          <div class="input-with-icon">
+            <i class="fa-regular fa-user"></i>
+
+            <input
+              id="fullName"
+              type="text"
+              placeholder="John Doe"
+              [(ngModel)]="registerData.fullName"
+              name="fullName"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+        </div>
+
+
+        <!-- Email -->
+        <div class="input-group">
+
+          <label for="email">Work Email</label>
+
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope"></i>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="john@email.com"
+              [(ngModel)]="registerData.email"
+              name="email"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+        </div>
+
+
+        <!-- Password -->
+        <div class="input-group">
+
+          <label for="password">Password</label>
+
+          <div class="password-field">
+
+            <i class="fa-solid fa-lock field-icon"></i>
+
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Enter your password"
+              [(ngModel)]="registerData.password"
+              name="password"
+              autocomplete="new-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="eye-btn"
+              (click)="showPassword = !showPassword"
+              [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+            >
+              <i
+                [class]="showPassword
+                  ? 'fa-regular fa-eye-slash'
+                  : 'fa-regular fa-eye'"
+              ></i>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+
+          <label for="confirmPassword">Confirm Password</label>
+
+          <div class="password-field">
+
+            <i class="fa-solid fa-lock field-icon"></i>
+
+            <input
+              id="confirmPassword"
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              placeholder="Confirm your password"
+              [(ngModel)]="registerData.confirmPassword"
+              name="confirmPassword"
+              autocomplete="new-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="eye-btn"
+              (click)="showConfirmPassword = !showConfirmPassword"
+              [attr.aria-label]="showConfirmPassword ? 'Hide password' : 'Show password'"
+            >
+              <i
+                [class]="showConfirmPassword
+                  ? 'fa-regular fa-eye-slash'
+                  : 'fa-regular fa-eye'"
+              ></i>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Role Selection -->
+        <label class="role-label">I am a...</label>
+
+        <div class="role-grid">
+
+          <!-- Candidate -->
+          <button
+            type="button"
+            class="role-card"
+            [class.active]="selectedRole === 'candidate'"
+            (click)="selectRole('candidate')"
+          >
+
+            <span class="role-icon">
+              <i class="fa-regular fa-user"></i>
             </span>
 
-            <h1>
-                Where elite talent
-                <br>
-                meets premier employers.
-            </h1>
+            <span class="role-info">
+              <strong>Candidate</strong>
+              <small>Find elite roles</small>
+            </span>
 
-            <img
-                src="images/@lifeinfullbloom.jpg"
-                alt="Office"
-            >
+            <i
+              class="fa-solid fa-circle-check selected-icon"
+              *ngIf="selectedRole === 'candidate'"
+            ></i>
 
-            <div class="features">
+          </button>
 
-                <div class="feature">
-                    <h3>01</h3>
 
-                    <h4>Curated Network</h4>
+          <!-- Employer -->
+          <button
+            type="button"
+            class="role-card"
+            [class.active]="selectedRole === 'employer'"
+            (click)="selectRole('employer')"
+          >
 
-                    <p>
-                        Access exclusive companies hiring exceptional talent.
-                    </p>
-                </div>
+            <span class="role-icon">
+              <i class="fa-regular fa-building"></i>
+            </span>
 
-                <div class="feature">
-                    <h3>02</h3>
+            <span class="role-info">
+              <strong>Employer</strong>
+              <small>Hire top talent</small>
+            </span>
 
-                    <h4>Smart Matching</h4>
+            <i
+              class="fa-solid fa-circle-check selected-icon"
+              *ngIf="selectedRole === 'employer'"
+            ></i>
 
-                    <p>
-                        AI-powered recommendations tailored to your profile.
-                    </p>
-                </div>
-
-                <div class="feature">
-                    <h3>03</h3>
-
-                    <h4>Career Growth</h4>
-
-                    <p>
-                        Find opportunities that accelerate your future.
-                    </p>
-                </div>
-
-            </div>
+          </button>
 
         </div>
 
-    </div>
 
-
-    <!-- =========================
-            RIGHT SIDE
-    ========================== -->
-
-    <div class="right-side">
-
-        <div class="register-container">
-
-            <!-- Heading -->
-
-            <div class="heading">
-
-                <h2>
-                    Create your profile
-                </h2>
-
-                <p>
-                    Already have an account?
-
-                    <a routerLink="/login">
-                        Log in
-                    </a>
-                </p>
-
-            </div>
-
-
-            <!-- Form -->
-
-            <form
-                class="register-form"
-                (ngSubmit)="register()"
-            >
-
-                <!-- Full Name -->
-
-                <div class="input-group">
-
-                    <label for="fullName">
-                        Full Name
-                    </label>
-
-                    <input
-                        id="fullName"
-                        type="text"
-                        placeholder="John Doe"
-                        [(ngModel)]="registerData.fullName"
-                        name="fullName"
-                    >
-
-                </div>
-
-
-                <!-- Email -->
-
-                <div class="input-group">
-
-                    <label for="email">
-                        Work Email
-                    </label>
-
-                    <input
-                        id="email"
-                        type="email"
-                        placeholder="john@email.com"
-                        [(ngModel)]="registerData.email"
-                        name="email"
-                    >
-
-                </div>
-
-
-                <!-- Password -->
-
-                <div class="input-group">
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <div class="password-field">
-
-                        <input
-                            id="password"
-                            [type]="showPassword ? 'text' : 'password'"
-                            placeholder="••••••••"
-                            [(ngModel)]="registerData.password"
-                            name="password"
-                        >
-
-                        <button
-                            type="button"
-                            class="eye-btn"
-                            (click)="showPassword = !showPassword"
-                        >
-
-                            <i
-                                [class]="showPassword
-                                ? 'fa-regular fa-eye-slash'
-                                : 'fa-regular fa-eye'"
-                            ></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Confirm Password -->
-
-                <div class="input-group">
-
-                    <label for="confirmPassword">
-                        Confirm Password
-                    </label>
-
-                    <div class="password-field">
-
-                        <input
-                            id="confirmPassword"
-                            [type]="showConfirmPassword ? 'text' : 'password'"
-                            placeholder="••••••••"
-                            [(ngModel)]="registerData.confirmPassword"
-                            name="confirmPassword"
-                        >
-
-                        <button
-                            type="button"
-                            class="eye-btn"
-                            (click)="showConfirmPassword = !showConfirmPassword"
-                        >
-
-                            <i
-                                [class]="showConfirmPassword
-                                ? 'fa-regular fa-eye-slash'
-                                : 'fa-regular fa-eye'"
-                            ></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Role -->
-
-                <label class="role-label">
-                    I am a...
-                </label>
-
-
-                <div class="role-grid">
-
-                    <!-- Candidate -->
-
-                    <div
-                        class="role-card"
-                        [class.active]="selectedRole === 'candidate'"
-                        (click)="selectRole('candidate')"
-                    >
-
-                        <i class="fa-regular fa-user"></i>
-
-                        <h4>
-                            Candidate
-                        </h4>
-
-                        <span>
-                            Find elite roles
-                        </span>
-
-                    </div>
-
-
-                    <!-- Employer -->
-
-                    <div
-                        class="role-card"
-                        [class.active]="selectedRole === 'employer'"
-                        (click)="selectRole('employer')"
-                    >
-
-                        <i class="fa-regular fa-building"></i>
-
-                        <h4>
-                            Employer
-                        </h4>
-
-                        <span>
-                            Hire top talent
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Terms -->
-
-                <div class="checkbox">
-
-                    <input
-                        id="terms"
-                        type="checkbox"
-                        [(ngModel)]="registerData.acceptTerms"
-                        name="acceptTerms"
-                    >
-
-                    <label for="terms">
-
-                        I agree to the
-
-                        <a href="#">
-                            Terms
-                        </a>
-
-                        and
-
-                        <a href="#">
-                            Privacy Policy
-                        </a>
-
-                    </label>
-
-                </div>
-
-
-                <!-- Register Button -->
-
-                <button
-                    type="submit"
-                    class="register-btn"
-                >
-
-                    Create Account
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </button>
-
-
-                <!-- Divider -->
-
-                <div class="divider">
-
-                    <span>
-                        OR CONTINUE WITH
-                    </span>
-
-                </div>
-
-
-                <!-- Social -->
-
-                <div class="social-buttons">
-
-                    <button type="button">
-
-                        <i class="fa-brands fa-google"></i>
-
-                        Google
-
-                    </button>
-
-                    <button type="button">
-
-                        <i class="fa-brands fa-microsoft"></i>
-
-                        Microsoft
-
-                    </button>
-
-                </div>
-
-            </form>
+        <!-- Terms -->
+        <div class="checkbox">
+
+          <input
+            id="terms"
+            type="checkbox"
+            [(ngModel)]="registerData.acceptTerms"
+            name="acceptTerms"
+            required
+          >
+
+          <label for="terms">
+            I agree to the
+            <a href="#" (click)="$event.preventDefault()">Terms</a>
+            and
+            <a href="#" (click)="$event.preventDefault()">Privacy Policy</a>
+          </label>
 
         </div>
 
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="register-btn"
+        >
+          Create Account
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+
+        <!-- Divider -->
+        <div class="divider">
+          <span>OR CONTINUE WITH</span>
+        </div>
+
+
+        <!-- Social buttons -->
+        <div class="social-buttons">
+
+          <button type="button" disabled>
+            <i class="fa-brands fa-google"></i>
+            Google
+          </button>
+
+          <button type="button" disabled>
+            <i class="fa-brands fa-microsoft"></i>
+            Microsoft
+          </button>
+
+        </div>
+
+      </form>
+
     </div>
+
+  </div>
 
 </section>

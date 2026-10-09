@@ -1,8 +1,9 @@
 import { Component ,inject} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from 'express';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-register',
   imports: [FormsModule],
@@ -12,6 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class Register {
   private authService = inject(AuthService);
   private router = inject(Router);
+  private snackBar=inject(MatSnackBar)
   // Password visibility
   showPassword = false;
   showConfirmPassword = false;
@@ -39,11 +41,32 @@ export class Register {
 register(): void {
 
   if (this.registerData.password !== this.registerData.confirmPassword) {
+      this.snackBar.open(
+        'Passwords do not match',
+        'Close',
+        {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+
+        }
+      );
+    
     console.log('Passwords do not match');
     return;
   }
 
   if (!this.registerData.acceptTerms) {
+      this.snackBar.open(
+        'Please accept the terms',
+        'Close',
+        {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+
+        }
+      );
     console.log('Please accept the terms');
     return;
   }
@@ -59,6 +82,16 @@ register(): void {
   this.authService.register(data).subscribe({
     next: (response) => {
 
+         this.snackBar.open(
+        'Register successful:',
+        'Close',
+        {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+
+        }
+      );
       console.log('Register successful:', response);
       this.router.navigate(['/']);
     },

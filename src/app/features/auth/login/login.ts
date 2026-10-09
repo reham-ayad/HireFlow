@@ -68,4 +68,13 @@ export class Login {
 
     });
   }
+
+
+backtoreqister():void{
+  this.router.navigate(['/register']);
+
+}
+
+
+
 }

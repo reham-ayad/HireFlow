@@ -2,22 +2,18 @@ import { Routes } from '@angular/router';
 import { Layout } from '../layout/layout';
 
 export const routes: Routes = [
+
   {
     path: 'dashboard',
     component: Layout,
+
     children: [
+
       {
         path: '',
         redirectTo: 'profile',
         pathMatch: 'full'
       },
-
-      // {
-      //   path: 'overview',
-      //   loadComponent: () =>
-      //     import('./overview/overview')
-      //       .then(m => m.Overview)
-      // },
 
       {
         path: 'applications',
@@ -46,23 +42,15 @@ export const routes: Routes = [
           import('./settings/settings')
             .then(m => m.Settings)
       },
+
       {
-        path:'edit-profile',
-        loadComponent:()=>
+        path: 'edit-profile',
+        loadComponent: () =>
           import('./edit-profile/edit-profile')
-        .then(m=>m.EditProfile)
+            .then(m => m.EditProfile)
       }
+
     ]
-  },
-
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
-
-  {
-    path: '**',
-    redirectTo: 'dashboard'
   }
+
 ];

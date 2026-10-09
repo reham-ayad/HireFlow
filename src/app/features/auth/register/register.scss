@@ -725,3 +725,332 @@
     }
 
 }
+
+
+/* =========================
+   BRAND DETAILS
+========================= */
+
+.logo span {
+  color: #f7c66b;
+}
+
+.badge i {
+  color: #f7c66b;
+}
+
+.form-subtitle {
+  display: block;
+  margin-bottom: 10px;
+  color: #063847;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================
+   DECORATIVE VISUAL
+========================= */
+
+.visual-panel {
+  position: relative;
+  min-height: 270px;
+  margin: 28px 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.025)
+    );
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.13);
+}
+
+.visual-content {
+  position: relative;
+  z-index: 2;
+  padding: 25px;
+}
+
+.visual-icon {
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  color: #063847;
+  background: #f7c66b;
+  font-size: 20px;
+}
+
+.visual-tag {
+  color: #f7c66b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.visual-content h2 {
+  margin: 10px 0;
+  color: #fff;
+  font-size: 25px;
+  line-height: 1.3;
+}
+
+.visual-content p {
+  margin: 0;
+  color: #d0dce0;
+  font-size: 12px;
+}
+
+.visual-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 23px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.avatar-stack {
+  display: flex;
+  padding-left: 5px;
+}
+
+.avatar-stack span {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  margin-left: -5px;
+  border: 2px solid #174954;
+  border-radius: 50%;
+  color: #063847;
+  background: #f7c66b;
+  font-size: 11px;
+}
+
+.avatar-stack span:nth-child(2) {
+  color: #fff;
+  background: #477a85;
+}
+
+.avatar-stack span:nth-child(3) {
+  color: #063847;
+  background: #e5edf0;
+}
+
+.visual-bottom-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.visual-bottom-text strong {
+  font-size: 11px;
+}
+
+.visual-bottom-text small {
+  color: #c9d5da;
+  font-size: 10px;
+}
+
+.visual-circle {
+  position: absolute;
+  border: 1px solid rgba(247, 198, 107, 0.18);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle-one {
+  top: -80px;
+  right: -55px;
+  width: 220px;
+  height: 220px;
+}
+
+.circle-two {
+  top: -45px;
+  right: -20px;
+  width: 150px;
+  height: 150px;
+}
+
+.floating-card {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 12px;
+  color: #fff;
+  background: #174954;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-size: 10px;
+}
+
+.floating-card i {
+  color: #f7c66b;
+}
+
+.floating-card-top {
+  top: 30px;
+  right: 18px;
+}
+
+.floating-card-bottom {
+  right: 18px;
+  bottom: 25px;
+}
+
+
+/* =========================
+   FEATURE ICONS
+========================= */
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(247, 198, 107, 0.25);
+  border-radius: 11px;
+  color: #f7c66b;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================
+   INPUT ICONS
+========================= */
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon > i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  z-index: 1;
+  color: #829198;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.input-with-icon input {
+  padding-left: 43px;
+}
+
+.password-field .field-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  z-index: 1;
+  color: #829198;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.password-field input {
+  padding-left: 43px;
+}
+
+
+/* =========================
+   ROLE CARDS
+========================= */
+
+.role-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  background: #fff;
+  font-family: inherit;
+}
+
+.role-card .role-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  border-radius: 10px;
+  color: #063847;
+  background: #edf4f5;
+}
+
+.role-card .role-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.role-card .role-info strong {
+  color: #222;
+  font-size: 13px;
+}
+
+.role-card .role-info small {
+  color: #777;
+  font-size: 11px;
+}
+
+.role-card .selected-icon {
+  margin: 0;
+  color: #063847;
+  font-size: 15px;
+}
+
+.role-card.active {
+  border-color: #063847;
+  background: #f2f8f9;
+  box-shadow: 0 6px 15px rgba(6, 56, 71, 0.07);
+}
+
+.role-card.active .role-icon {
+  color: #063847;
+  background: #f7c66b;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .visual-panel {
+    display: none;
+  }
+
+  .feature-icon {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 700px) {
+  .left-side {
+    padding: 30px 24px;
+  }
+
+  .left-content h1 {
+    font-size: 36px;
+  }
+
+  .features {
+    gap: 12px;
+  }
+}

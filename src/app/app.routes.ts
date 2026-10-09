@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { routes as dashboardRoutes } from './features/- candidate-dashboard/pages/sidebar.routes';
-import { authGuard } from './core/guards/auth.guard';
-// export const routes: Routes = dashboardRoutes;
+import { routes as dashboardRoutes } from '../app/features/- candidate-dashboard/pages/sidebar.routes';
 
 export const routes: Routes = [
 
+  // =========================
+  // Main Website
+  // =========================
   {
     path: '',
     loadComponent: () =>
@@ -19,11 +20,6 @@ export const routes: Routes = [
           import('./features/home/home')
             .then(m => m.Home)
       },
-      
-
-
-
-
 
       {
         path: 'jobs',
@@ -31,13 +27,14 @@ export const routes: Routes = [
           import('./features/job/jobs/jobs')
             .then(m => m.Jobs)
       },
-{
-  path: 'jobs/:id/apply',
-  canActivate: [authGuard],
-  loadComponent: () =>
-    import('./features/job/apply-job/apply-job')
-      .then(m => m.ApplyJob)
-},
+
+      {
+        path: 'jobs/:id/apply',
+        loadComponent: () =>
+          import('./features/job/apply-job/apply-job')
+            .then(m => m.ApplyJob)
+      },
+
       {
         path: 'companies',
         loadComponent: () =>
@@ -59,6 +56,7 @@ export const routes: Routes = [
             .then(m => m.contact)
       },
 
+      // Auth
       {
         path: 'login',
         loadComponent: () =>
@@ -66,52 +64,26 @@ export const routes: Routes = [
             .then(m => m.Login)
       },
 
-// {
-//     path: 'dashboard',
-//     canActivate: [authGuard],
-//     loadComponent: () =>
-//       import('../../src/app/features/- candidate-dashboard/pages/overview/overview')
-//         .then(m => m.Overview)
-//   },
-      
       {
         path: 'register',
         loadComponent: () =>
           import('./features/auth/register/register')
             .then(m => m.Register)
       },
-         {
-        path: 'register',
-        loadComponent: () =>
-          import('./features/auth/register/register')
-            .then(m => m.Register)
-      },
+
       {
         path: 'forgot-password',
         loadComponent: () =>
           import('./features/auth/forgot-password/forgot-password')
             .then(m => m.ForgotPassword)
-      },
+      }
 
-
-
-
-
-
-
-    //   {
-    //     path: 'post-job',
-    //     loadComponent: () =>
-    //       import('./features/post-job/post-job')
-    //         .then(m => m.PostJob)
-    //   }
     ]
   },
 
-  // Dashboard
-  {
-    path: '',
-    children: dashboardRoutes
-  }
+  // =========================
+  // Candidate Dashboard
+  // =========================
+  ...dashboardRoutes
 
 ];
