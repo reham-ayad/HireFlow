@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {authInterceptor} from '../../interceptors/auth.interceptor';
+
+
 export interface User {
   _id: string;
   name: string;
@@ -13,6 +15,12 @@ export interface User {
   bio?: string;
   skills?: string[];
   role?: string;
+  
+  company?: {
+  _id: string;
+  name: string;
+  logo?: string;
+} | null;
   createdAt?: string;
   updatedAt?: string;
 }

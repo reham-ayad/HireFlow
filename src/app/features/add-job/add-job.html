@@ -1,0 +1,146 @@
+
+<main class="add-job-page">
+  <section class="form-card">
+    <div class="form-heading">
+      <span class="eyebrow">H I R E F L O W · EMPLOYER</span>
+      <h1>Post a New Job</h1>
+      <p>Find the right talent to grow your team.</p>
+    </div>
+
+    <form #jobForm="ngForm" (ngSubmit)="createJob()">
+
+      <div class="form-group">
+        <label for="title">Job Title *</label>
+        <input
+          id="title"
+          name="title"
+          [(ngModel)]="jobData.title"
+          placeholder="e.g. Angular Developer"
+          required
+          minlength="3"
+        />
+      </div>
+
+
+<!-- Company Information -->
+<div class="form-group">
+  <label for="companyName">Company</label>
+
+  <div class="company-info">
+    <ng-container *ngIf="userCompany as company; else undisclosedOnly">
+      <input
+        id="companyName"
+        type="text"
+        [value]="company.name"
+        readonly
+        class="form-control"
+      />
+
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          name="isCompanyUndisclosed"
+          [(ngModel)]="jobData.isCompanyUndisclosed"
+        />
+        Publish without showing my company name
+      </label>
+    </ng-container>
+
+    <ng-template #undisclosedOnly>
+      <input
+        type="text"
+        value="Undisclosed Company"
+        readonly
+        class="form-control"
+      />
+
+      <p class="form-hint">
+        Your company isn't registered on HireFlow yet.
+        <a routerLink="/contact">
+          Contact us to register your company
+        </a>.
+      </p>
+    </ng-template>
+  </div>
+</div>
+
+
+      <div class="form-group">
+        <label for="location">Location *</label>
+        <input
+          id="location"
+          name="location"
+          [(ngModel)]="jobData.location"
+          placeholder="e.g. Cairo, Egypt"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="jobType">Job Type *</label>
+          <select
+            id="jobType"
+            name="jobType"
+            [(ngModel)]="jobData.jobType"
+            required
+          >
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Remote">Remote</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <input
+            id="salary"
+            name="salary"
+            [(ngModel)]="jobData.salary"
+            placeholder="e.g. 22000 - 32000 EGP"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Job Description *</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="jobData.description"
+          rows="5"
+          placeholder="Describe the role and responsibilities..."
+          required
+          minlength="10"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="requirements">Requirements</label>
+        <textarea
+          id="requirements"
+          name="requirements"
+          [(ngModel)]="jobData.requirements"
+          rows="4"
+          placeholder="Angular&#10;TypeScript&#10;REST APIs"
+        ></textarea>
+        <small>Write each requirement on a separate line.</small>
+      </div>
+
+      <p class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </p>
+
+      <p class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
+
+      <button type="submit" [disabled]="jobForm.invalid || loading">
+        {{ loading ? 'Publishing...' : 'Publish Job' }}
+      </button>
+
+    </form>
+  </section>
+</main>
+

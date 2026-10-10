@@ -911,3 +911,34 @@ width:100%;
 }
 
 }
+
+.view-btn {
+  padding: 12px 22px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: var(--primary);
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.view-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.15);
+}
+
+.view-btn:active {
+  transform: translateY(0);
+}
+

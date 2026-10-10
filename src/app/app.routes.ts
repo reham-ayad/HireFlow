@@ -43,6 +43,13 @@ export const routes: Routes = [
       },
 
       {
+path:'company-profil/:id',
+loadComponent:()=>
+  import('./features/company-profile/company-profile')
+.then(m => m.CompanyProfile)
+      },
+
+      {
         path: 'about',
         loadComponent: () =>
           import('./features/about/about')
@@ -55,7 +62,16 @@ export const routes: Routes = [
           import('./features/contact/contact')
             .then(m => m.contact)
       },
+{
+path:'add-job',
+loadComponent:()=>
+  import('./features/add-job/add-job')
+.then(m=>m.AddJob)
 
+
+
+
+},
       // Auth
       {
         path: 'login',

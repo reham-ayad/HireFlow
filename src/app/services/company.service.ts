@@ -21,6 +21,11 @@ export interface CompaniesResponse {
   companies: Company[];
 }
 
+export interface CompanyProfileResponse {
+  company: Company;
+  jobs: any[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +40,7 @@ export class CompanyService {
     return this.http.get<CompaniesResponse>(this.apiUrl);
   }
 
-  getCompanyById(id: string): Observable<Company> {
-    return this.http.get<Company>(`${this.apiUrl}/${id}`);
-  }
+ getCompanyById(id: string): Observable<CompanyProfileResponse> {
+  return this.http.get<CompanyProfileResponse>(`${this.apiUrl}/${id}`);
+}
 }

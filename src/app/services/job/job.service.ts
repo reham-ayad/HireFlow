@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 
 export interface Job {
   _id: string;
+  name:string;
   title: string;
   company: {
   _id: string;
@@ -22,6 +23,16 @@ export interface Job {
 
 export interface JobsResponse {
   jobs: Job[];
+}
+
+export interface CreateJobPayload {
+  title: string;
+  isCompanyUndisclosed: boolean;
+  description: string;
+  location: string;
+  jobType: string;
+  salary: string;
+  requirements: string[];
 }
 
 @Injectable({
@@ -52,12 +63,12 @@ export class JobService {
 
 
   // Create Job
-  createJob(job: Partial<Job>): Observable<Job> {
-    return this.http.post<Job>(
-      this.apiUrl,
-      job
-    );
-  }
+createJob(payload: CreateJobPayload) {
+  return this.http.post<{ message: string; job: Job }>(
+    `${this.apiUrl}`,
+    payload
+  );
+}
 
 
   // Get Job Applications

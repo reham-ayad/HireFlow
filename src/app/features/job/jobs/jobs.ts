@@ -95,7 +95,9 @@ export class Jobs implements OnInit {
       this.jobs = jobs.map((job: Job) => ({
         id: job._id,
         title: job.title,
-        companyname: job.company.name,
+        companyname: !job.company
+  ? 'Undisclosed Company'
+  : job.company.name,
         location: job.location ?? 'remote',
         description: job.description ?? 'No description available',
         salary: job.salary ?? 'Salary not specified',

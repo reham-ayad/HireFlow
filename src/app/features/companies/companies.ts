@@ -8,6 +8,7 @@ import {
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import {
   CompanyService,
@@ -32,7 +33,7 @@ export class Companies implements OnInit {
 
   private companyService = inject(CompanyService);
   private cdr = inject(ChangeDetectorRef);
-
+private router=inject(Router)
 
   companies: Company[] = [];
 
@@ -328,5 +329,9 @@ export class Companies implements OnInit {
       [...this.companies];
 
   }
+
+  viewCompany(companyId: string): void {
+  this.router.navigate(['/company-profil', companyId]);
+}
 
 }
