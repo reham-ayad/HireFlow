@@ -129,6 +129,7 @@
     transform: translateY(-4px);
 
     box-shadow: 0 20px 40px rgba(15, 76, 92, .25);
+    color: white;
 
 }
 
@@ -1408,5 +1409,500 @@ justify-content:center;
 flex-wrap:wrap;
 
 }
+
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+/* ---------- Laptop ---------- */
+@media (max-width: 1200px) {
+
+  .hero-wrapper {
+    gap: 45px;
+  }
+
+  .hero-title {
+    font-size: clamp(55px, 6vw, 75px);
+  }
+
+  .category-grid {
+    gap: 20px;
+  }
+
+  .category-card {
+    padding: 30px 22px;
+  }
+
+  .why-wrapper {
+    gap: 50px;
+  }
+
+  .companies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cta-box {
+    padding: 60px 45px;
+    gap: 35px;
+  }
+
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 992px) {
+
+  /* Hero */
+  .hero-section {
+    padding: 60px 0 100px;
+  }
+
+  .hero-wrapper {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 65px;
+  }
+
+  .hero-text {
+    max-width: 650px;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 450px;
+    display: block;
+  }
+
+  /* Search */
+  .search-section {
+    margin-top: -55px;
+  }
+
+  .search-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  /* Categories */
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Featured Jobs */
+  .jobs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  /* Why Us */
+  .why-wrapper {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .why-image {
+    max-width: 650px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .why-image img {
+    width: 100%;
+  }
+
+  .why-content {
+    text-align: center;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+
+  .experience-card {
+    right: 20px;
+  }
+
+  /* Testimonials */
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Companies */
+  .companies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* CTA */
+  .cta-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 35px;
+  }
+
+  .cta-content h2 {
+    font-size: 48px;
+  }
+
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+
+  /* General Sections */
+  .browse-category,
+  .featured-jobs,
+  .why-us,
+  .testimonials,
+  .companies-section,
+  .cta-section {
+    padding: 75px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+
+  .section-title {
+    font-size: 42px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+  }
+
+  .section-subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 45px 0 85px;
+  }
+
+  .hero-wrapper {
+    gap: 35px;
+  }
+
+  .hero-title {
+    font-size: 52px;
+    line-height: 1;
+    margin-bottom: 22px;
+  }
+
+  .hero-subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .hero-text {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .btn-primary {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    height: 350px;
+    border-radius: 24px;
+  }
+
+  .hero-image::before {
+    width: 100px;
+    height: 100px;
+    right: -15px;
+    top: -25px;
+  }
+
+  .hero-image::after {
+    width: 80px;
+    height: 80px;
+    left: -15px;
+    bottom: -20px;
+  }
+
+  /* Search */
+  .search-section {
+    margin-top: -40px;
+  }
+
+  .search-card {
+    grid-template-columns: 1fr;
+    padding: 25px 20px;
+    gap: 15px;
+    border-radius: 18px;
+  }
+
+  .search-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+  }
+
+  .search-item input,
+  .search-item select {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .search-btn {
+    width: 100%;
+    height: 52px;
+  }
+
+  /* Categories */
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .category-card {
+    padding: 25px 18px;
+    border-radius: 20px;
+  }
+
+  .icon-box {
+    width: 58px;
+    height: 58px;
+    font-size: 23px;
+    margin-bottom: 18px;
+    border-radius: 17px;
+  }
+
+  .category-card h4 {
+    font-size: 17px;
+  }
+
+  .category-card span {
+    font-size: 13px;
+  }
+
+  /* Featured Jobs */
+  .jobs-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 35px;
+  }
+
+  .job-card {
+    padding: 24px 20px;
+  }
+
+  .job-info {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Why Us */
+  .why-wrapper {
+    gap: 45px;
+  }
+
+  .why-content h2 {
+    font-size: 42px;
+  }
+
+  .why-content p {
+    font-size: 15px;
+  }
+
+  .why-image img {
+    border-radius: 22px;
+  }
+
+  .experience-card {
+    padding: 18px;
+    right: 12px;
+    bottom: 20px;
+  }
+
+  .experience-card h2 {
+    font-size: 30px;
+  }
+
+  .experience-card span {
+    font-size: 12px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .feature .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 19px;
+  }
+
+  /* Testimonials */
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 35px;
+  }
+
+  .testimonial-card {
+    padding: 25px;
+  }
+
+  /* Companies */
+  .companies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .company-card {
+    padding: 25px 12px;
+  }
+
+  .company-card i {
+    font-size: 32px;
+  }
+
+  .company-card span {
+    font-size: 13px;
+  }
+
+  /* CTA */
+  .cta-box {
+    padding: 45px 22px;
+    border-radius: 25px;
+    gap: 30px;
+  }
+
+  .cta-content h2 {
+    font-size: 39px;
+  }
+
+  .cta-content p {
+    font-size: 14px;
+  }
+
+  .cta-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-buttons a {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+}
+
+/* ---------- Small Mobile ---------- */
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: 43px;
+  }
+
+  .hero-image img {
+    height: 280px;
+  }
+
+  .hero-section {
+    padding-top: 35px;
+  }
+
+  .section-title {
+    font-size: 35px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .icon-box {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .category-card h4 {
+    margin-bottom: 5px;
+  }
+
+  .category-card span {
+    display: block;
+  }
+
+  .why-content h2 {
+    font-size: 35px;
+  }
+
+  .experience-card {
+    padding: 13px;
+    right: 8px;
+    bottom: 12px;
+  }
+
+  .experience-card h2 {
+    font-size: 25px;
+  }
+
+  .companies-grid {
+    gap: 10px;
+  }
+
+  .company-card {
+    padding: 20px 8px;
+  }
+
+  .cta-content h2 {
+    font-size: 33px;
+  }
+
+  .cta-box {
+    padding: 38px 18px;
+  }
+
+  .search-card {
+    padding: 20px 16px;
+  }
+
+  .job-card {
+    padding: 20px 16px;
+  }
 
 }

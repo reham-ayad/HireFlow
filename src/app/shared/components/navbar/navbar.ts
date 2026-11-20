@@ -11,6 +11,17 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class Navbar {
 
+menuOpen = false;
+
+toggleMenu(): void {
+  this.menuOpen = !this.menuOpen;
+}
+
+closeMenu(): void {
+  this.menuOpen = false;
+}
+
+
   private authService = inject(AuthService);
 
   get isLoggedIn(): boolean {

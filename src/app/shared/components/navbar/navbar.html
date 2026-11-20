@@ -1,88 +1,121 @@
+
 <header class="navbar">
   <div class="container">
 
     <div class="navbar-content">
 
-      <!-- Left -->
+      <!-- Logo -->
       <div class="nav-left">
-        <a routerLink="/" class="logo">
-          HireFlow
+        <a routerLink="/" class="logo" (click)="closeMenu()">
+          HireFlow<span>.</span>
         </a>
       </div>
 
-      <!-- Center -->
-      <div class="nav-center">
+      <!-- Navigation -->
+      <div class="nav-center" [class.active]="menuOpen">
         <nav class="desktop-nav">
 
-    <a
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-    >
-        Home
-    </a>
+          <a routerLink="/"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             (click)="closeMenu()">
+            Home
+          </a>
 
-    <a
-        routerLink="/jobs"
-        routerLinkActive="active"
-    >
-        Jobs
-    </a>
+          <a routerLink="/jobs"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            Jobs
+          </a>
 
-    <a
-        routerLink="/companies"
-        routerLinkActive="active"
-    >
-        Companies
-    </a>
+          <a routerLink="/companies"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            Companies
+          </a>
 
-    <a
-        routerLink="/about"
-        routerLinkActive="active"
-    >
-        About
-    </a>
+          <a routerLink="/about"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            About
+          </a>
 
-    <a
-        routerLink="/contact"
-        routerLinkActive="active"
-    >
-        Contact
-    </a>
+          <a routerLink="/contact"
+             routerLinkActive="active"
+             (click)="closeMenu()">
+            Contact
+          </a>
 
-</nav>
-      </div>
-
-      <!-- Right -->
-    <div class="nav-right">
+        </nav>
+<!-- Mobile Actions -->
+<div class="mobile-actions">
 
   @if (!isLoggedIn) {
-
-    <a routerLink="/login" class="login-btn">
+    <a
+      routerLink="/login"
+      class="login-btn"
+      (click)="closeMenu()">
       Log In
     </a>
-
   } @else {
-
     <a
       routerLink="/dashboard"
       class="profile-btn"
-      aria-label="Profile"
-      title="My Dashboard"
-    >
-      <i class="fa-regular fa-user"></i>
-    </a>
+      (click)="closeMenu()">
 
+      <i class="fa-regular fa-user"></i>
+      <span>Dashboard</span>
+
+    </a>
   }
 
-  <button class="post-btn"
-  routerLink="/add-job"
-  >
+  <a
+    routerLink="/add-job"
+    class="post-btn"
+    (click)="closeMenu()">
     Post a Job
-  </button>
+  </a>
 
 </div>
-    </div>
+      </div>
 
+      <!-- Desktop Actions -->
+      <div class="nav-right">
+
+        @if (!isLoggedIn) {
+          <a routerLink="/login" class="login-btn">
+            Log In
+          </a>
+        } @else {
+          <a routerLink="/dashboard"
+             class="profile-btn"
+             aria-label="Profile"
+             title="My Dashboard">
+            <i class="fa-regular fa-user"></i>
+          </a>
+        }
+
+        <a routerLink="/add-job" class="post-btn">
+          Post a Job
+        </a>
+
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="menu-toggle"
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen"
+        aria-label="Toggle navigation">
+
+        <i [class.fa-bars]="!menuOpen"
+           [class.fa-xmark]="menuOpen"
+           class="fa-solid">
+        </i>
+
+      </button>
+
+    </div>
   </div>
 </header>
